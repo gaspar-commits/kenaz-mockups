@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Dream Wedding in Spain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --rosa: #D4A5A5;
+    --rosa-light: #e8cece;
+    --rosa-dark: #b88a8a;
+    --dorado: #C9A96E;
+    --dorado-light: #dcc498;
+    --dorado-dark: #a88d52;
+    --blanco: #FAFAFA;
+    --gris: #2C2C2C;
+    --gris-light: #4a4a4a;
+    --crema: #F5F0E8;
+    --crema-dark: #e8dfd1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    color: var(--gris);
+    background: var(--blanco);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(250, 250, 250, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  }
+
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gris);
+    text-transform: uppercase;
+  }
+
+  .nav-brand span {
+    color: var(--dorado);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gris-light);
+    position: relative;
+    padding-bottom: 2px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--dorado);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--gris); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blanco) !important;
+    background: var(--dorado);
+    padding: 12px 28px;
+    border: none;
+  }
+
+  .nav-cta:hover { background: var(--dorado-dark); }
+  .nav-cta::after { display: none !important; }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--gris);
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(44,44,44,0.35) 0%, rgba(44,44,44,0.15) 40%, rgba(44,44,44,0.45) 100%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 40px;
+  }
+
+  .hero-ornament {
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: var(--dorado);
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .hero-ornament::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 7px;
+    height: 7px;
+    background: var(--dorado);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--blanco);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.2);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--dorado-light);
+  }
+
+  .hero-sub {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: rgba(250, 250, 250, 0.9);
+    letter-spacing: 0.06em;
+    margin-bottom: 48px;
+    line-height: 1.6;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gris);
+    background: var(--dorado);
+    padding: 18px 48px;
+    transition: all 0.4s ease;
+  }
+
+  .hero-cta:hover {
+    background: var(--blanco);
+    color: var(--gris);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(250, 250, 250, 0.6);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--dorado), transparent);
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 140px 0;
+    background: var(--blanco);
+  }
+
+  .intro-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .intro-image { position: relative; }
+
+  .intro-image img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+  }
+
+  .intro-image-accent {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 120px;
+    height: 120px;
+    border-top: 2px solid var(--dorado);
+    border-left: 2px solid var(--dorado);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .intro-text { padding: 20px 0; }
+
+  .section-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--dorado);
+  }
+
+  .intro-text h2 {
+    font-size: 2.8rem;
+    color: var(--gris);
+    margin-bottom: 28px;
+    line-height: 1.15;
+  }
+
+  .intro-text p {
+    font-size: 1rem;
+    color: var(--gris-light);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .intro-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--crema-dark);
+  }
+
+  .intro-stat h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--dorado);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .intro-stat p {
+    font-size: 0.8rem;
+    color: var(--gris-light);
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  /* SERVICES */
+  .services {
+    padding: 120px 0;
+    background: var(--crema);
+  }
+
+  .services-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 80px;
+  }
+
+  .services-header h2 {
+    font-size: 2.8rem;
+    color: var(--gris);
+    margin-bottom: 16px;
+  }
+
+  .services-header p {
+    font-size: 1.05rem;
+    color: var(--gris-light);
+    line-height: 1.7;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .service-card {
+    background: var(--blanco);
+    padding: 52px 40px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(201, 169, 110, 0.1);
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(44, 44, 44, 0.08);
+  }
+
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .service-icon svg {
+    width: 40px;
+    height: 40px;
+    stroke: var(--dorado);
+    fill: none;
+    stroke-width: 1.2;
+  }
+
+  .service-card h3 {
+    font-size: 1.5rem;
+    color: var(--gris);
+    margin-bottom: 16px;
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    color: var(--gris-light);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .service-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 32px;
+  }
+
+  .service-features li {
+    font-size: 0.85rem;
+    color: var(--gris-light);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--crema);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .service-features li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--dorado);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .service-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    color: var(--dorado-dark);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .service-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--dorado);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .service-card:hover .service-line { transform: scaleX(1); }
+
+  /* GALLERY */
+  .gallery {
+    padding: 120px 0;
+    background: var(--blanco);
+  }
+
+  .gallery-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 60px;
+  }
+
+  .gallery-header h2 {
+    font-size: 2.8rem;
+    color: var(--gris);
+    margin-bottom: 16px;
+  }
+
+  .gallery-header p {
+    font-size: 1.05rem;
+    color: var(--gris-light);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 340px 340px;
+    gap: 16px;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .gallery-item:hover img { transform: scale(1.05); }
+
+  .gallery-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(44, 44, 44, 0.5) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+  }
+
+  .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+  .gallery-item-overlay span {
+    color: var(--blanco);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .gallery-item:first-child { grid-row: span 2; }
+
+  /* WHY COSTA BLANCA */
+  .why-section {
+    padding: 120px 0;
+    background: var(--gris);
+    color: var(--blanco);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-bg-image {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+  }
+
+  .why-bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .why-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .why-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 80px;
+  }
+
+  .why-header .section-label { color: var(--dorado-light); }
+  .why-header .section-label::before { background: var(--dorado-light); }
+
+  .why-header h2 {
+    font-size: 2.8rem;
+    color: var(--blanco);
+    margin-bottom: 16px;
+  }
+
+  .why-header p {
+    font-size: 1.05rem;
+    color: rgba(250, 250, 250, 0.7);
+    line-height: 1.7;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .why-card {
+    text-align: center;
+    padding: 40px 28px;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    background: rgba(44, 44, 44, 0.5);
+    backdrop-filter: blur(8px);
+    transition: border-color 0.3s ease;
+  }
+
+  .why-card:hover { border-color: var(--dorado); }
+
+  .why-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .why-icon svg {
+    width: 44px;
+    height: 44px;
+    stroke: var(--dorado);
+    fill: none;
+    stroke-width: 1.2;
+  }
+
+  .why-card h3 {
+    font-size: 1.4rem;
+    color: var(--blanco);
+    margin-bottom: 12px;
+  }
+
+  .why-card p {
+    font-size: 0.9rem;
+    color: rgba(250, 250, 250, 0.65);
+    line-height: 1.7;
+  }
+
+  .why-stat-row {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+  }
+
+  .why-stat { text-align: center; }
+
+  .why-stat h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--dorado);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .why-stat p {
+    font-size: 0.8rem;
+    color: rgba(250, 250, 250, 0.5);
+    margin-top: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    padding: 120px 0;
+    background: var(--crema);
+  }
+
+  .testimonials-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 72px;
+  }
+
+  .testimonials-header h2 {
+    font-size: 2.8rem;
+    color: var(--gris);
+    margin-bottom: 16px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+  }
+
+  .testimonial-card {
+    background: var(--blanco);
+    padding: 48px 36px;
+    position: relative;
+    border: 1px solid rgba(201, 169, 110, 0.1);
+  }
+
+  .testimonial-quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--dorado);
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0.4;
+  }
+
+  .testimonial-card blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--gris);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .testimonial-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--rosa-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--dorado-dark);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .testimonial-info h4 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gris);
+  }
+
+  .testimonial-info p {
+    font-size: 0.75rem;
+    color: var(--gris-light);
+    margin-top: 2px;
+  }
+
+  .testimonial-stars {
+    display: flex;
+    gap: 3px;
+    margin-top: 12px;
+  }
+
+  .testimonial-stars svg {
+    width: 14px;
+    height: 14px;
+    fill: var(--dorado);
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 140px 0;
+    background: var(--blanco);
+  }
+
+  .cta-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .cta-image { position: relative; }
+
+  .cta-image img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+  }
+
+  .cta-image-frame {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 120px;
+    height: 120px;
+    border-bottom: 2px solid var(--dorado);
+    border-right: 2px solid var(--dorado);
+  }
+
+  .cta-content { padding: 20px 0; }
+
+  .cta-content h2 {
+    font-size: 2.8rem;
+    color: var(--gris);
+    margin-bottom: 20px;
+    line-height: 1.15;
+  }
+
+  .cta-content p {
+    font-size: 1.05rem;
+    color: var(--gris-light);
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  .cta-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 440px;
+  }
+
+  .cta-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .cta-form input,
+  .cta-form textarea {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+    padding: 16px 20px;
+    border: 1px solid var(--crema-dark);
+    background: var(--crema);
+    color: var(--gris);
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+  }
+
+  .cta-form input::placeholder,
+  .cta-form textarea::placeholder {
+    color: var(--rosa-dark);
+    opacity: 0.5;
+  }
+
+  .cta-form input:focus,
+  .cta-form textarea:focus { border-color: var(--dorado); }
+
+  .cta-form textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blanco);
+    background: var(--dorado);
+    padding: 18px 48px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .cta-btn:hover { background: var(--gris); }
+
+  .cta-details {
+    display: flex;
+    gap: 40px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--crema-dark);
+  }
+
+  .cta-detail-item h5 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dorado-dark);
+    margin-bottom: 6px;
+  }
+
+  .cta-detail-item p {
+    font-size: 0.9rem;
+    color: var(--gris);
+    margin-bottom: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 60px 0;
+    background: var(--gris);
+    color: rgba(250, 250, 250, 0.6);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--blanco);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .footer-brand span { color: var(--dorado); }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(250, 250, 250, 0.4);
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover { color: var(--dorado); }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(250, 250, 250, 0.3);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(250, 250, 250, 0.08);
+    margin: 32px 0;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-social a {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(250, 250, 250, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .footer-social a:hover {
+    border-color: var(--dorado);
+    background: var(--dorado);
+  }
+
+  .footer-social svg {
+    width: 14px;
+    height: 14px;
+    fill: rgba(250, 250, 250, 0.5);
+  }
+
+  .footer-social a:hover svg { fill: var(--blanco); }
+
+  /* KENAZ WATERMARK */
+  .kenaz-watermark {
+    position: fixed;
+    bottom: 20px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(44, 44, 44, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 10px 18px;
+    border: 1px solid rgba(201, 169, 110, 0.3);
+  }
+
+  .kenaz-watermark svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--dorado);
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .kenaz-watermark span {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250, 250, 250, 0.6);
+  }
+
+  /* RESPONSIVE 768px */
+  @media (max-width: 768px) {
+    .container { padding: 0 32px; }
+    .nav-inner { padding: 0 32px; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .hero h1 { font-size: 3rem; }
+    .hero-sub { font-size: 1rem; }
+    .intro { padding: 80px 0; }
+    .intro-inner { grid-template-columns: 1fr; gap: 48px; }
+    .intro-image img { height: 400px; }
+    .services { padding: 80px 0; }
+    .services-grid { grid-template-columns: 1fr; gap: 28px; }
+    .services-header h2, .gallery-header h2, .why-header h2, .testimonials-header h2, .cta-content h2 { font-size: 2.2rem; }
+    .gallery { padding: 80px 0; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 260px 260px 260px; }
+    .gallery-item:first-child { grid-row: span 1; }
+    .why-section { padding: 80px 0; }
+    .why-grid { grid-template-columns: 1fr; gap: 28px; }
+    .why-stat-row { gap: 40px; flex-wrap: wrap; justify-content: center; }
+    .testimonials { padding: 80px 0; }
+    .testimonials-grid { grid-template-columns: 1fr; gap: 24px; }
+    .cta-section { padding: 80px 0; }
+    .cta-inner { grid-template-columns: 1fr; gap: 48px; }
+    .cta-image img { height: 360px; }
+    .cta-details { flex-direction: column; gap: 20px; }
+    .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+    .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+  }
+
+  /* RESPONSIVE 480px */
+  @media (max-width: 480px) {
+    .container { padding: 0 20px; }
+    .nav-inner { padding: 0 20px; height: 64px; }
+    .nav-brand { font-size: 0.9rem; }
+    .hero { min-height: 600px; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-sub { font-size: 0.9rem; }
+    .hero-cta { padding: 14px 32px; font-size: 0.7rem; }
+    .intro-image img { height: 300px; }
+    .intro-text h2 { font-size: 2rem; }
+    .intro-stats { flex-direction: column; gap: 24px; }
+    .service-card { padding: 36px 28px; }
+    .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, 240px); }
+    .why-stat h4 { font-size: 2.2rem; }
+    .cta-form-row { grid-template-columns: 1fr; }
+    .cta-image img { height: 280px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Your Dream <span>Wedding</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#costa-blanca">Costa Blanca</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="img/hero-arch.jpg" alt="Wedding ceremony arch with flowers">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-ornament"></div>
+    <h1>Your dream wedding.<br><em>Under the Spanish sun.</em></h1>
+    <p class="hero-sub">Eight years of crafting unforgettable celebrations on the Costa Blanca.<br>Bespoke planning for couples who refuse to settle.</p>
+    <a href="#contact" class="hero-cta">Begin Your Story</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-inner">
+      <div class="intro-image">
+        <div class="intro-image-accent"></div>
+        <img src="img/bouquet.jpg" alt="Elegant wedding bouquet">
+      </div>
+      <div class="intro-text">
+        <div class="section-label">About Us</div>
+        <h2>Where vision<br>becomes ceremony</h2>
+        <p>Your Dream Wedding in Spain has been transforming the Costa Blanca into a canvas for love stories since 2018. Led by Marcella Davis, we bring a deeply personal approach to every celebration we touch.</p>
+        <p>From cliff-top ceremonies with the Mediterranean as your witness to intimate garden receptions under a canopy of stars, we orchestrate every detail so you can be fully present in every moment.</p>
+        <div class="intro-stats">
+          <div class="intro-stat">
+            <h4>120+</h4>
+            <p>Weddings celebrated</p>
+          </div>
+          <div class="intro-stat">
+            <h4>8</h4>
+            <p>Years of experience</p>
+          </div>
+          <div class="intro-stat">
+            <h4>14</h4>
+            <p>Countries represented</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="section-label" style="justify-content: center;">Our Services</div>
+      <h2>Tailored to your vision</h2>
+      <p>Whether you need a guiding hand from the very first spark of an idea, or a calm professional to execute your carefully laid plans on the day itself.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-line"></div>
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><path d="M16 24l6 6 10-12"/></svg>
+        </div>
+        <h3>Full Planning</h3>
+        <p>From "yes" to "I do." We manage every detail, every vendor, every timeline. You just show up and fall in love all over again.</p>
+        <ul class="service-features">
+          <li>Venue scouting and selection</li>
+          <li>Full vendor management</li>
+          <li>Budget planning and tracking</li>
+          <li>Design concept and styling</li>
+          <li>On-the-day coordination</li>
+        </ul>
+        <span class="service-price">From 4,500 EUR</span>
+      </div>
+      <div class="service-card">
+        <div class="service-line"></div>
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="4"/><line x1="8" y1="18" x2="40" y2="18"/><line x1="18" y1="8" x2="18" y2="18"/></svg>
+        </div>
+        <h3>Partial Planning</h3>
+        <p>You have a vision. We bring the local expertise, the trusted vendor network, and the logistical magic to make it real.</p>
+        <ul class="service-features">
+          <li>Vendor introductions and booking</li>
+          <li>Local logistics coordination</li>
+          <li>Legal paperwork assistance</li>
+          <li>Design consultation</li>
+          <li>Rehearsal and day-of support</li>
+        </ul>
+        <span class="service-price">From 2,800 EUR</span>
+      </div>
+      <div class="service-card">
+        <div class="service-line"></div>
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><polyline points="24,14 24,24 32,28"/></svg>
+        </div>
+        <h3>On-the-Day</h3>
+        <p>You have done the planning. Let us take the reins on the day so you can breathe, celebrate, and be a guest at your own wedding.</p>
+        <ul class="service-features">
+          <li>Timeline management</li>
+          <li>Vendor liaison on the day</li>
+          <li>Emergency problem-solving</li>
+          <li>Setup and breakdown oversight</li>
+          <li>Guest coordination</li>
+        </ul>
+        <span class="service-price">From 1,200 EUR</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <div class="section-label" style="justify-content: center;">Portfolio</div>
+      <h2>Moments we have shaped</h2>
+      <p>A glimpse into the celebrations we have had the privilege of bringing to life on the Costa Blanca.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="img/floral-arch.jpg" alt="Floral ceremony arch">
+        <div class="gallery-item-overlay"><span>Ceremony Arch</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/table-setting.jpg" alt="Elegant table setting">
+        <div class="gallery-item-overlay"><span>Reception Styling</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/decoration-candles.jpg" alt="Candle decoration">
+        <div class="gallery-item-overlay"><span>Evening Ambiance</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/rings-detail.jpg" alt="Wedding rings on flowers">
+        <div class="gallery-item-overlay"><span>The Details</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/flowers-centerpiece.jpg" alt="Floral centerpiece">
+        <div class="gallery-item-overlay"><span>Floral Design</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/venue-outdoor.jpg" alt="Outdoor venue setting">
+        <div class="gallery-item-overlay"><span>Venue Selection</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY COSTA BLANCA -->
+<section class="why-section" id="costa-blanca">
+  <div class="why-bg-image">
+    <img src="img/calpe-coast.jpg" alt="Costa Blanca coastline">
+  </div>
+  <div class="container why-inner">
+    <div class="why-header">
+      <div class="section-label" style="justify-content: center;">Destination</div>
+      <h2>Why Costa Blanca</h2>
+      <p>There is a reason couples from across Europe choose this stretch of Mediterranean coast. It offers what no amount of decoration can manufacture.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="10"/><line x1="24" y1="4" x2="24" y2="10"/><line x1="24" y1="38" x2="24" y2="44"/><line x1="4" y1="24" x2="10" y2="24"/><line x1="38" y1="24" x2="44" y2="24"/><line x1="10" y1="10" x2="14" y2="14"/><line x1="34" y1="34" x2="38" y2="38"/><line x1="10" y1="38" x2="14" y2="34"/><line x1="34" y1="14" x2="38" y2="10"/></svg>
+        </div>
+        <h3>320 Days of Sun</h3>
+        <p>The Costa Blanca enjoys one of the most reliable climates in Europe. Your outdoor ceremony is not a gamble. It is practically a guarantee.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 48 48"><path d="M4 36 C4 36, 12 8, 24 28 S44 4, 44 36"/><line x1="4" y1="36" x2="44" y2="36"/></svg>
+        </div>
+        <h3>Dramatic Landscapes</h3>
+        <p>From the iconic Pe&ntilde;&oacute;n de Ifach to hidden coves and terraced vineyards, every backdrop is a masterpiece that no decorator could create.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 48 48"><path d="M24 4 L8 20 L8 44 L40 44 L40 20 Z"/><rect x="18" y="30" width="12" height="14"/></svg>
+        </div>
+        <h3>World-Class Venues</h3>
+        <p>Historic fincas, seaside estates, boutique hotels with panoramic views. Calpe and its surroundings hold venues for every imagination.</p>
+      </div>
+    </div>
+    <div class="why-stat-row">
+      <div class="why-stat">
+        <h4>320</h4>
+        <p>Sunny days per year</p>
+      </div>
+      <div class="why-stat">
+        <h4>25+</h4>
+        <p>Partner venues</p>
+      </div>
+      <div class="why-stat">
+        <h4>45min</h4>
+        <p>From Alicante airport</p>
+      </div>
+      <div class="why-stat">
+        <h4>22&deg;C</h4>
+        <p>Average temperature</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <div class="section-label" style="justify-content: center;">Kind Words</div>
+      <h2>From our couples</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">&ldquo;</div>
+        <blockquote>Marcella understood our vision before we could even fully articulate it. The day was beyond anything we imagined. Every detail was perfect, and we never once felt stressed.</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">E&amp;J</div>
+          <div class="testimonial-info">
+            <h4>Emma &amp; James</h4>
+            <p>London, UK &middot; September 2024</p>
+          </div>
+        </div>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">&ldquo;</div>
+        <blockquote>Planning a wedding from another country felt impossible until we found this team. The local knowledge, the vendor relationships, the calm professionalism. Absolute lifesavers.</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S&amp;K</div>
+          <div class="testimonial-info">
+            <h4>Sophie &amp; Karl</h4>
+            <p>Munich, Germany &middot; June 2024</p>
+          </div>
+        </div>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">&ldquo;</div>
+        <blockquote>Our guests still talk about the venue, the food, the sunset ceremony. Marcella did not just plan a wedding. She created an experience our families will remember forever.</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">L&amp;P</div>
+          <div class="testimonial-info">
+            <h4>Lisa &amp; Peter</h4>
+            <p>Amsterdam, Netherlands &middot; May 2023</p>
+          </div>
+        </div>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+          <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19,7.5 14,12 16,19 10,15 4,19 6,12 1,7.5 7.5,7.5"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-image">
+        <img src="img/ceremony-setup.jpg" alt="Wedding ceremony setup">
+        <div class="cta-image-frame"></div>
+      </div>
+      <div class="cta-content">
+        <div class="section-label">Get in Touch</div>
+        <h2>Let's start planning<br>your celebration</h2>
+        <p>Every great wedding begins with a conversation. Tell us about your vision, your dates, your dreams. We will take it from there.</p>
+        <form class="cta-form">
+          <div class="cta-form-row">
+            <input type="text" placeholder="Your name" aria-label="Your name">
+            <input type="email" placeholder="Email address" aria-label="Email address">
+          </div>
+          <input type="text" placeholder="Preferred wedding date" aria-label="Preferred wedding date">
+          <textarea placeholder="Tell us about your dream wedding..." aria-label="Message"></textarea>
+          <button type="submit" class="cta-btn">Send Enquiry</button>
+        </form>
+        <div class="cta-details">
+          <div class="cta-detail-item">
+            <h5>Email</h5>
+            <p>hello@dreamweddingspain.com</p>
+          </div>
+          <div class="cta-detail-item">
+            <h5>Phone</h5>
+            <p>+34 965 836 100</p>
+          </div>
+          <div class="cta-detail-item">
+            <h5>Based in</h5>
+            <p>Calpe, Costa Blanca</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">Your Dream <span>Wedding</span></div>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#costa-blanca">Costa Blanca</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Your Dream Wedding in Spain. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 21c1-3 2-5 3-8 0 0-.5-1-.5-2.5C10.5 8 12 7 12 7s2 .5 2 3c0 1.5-1 4-1 4l2 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- KENAZ WATERMARK -->
+<div class="kenaz-watermark">
+  <svg viewBox="0 0 100 100"><path d="M 68 18 L 30 50 L 68 82" stroke-linecap="square" stroke-linejoin="miter"/></svg>
+  <span>Designed by Kenaz Studio</span>
+</div>
+
+</body>
+</html>

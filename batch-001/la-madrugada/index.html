@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boutique Hotel La Madrugada — Benissa, Costa Blanca</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --forest: #2d4a3e;
+    --forest-deep: #1e3329;
+    --cream: #f0e6d6;
+    --gold: #a89060;
+    --gold-light: #c4a96e;
+    --ivory: #faf7f2;
+    --brown: #5a4a3a;
+    --brown-light: #7a6a5a;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    color: var(--brown);
+    background: var(--ivory);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Libre Baskerville', serif; }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    height: 80px;
+    background: rgba(250, 247, 242, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(168, 144, 96, 0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--forest);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brown);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .btn-book-nav {
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .btn-book-nav:hover { background: var(--gold-light); }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 900px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(30,51,41,0.35) 0%, rgba(30,51,41,0.6) 45%, rgba(30,51,41,0.85) 100%),
+      url('img/hero-pool-sunset.png') center 65%/cover no-repeat;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 40px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    border: 1px solid rgba(196, 169, 110, 0.5);
+    padding: 10px 28px;
+    margin-bottom: 40px;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.25;
+    color: var(--white);
+    margin-bottom: 28px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(240, 230, 214, 0.85);
+    max-width: 640px;
+    margin: 0 auto 48px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-outline {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.4);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--white);
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* ===== RATING STRIP ===== */
+  .rating-strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    background: var(--forest);
+    padding: 0;
+  }
+
+  .rating-item {
+    flex: 1;
+    max-width: 320px;
+    text-align: center;
+    padding: 28px 40px;
+    border-right: 1px solid rgba(240, 230, 214, 0.12);
+  }
+
+  .rating-item:last-child { border-right: none; }
+
+  .rating-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+
+  .rating-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(240, 230, 214, 0.65);
+  }
+
+  /* ===== SECTION SHARED ===== */
+  .section {
+    padding: 120px 80px;
+  }
+
+  .section-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: 42px;
+    font-weight: 400;
+    color: var(--forest);
+    line-height: 1.3;
+    margin-bottom: 32px;
+  }
+
+  .section-text {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--brown-light);
+    max-width: 600px;
+  }
+
+  /* ===== THE STORY ===== */
+  .story {
+    background: var(--ivory);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .story-image {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
+
+  .story-text .section-text {
+    margin-bottom: 24px;
+  }
+
+  .story-signature {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--gold);
+    margin-top: 32px;
+  }
+
+  /* ===== ROOMS ===== */
+  .rooms {
+    background: var(--cream);
+  }
+
+  .rooms-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .rooms-header .section-text {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .room-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .room-image {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .room-card:hover .room-image {
+    transform: scale(1.03);
+  }
+
+  .room-image-wrapper {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .room-price-tag {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--forest);
+    color: var(--gold-light);
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+  }
+
+  .room-info {
+    padding: 32px;
+  }
+
+  .room-name {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--forest);
+    margin-bottom: 12px;
+  }
+
+  .room-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--brown-light);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .room-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .room-amenity {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(168, 144, 96, 0.08);
+    padding: 6px 14px;
+  }
+
+  /* ===== EXPERIENCE ===== */
+  .experience {
+    background: var(--ivory);
+  }
+
+  .experience-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .experience-header .section-text {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+
+  .exp-card {
+    position: relative;
+    overflow: hidden;
+    height: 420px;
+  }
+
+  .exp-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .exp-card:hover .exp-card-img {
+    transform: scale(1.05);
+  }
+
+  .exp-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(30,51,41,0.85) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px 24px;
+  }
+
+  .exp-card-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .exp-card-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(240, 230, 214, 0.75);
+    line-height: 1.6;
+  }
+
+  /* Testimonials */
+  .testimonials {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .testimonial {
+    border-left: 2px solid var(--gold);
+    padding-left: 32px;
+  }
+
+  .testimonial-quote {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--forest);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .testimonial-author {
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ===== BOOK DIRECT ===== */
+  .book-direct {
+    background: var(--forest);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .book-direct .section-label { color: var(--gold-light); }
+  .book-direct .section-title { color: var(--cream); }
+  .book-direct .section-text { color: rgba(240, 230, 214, 0.7); }
+
+  .book-benefits {
+    list-style: none;
+    margin-top: 40px;
+  }
+
+  .book-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .benefit-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border: 1px solid rgba(196, 169, 110, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-light);
+    font-size: 16px;
+  }
+
+  .benefit-text h4 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .benefit-text p {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(240, 230, 214, 0.6);
+    line-height: 1.6;
+  }
+
+  .book-form-area {
+    background: rgba(240, 230, 214, 0.06);
+    border: 1px solid rgba(240, 230, 214, 0.1);
+    padding: 48px;
+  }
+
+  .book-form-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 24px;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .book-form-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(240, 230, 214, 0.5);
+    margin-bottom: 36px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-field.full { grid-column: 1 / -1; }
+
+  .form-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(240, 230, 214, 0.45);
+    margin-bottom: 8px;
+  }
+
+  .form-input {
+    background: rgba(240, 230, 214, 0.06);
+    border: 1px solid rgba(240, 230, 214, 0.15);
+    padding: 14px 16px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .form-input::placeholder { color: rgba(240, 230, 214, 0.3); }
+  .form-input:focus { border-color: var(--gold); }
+
+  .btn-submit {
+    width: 100%;
+    margin-top: 24px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 18px 40px;
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .btn-submit:hover { background: var(--gold-light); }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--forest-deep);
+    padding: 80px 80px 40px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .footer-logo {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--cream);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .footer-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(240, 230, 214, 0.5);
+    line-height: 1.8;
+    max-width: 320px;
+  }
+
+  .footer-heading {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 12px;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(240, 230, 214, 0.55);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--cream); }
+
+  .footer-contact-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(240, 230, 214, 0.55);
+    line-height: 1.5;
+  }
+
+  .footer-contact-icon {
+    color: var(--gold);
+    min-width: 18px;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+
+  .footer-divider {
+    border: none;
+    border-top: 1px solid rgba(240, 230, 214, 0.08);
+    margin-bottom: 32px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(240, 230, 214, 0.35);
+  }
+
+  .footer-policies {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-policies span {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: rgba(240, 230, 214, 0.35);
+  }
+
+  /* ===== DIVIDER ORNAMENT ===== */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 4px 0;
+  }
+
+  .ornament-line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  .ornament-diamond {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav">
+  <div class="nav-logo">La Madrugada</div>
+  <ul class="nav-links">
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#experience">Experiences</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><button class="btn-book-nav">Book Direct</button></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Only 8 Rooms</div>
+    <h1>A voice that filled arenas<br>chose this as her silence.</h1>
+    <p class="hero-subtitle">Once the summer home of Sarah Brightman. Now, an intimate retreat<br>above the Mediterranean. Benissa, Costa Blanca.</p>
+    <div class="hero-ctas">
+      <a href="#book" class="btn-primary">Book Direct &amp; Save</a>
+      <a href="#story" class="btn-outline">Discover Our Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RATING STRIP ===== -->
+<div class="rating-strip">
+  <div class="rating-item">
+    <div class="rating-number">9.8</div>
+    <div class="rating-label">Booking.com</div>
+  </div>
+  <div class="rating-item">
+    <div class="rating-number">#1</div>
+    <div class="rating-label">TripAdvisor Area</div>
+  </div>
+  <div class="rating-item">
+    <div class="rating-number">Adults</div>
+    <div class="rating-label">Only &middot; 15+</div>
+  </div>
+  <div class="rating-item">
+    <div class="rating-number">Est. 2007</div>
+    <div class="rating-label">Benissa, Spain</div>
+  </div>
+</div>
+
+<!-- ===== THE STORY ===== -->
+<section id="story" class="section story">
+  <img
+    src="img/villa-exterior.png"
+    alt="Historic villa exterior of Hotel La Madrugada"
+    class="story-image"
+  >
+  <div class="story-text">
+    <div class="section-label">The Story</div>
+    <h2 class="section-title">Before it was a hotel,<br>it was a secret.</h2>
+    <p class="section-text">
+      In the hills above Benissa, tucked between ancient pines and the shimmer
+      of the Mediterranean, stands a villa that once belonged to Sarah Brightman
+      -- the soprano whose voice defined a generation of musical theatre. This
+      was where she came to disappear. No stage, no audience. Just light, stone,
+      and the sound of cicadas.
+    </p>
+    <p class="section-text">
+      In 2007, the villa began its second life. Carefully transformed into a
+      boutique hotel with just eight rooms, every corner preserved the intimacy
+      that made this place extraordinary. No grand lobbies. No crowds. Just the
+      kind of quiet that money alone cannot buy.
+    </p>
+    <p class="section-text">
+      Today, your host Pieter welcomes guests not as tourists, but as visitors
+      to a private home. Breakfast on the terrace. Conversation by the pool.
+      A recommendation whispered, not printed. This is hospitality as it was
+      meant to be -- personal, unhurried, and deeply felt.
+    </p>
+    <div class="ornament" style="justify-content: flex-start; margin-top: 36px;">
+      <span class="ornament-line"></span>
+      <span class="ornament-diamond"></span>
+      <span class="ornament-line"></span>
+    </div>
+    <p class="story-signature">-- Pieter, Your Host</p>
+  </div>
+</section>
+
+<!-- ===== ROOMS ===== -->
+<section id="rooms" class="section rooms">
+  <div class="rooms-header">
+    <div class="section-label">Rooms</div>
+    <h2 class="section-title">Eight rooms. No two mornings alike.</h2>
+    <p class="section-text">Each room offers a different perspective of the garden, the pool, or the sea beyond. All share the same unhurried luxury.</p>
+  </div>
+
+  <div class="rooms-grid">
+    <!-- Room 1 -->
+    <div class="room-card">
+      <div class="room-image-wrapper">
+        <img
+          src="img/room-pool-view.png"
+          alt="Pool Sea View Double Room with jacuzzi"
+          class="room-image"
+        >
+        <div class="room-price-tag">From 194 &euro;/night</div>
+      </div>
+      <div class="room-info">
+        <h3 class="room-name">Pool Sea View Double</h3>
+        <p class="room-desc">Our signature room. Wake to the Mediterranean through floor-to-ceiling glass, step directly onto the pool terrace. Private jacuzzi on selected dates.</p>
+        <div class="room-amenities">
+          <span class="room-amenity">Sea View</span>
+          <span class="room-amenity">Pool Access</span>
+          <span class="room-amenity">Jacuzzi</span>
+          <span class="room-amenity">Terrace</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Room 2 -->
+    <div class="room-card">
+      <div class="room-image-wrapper">
+        <img
+          src="img/room-garden-view.png"
+          alt="Garden View Double Room"
+          class="room-image"
+        >
+        <div class="room-price-tag">From 145 &euro;/night</div>
+      </div>
+      <div class="room-info">
+        <h3 class="room-name">Garden View Double</h3>
+        <p class="room-desc">Overlooking the Mediterranean garden, where bougainvillea and jasmine frame your morning. A room that smells the way holidays should feel.</p>
+        <div class="room-amenities">
+          <span class="room-amenity">Garden View</span>
+          <span class="room-amenity">King Bed</span>
+          <span class="room-amenity">Ensuite</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Room 3 -->
+    <div class="room-card">
+      <div class="room-image-wrapper">
+        <img
+          src="img/room-superior.png"
+          alt="Superior Double Room with balcony"
+          class="room-image"
+        >
+        <div class="room-price-tag">From 125 &euro;/night</div>
+      </div>
+      <div class="room-info">
+        <h3 class="room-name">Superior Double</h3>
+        <p class="room-desc">Generous space with refined details. Original terracotta floors, restored wooden shutters, and a writing desk by the window. For those who appreciate quiet proportion.</p>
+        <div class="room-amenities">
+          <span class="room-amenity">Spacious</span>
+          <span class="room-amenity">King Bed</span>
+          <span class="room-amenity">Writing Desk</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Room 4 -->
+    <div class="room-card">
+      <div class="room-image-wrapper">
+        <img
+          src="img/room-standard.png"
+          alt="Standard Double Room"
+          class="room-image"
+        >
+        <div class="room-price-tag">From 105 &euro;/night</div>
+      </div>
+      <div class="room-info">
+        <h3 class="room-name">Standard Double</h3>
+        <p class="room-desc">Everything essential, nothing superfluous. Clean lines, quality linens, and the same garden access and breakfast as every guest. Simplicity done right.</p>
+        <div class="room-amenities">
+          <span class="room-amenity">Double Bed</span>
+          <span class="room-amenity">Ensuite</span>
+          <span class="room-amenity">A/C</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience" class="section experience">
+  <div class="experience-header">
+    <div class="section-label">The Experience</div>
+    <h2 class="section-title">Not for everyone. Only for eight.</h2>
+    <p class="section-text">Every detail at La Madrugada exists because someone thought about it. Not because a manual said so.</p>
+  </div>
+
+  <div class="exp-grid">
+    <div class="exp-card">
+      <img
+        src="img/breakfast.png"
+        alt="Mediterranean breakfast on garden terrace"
+        class="exp-card-img"
+      >
+      <div class="exp-card-overlay">
+        <h4 class="exp-card-title">Terrace Breakfast</h4>
+        <p class="exp-card-desc">Fresh local produce, served where the morning light is best.</p>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <img
+        src="img/pool-detail.png"
+        alt="Pool aerial view at La Madrugada"
+        class="exp-card-img"
+      >
+      <div class="exp-card-overlay">
+        <h4 class="exp-card-title">Pool &amp; Views</h4>
+        <p class="exp-card-desc">The Pe&ntilde;on de Ifach watches over your afternoon swim.</p>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <img
+        src="img/garden-path.png"
+        alt="Garden path with lavender at La Madrugada"
+        class="exp-card-img"
+      >
+      <div class="exp-card-overlay">
+        <h4 class="exp-card-title">Garden &amp; Calm</h4>
+        <p class="exp-card-desc">Mediterranean gardens designed for wandering and reading.</p>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <img
+        src="img/pet-garden.png"
+        alt="Cocker spaniel in the garden at La Madrugada"
+        class="exp-card-img"
+      >
+      <div class="exp-card-overlay">
+        <h4 class="exp-card-title">Pet Friendly</h4>
+        <p class="exp-card-desc">Your companion is welcome. Garden walks included.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="testimonials">
+    <div class="testimonial">
+      <p class="testimonial-quote">&ldquo;Pieter anticipated our every need before we knew we had one. We arrived as guests and left as friends.&rdquo;</p>
+      <p class="testimonial-author">-- Guest, The Netherlands</p>
+    </div>
+    <div class="testimonial">
+      <p class="testimonial-quote">&ldquo;An oasis of calm. Eight rooms means you never wait for a sunbed, and breakfast feels like eating at a friend's house.&rdquo;</p>
+      <p class="testimonial-author">-- Guest, United Kingdom</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOK DIRECT ===== -->
+<section id="book" class="section book-direct">
+  <div class="book-left">
+    <div class="section-label">Book Direct</div>
+    <h2 class="section-title">The best rate is always<br>the direct one.</h2>
+    <p class="section-text">When you book with us directly, there is no middleman, no commission, and no algorithm deciding your room. Just a personal confirmation from Pieter.</p>
+
+    <ul class="book-benefits">
+      <li class="book-benefit">
+        <div class="benefit-icon">%</div>
+        <div class="benefit-text">
+          <h4>Best Rate Guaranteed</h4>
+          <p>Our direct price is never higher than any booking platform. Often, it is lower.</p>
+        </div>
+      </li>
+      <li class="book-benefit">
+        <div class="benefit-icon">&hearts;</div>
+        <div class="benefit-text">
+          <h4>Personal Welcome</h4>
+          <p>Pieter receives every guest personally. Tell us what matters to you, and we will prepare.</p>
+        </div>
+      </li>
+      <li class="book-benefit">
+        <div class="benefit-icon">&star;</div>
+        <div class="benefit-text">
+          <h4>Flexibility</h4>
+          <p>Direct bookings enjoy the most generous cancellation and modification terms.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="book-form-area">
+    <h3 class="book-form-title">Check Availability</h3>
+    <p class="book-form-sub">We will confirm personally within 24 hours.</p>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">Check-in</label>
+        <input type="date" class="form-input" placeholder="Check-in date">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Check-out</label>
+        <input type="date" class="form-input" placeholder="Check-out date">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-input" placeholder="Your name">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="Your email">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field full">
+        <label class="form-label">Room Preference</label>
+        <select class="form-input">
+          <option value="">Select a room type</option>
+          <option>Pool Sea View Double</option>
+          <option>Garden View Double</option>
+          <option>Superior Double</option>
+          <option>Standard Double</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field full">
+        <label class="form-label">Special Requests</label>
+        <input type="text" class="form-input" placeholder="Travelling with a pet, anniversary, dietary needs...">
+      </div>
+    </div>
+    <button class="btn-submit">Check Availability</button>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="contact" class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">La Madrugada</div>
+      <p class="footer-desc">
+        A boutique hotel of eight rooms in the hills of Benissa, Costa Blanca.
+        Once the summer home of Sarah Brightman. Now, your intimate retreat
+        above the Mediterranean.
+      </p>
+    </div>
+
+    <div>
+      <div class="footer-heading">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="#rooms">Rooms &amp; Rates</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#experience">Experiences</a></li>
+        <li><a href="#book">Book Direct</a></li>
+        <li><a href="#">Gallery</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-heading">Useful Info</div>
+      <ul class="footer-links">
+        <li><a href="#">Check-in: 14:00 - 23:59</a></li>
+        <li><a href="#">Check-out: before 12:00</a></li>
+        <li><a href="#">Adults only (15+)</a></li>
+        <li><a href="#">Dogs welcome (15&euro;/day)</a></li>
+        <li><a href="#">Prices: 105 - 194&euro;</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-contact-item">
+        <span class="footer-contact-icon">&#9993;</span>
+        <span>info@lamadrugada.es<br>info.lamadrugada@gmail.com</span>
+      </div>
+      <div class="footer-contact-item">
+        <span class="footer-contact-icon">&#9742;</span>
+        <span>+34 677 009 188</span>
+      </div>
+      <div class="footer-contact-item">
+        <span class="footer-contact-icon">&#9906;</span>
+        <span>Partida Benimarraig, 61B<br>03720 Benissa, Alicante<br>Spain</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="footer-divider">
+
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Boutique Hotel La Madrugada. All rights reserved.</span>
+    <div class="footer-policies">
+      <span>Privacy Policy</span>
+      <span>Terms &amp; Conditions</span>
+      <span>Cookie Policy</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

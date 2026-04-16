@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neo Propiedades Inmobiliaria — Altea, Costa Blanca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --azul: #2E5090;
+    --azul-oscuro: #1a5276;
+    --dorado: #d4a843;
+    --dorado-hover: #c49a35;
+    --blanco: #ffffff;
+    --gris-arena: #f0ece6;
+    --gris-texto: #4a4a4a;
+    --gris-claro: #e8e8e8;
+    --negro: #1a1a1a;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--negro);
+    background: var(--blanco);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.15;
+  }
+
+  /* ============================================
+     NAV
+     ============================================ */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+  }
+
+  .nav-inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo img {
+    height: 48px;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--negro);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--azul); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lang-switch {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gris-texto);
+    letter-spacing: 0.05em;
+    cursor: pointer;
+  }
+
+  .lang-switch .active { color: var(--azul); }
+
+  .btn-contactar {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--blanco);
+    background: var(--dorado);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.2s;
+  }
+
+  .btn-contactar:hover { background: var(--dorado-hover); }
+
+  /* ============================================
+     HERO
+     ============================================ */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(26,82,118,0.35) 0%, rgba(26,82,118,0.65) 100%),
+      url('img/hero-bg.jpg') center center / cover no-repeat;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 40px;
+    margin-bottom: 48px;
+  }
+
+  .hero-content h1 {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-size: 4.25rem;
+    font-weight: 800;
+    color: var(--blanco);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.35);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-content p {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.92);
+    font-weight: 400;
+    text-shadow: 0 1px 15px rgba(0,0,0,0.3);
+    letter-spacing: 0.01em;
+  }
+
+  /* Search Bar */
+  .search-bar {
+    position: relative;
+    z-index: 2;
+    background: var(--blanco);
+    border-radius: 16px;
+    padding: 28px 36px;
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    max-width: 1100px;
+    width: 90%;
+  }
+
+  .search-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .search-field label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gris-texto);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .search-field select,
+  .search-field input {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--negro);
+    border: 1.5px solid var(--gris-claro);
+    border-radius: 8px;
+    padding: 12px 14px;
+    background: var(--blanco);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .search-field select { cursor: pointer; background: var(--blanco) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a4a4a' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center; padding-right: 36px; }
+
+  .search-field select:focus,
+  .search-field input:focus { border-color: var(--azul); }
+
+  .btn-buscar {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--blanco);
+    background: var(--dorado);
+    border: none;
+    padding: 14px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.2s;
+    white-space: nowrap;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-buscar:hover { background: var(--dorado-hover); }
+
+  .btn-buscar svg { width: 18px; height: 18px; }
+
+  /* ============================================
+     SECTION SPACING
+     ============================================ */
+  section { padding: 100px 60px; }
+  .section-inner { max-width: 1300px; margin: 0 auto; }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--azul-oscuro);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gris-texto);
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ============================================
+     PROPIEDADES DESTACADAS
+     ============================================ */
+  .propiedades { background: var(--blanco); }
+
+  .property-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .property-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--blanco);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .property-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  }
+
+  .property-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .property-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--blanco);
+    background: var(--dorado);
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .property-img-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .property-info {
+    padding: 24px;
+  }
+
+  .property-price {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--azul-oscuro);
+    margin-bottom: 4px;
+  }
+
+  .property-location {
+    font-size: 0.9rem;
+    color: var(--gris-texto);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .property-location svg { width: 14px; height: 14px; color: var(--dorado); }
+
+  .property-specs {
+    display: flex;
+    gap: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--gris-claro);
+  }
+
+  .property-spec {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--gris-texto);
+  }
+
+  .property-spec svg { width: 16px; height: 16px; color: var(--azul); }
+
+  .btn-ver-todas {
+    display: block;
+    margin: 48px auto 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+    background: transparent;
+    border: 2px solid var(--azul-oscuro);
+    padding: 14px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+  }
+
+  .btn-ver-todas:hover {
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+  }
+
+  /* ============================================
+     POR QUE NEOPROPIEDADES
+     ============================================ */
+  .porque { background: var(--gris-arena); }
+
+  .porque-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .porque-card {
+    background: var(--blanco);
+    border-radius: 16px;
+    padding: 48px 36px;
+    text-align: center;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    transition: transform 0.3s;
+  }
+
+  .porque-card:hover { transform: translateY(-4px); }
+
+  .porque-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(46,80,144,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+
+  .porque-icon svg { width: 32px; height: 32px; color: var(--azul); }
+
+  .porque-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+    margin-bottom: 12px;
+  }
+
+  .porque-card p {
+    font-size: 0.95rem;
+    color: var(--gris-texto);
+    line-height: 1.7;
+  }
+
+  /* ============================================
+     ZONAS
+     ============================================ */
+  .zonas { background: var(--blanco); }
+
+  .zonas-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+
+  .zona-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 360px;
+    cursor: pointer;
+  }
+
+  .zona-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  .zona-card:hover img { transform: scale(1.05); }
+
+  .zona-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(26,82,118,0.85) 0%, rgba(26,82,118,0.1) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+  }
+
+  .zona-overlay h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--blanco);
+    margin-bottom: 4px;
+  }
+
+  .zona-overlay span {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+  }
+
+  /* ============================================
+     VENDER / CTA
+     ============================================ */
+  .vender {
+    background:
+      linear-gradient(135deg, rgba(26,82,118,0.92) 0%, rgba(46,80,144,0.88) 100%),
+      url('img/vender-bg.jpg') center center / cover no-repeat;
+    text-align: center;
+    color: var(--blanco);
+  }
+
+  .vender h2 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--blanco);
+    margin-bottom: 16px;
+  }
+
+  .vender p {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 620px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .btn-valoracion {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--azul-oscuro);
+    background: var(--dorado);
+    border: none;
+    padding: 18px 48px;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-valoracion:hover {
+    background: var(--dorado-hover);
+    transform: translateY(-2px);
+  }
+
+  /* ============================================
+     FOOTER
+     ============================================ */
+  .footer {
+    background: var(--azul-oscuro);
+    color: rgba(255,255,255,0.8);
+    padding: 80px 60px 40px;
+  }
+
+  .footer-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 60px;
+  }
+
+  .footer-brand img {
+    height: 44px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+  }
+
+  .footer-brand p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 20px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 12px;
+  }
+
+  .footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .footer-social a:hover { background: var(--dorado); }
+  .footer-social a svg { width: 18px; height: 18px; color: var(--blanco); }
+
+  .footer-col h4 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--blanco);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--dorado); }
+
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .footer-contact-item svg {
+    width: 18px;
+    height: 18px;
+    color: var(--dorado);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .footer-bottom {
+    max-width: 1300px;
+    margin: 48px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-bottom a {
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-bottom a:hover { color: var(--dorado); }
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     NAV
+     ============================================ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="http://www.neopropiedades.es/logo.png" alt="Neo Propiedades">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">Propiedades</a></li>
+      <li><a href="#">Comprar</a></li>
+      <li><a href="#">Vender</a></li>
+      <li><a href="#">Sobre Nosotros</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+    <div class="nav-right">
+      <span class="lang-switch"><span class="active">ES</span> / EN</span>
+      <button class="btn-contactar">Contactar</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Tu lugar en la Costa Blanca existe.</h1>
+    <p>Juani Muñoz te encuentra tu lugar en Altea, Albir y la Costa Blanca.</p>
+  </div>
+  <div class="search-bar">
+    <div class="search-field">
+      <label>Tipo</label>
+      <select>
+        <option>Todas las propiedades</option>
+        <option>Villa</option>
+        <option>Apartamento</option>
+        <option>Adosado</option>
+        <option>Parcela</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>Zona</label>
+      <select>
+        <option>Todas las zonas</option>
+        <option>Altea</option>
+        <option>El Albir</option>
+        <option>Alfaz del Pi</option>
+        <option>Calpe</option>
+        <option>Benidorm</option>
+        <option>La Nucia</option>
+        <option>Polop</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>Precio min.</label>
+      <select>
+        <option>Sin mínimo</option>
+        <option>100.000 EUR</option>
+        <option>200.000 EUR</option>
+        <option>300.000 EUR</option>
+        <option>500.000 EUR</option>
+        <option>750.000 EUR</option>
+        <option>1.000.000 EUR</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>Precio max.</label>
+      <select>
+        <option>Sin máximo</option>
+        <option>300.000 EUR</option>
+        <option>500.000 EUR</option>
+        <option>750.000 EUR</option>
+        <option>1.000.000 EUR</option>
+        <option>1.500.000 EUR</option>
+        <option>2.100.000 EUR</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>Dormitorios</label>
+      <select>
+        <option>Cualquiera</option>
+        <option>1+</option>
+        <option>2+</option>
+        <option>3+</option>
+        <option>4+</option>
+        <option>5+</option>
+      </select>
+    </div>
+    <button class="btn-buscar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Buscar
+    </button>
+  </div>
+</section>
+
+<!-- ============================================
+     PROPIEDADES DESTACADAS
+     ============================================ -->
+<section class="propiedades">
+  <div class="section-inner">
+    <h2 class="section-title">Propiedades Destacadas</h2>
+    <p class="section-subtitle">Una selección curada de las mejores oportunidades en la Costa Blanca Norte.</p>
+    <div class="property-grid">
+      <!-- Card 1 -->
+      <div class="property-card">
+        <div class="property-img-wrap">
+          <img class="property-img" src="img/villa-1.jpg" alt="Villa moderna con piscina en Altea">
+          <span class="property-badge">Destacada</span>
+        </div>
+        <div class="property-info">
+          <div class="property-price">1.250.000 EUR</div>
+          <div class="property-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Altea, Sierra de Altea
+          </div>
+          <div class="property-specs">
+            <span class="property-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/><path d="M12 4v16"/></svg>
+              4 hab.
+            </span>
+            <span class="property-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1z"/><path d="M6 12V5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v7"/></svg>
+              3 baños
+            </span>
+            <span class="property-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              320 m2
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="property-card">
+        <div class="property-img-wrap">
+          <img class="property-img" src="img/villa-2.jpg" alt="Villa mediterránea con jardín en El Albir">
+          <span class="property-badge">Nueva</span>
+        </div>
+        <div class="property-info">
+          <div class="property-price">495.000 EUR</div>
+          <div class="property-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            El Albir, primera línea
+          </div>
+          <div class="property-specs">
+            <span class="property-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/><path d="M12 4v16"/></svg>
+              3 hab.
+            </span>
+            <span class="property-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1z"/><path d="M6 12V5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v7"/></svg>
+              2 baños
+            </span>
+            <span class="property-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              185 m2
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="property-card">
+        <div class="property-img-wrap">
+          <img class="property-img" src="img/villa-3.jpg" alt="Villa contemporánea con vistas al mar">
+        </div>
+        <div class="property-info">
+          <div class="property-price">2.100.000 EUR</div>
+          <div class="property-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Altea Hills, vista al mar
+          </div>
+          <div class="property-specs">
+            <span class="property-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7"/><path d="M21 7H3l2-4h14l2 4z"/><path d="M12 4v16"/></svg>
+              5 hab.
+            </span>
+            <span class="property-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1z"/><path d="M6 12V5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v7"/></svg>
+              4 baños
+            </span>
+            <span class="property-spec">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              480 m2
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn-ver-todas">Ver todas las propiedades</button>
+  </div>
+</section>
+
+<!-- ============================================
+     POR QUE NEOPROPIEDADES
+     ============================================ -->
+<section class="porque">
+  <div class="section-inner">
+    <h2 class="section-title">Por qué Neo Propiedades</h2>
+    <p class="section-subtitle">No somos una franquicia. Somos tu vecina en la Costa Blanca.</p>
+    <div class="porque-grid">
+      <div class="porque-card">
+        <div class="porque-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Conocimiento Local</h3>
+        <p>Cada calle, cada urbanización, cada vista. Vivimos y trabajamos en Altea, Albir, Alfaz del Pi, Calpe, Benidorm y alrededores. No consultamos un mapa: lo conocemos.</p>
+      </div>
+      <div class="porque-card">
+        <div class="porque-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Atención Personal</h3>
+        <p>Trabajas directamente con Juani. Sin centralitas, sin rotación de agentes, sin intermediarios. Una persona, una relación, un objetivo: encontrar exactamente lo que buscas.</p>
+      </div>
+      <div class="porque-card">
+        <div class="porque-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3>Trato Directo</h3>
+        <p>Sin comisiones dobles, sin cadenas de intermediarios. Transparencia total en cada paso del proceso, desde la primera visita hasta la firma en notaría.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     ZONAS
+     ============================================ -->
+<section class="zonas">
+  <div class="section-inner">
+    <h2 class="section-title">Nuestras Zonas</h2>
+    <p class="section-subtitle">Costa Blanca Norte: donde el Mediterráneo se vive diferente.</p>
+    <div class="zonas-grid">
+      <div class="zona-card">
+        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600&q=80&fit=crop" alt="Altea pueblo blanco">
+        <div class="zona-overlay">
+          <h3>Altea</h3>
+          <span>Pueblo blanco sobre el mar</span>
+        </div>
+      </div>
+      <div class="zona-card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80&fit=crop" alt="El Albir playa">
+        <div class="zona-overlay">
+          <h3>El Albir</h3>
+          <span>Playa y paseo marítimo</span>
+        </div>
+      </div>
+      <div class="zona-card">
+        <img src="img/zona-alfaz.jpg" alt="Alfaz del Pi">
+        <div class="zona-overlay">
+          <h3>Alfaz del Pi</h3>
+          <span>Tranquilidad residencial</span>
+        </div>
+      </div>
+      <div class="zona-card">
+        <img src="https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=600&q=80&fit=crop" alt="Calpe Peñón de Ifach">
+        <div class="zona-overlay">
+          <h3>Calpe</h3>
+          <span>El Peñón de Ifach</span>
+        </div>
+      </div>
+      <div class="zona-card">
+        <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80&fit=crop" alt="Benidorm skyline">
+        <div class="zona-overlay">
+          <h3>Benidorm</h3>
+          <span>Ciudad cosmopolita</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     VENDER / CTA
+     ============================================ -->
+<section class="vender">
+  <div class="section-inner">
+    <h2>Vendemos tu propiedad</h2>
+    <p>Conocemos el mercado, conocemos a los compradores, y sabemos cómo presentar tu propiedad para que se venda al mejor precio. Solicita una valoración gratuita sin compromiso.</p>
+    <button class="btn-valoracion">Solicitar valoración gratuita</button>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="http://www.neopropiedades.es/logo.png" alt="Neo Propiedades">
+      <p>Consultora inmobiliaria independiente en la Costa Blanca Norte. Especialistas en Altea, Albir, Alfaz del Pi, Calpe y Benidorm.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#">Propiedades</a></li>
+        <li><a href="#">Comprar</a></li>
+        <li><a href="#">Vender</a></li>
+        <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Zonas</h4>
+      <ul>
+        <li><a href="#">Altea</a></li>
+        <li><a href="#">El Albir</a></li>
+        <li><a href="#">Alfaz del Pi</a></li>
+        <li><a href="#">Calpe</a></li>
+        <li><a href="#">Benidorm</a></li>
+        <li><a href="#">La Nucia</a></li>
+        <li><a href="#">Polop</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>C/ Conde de Altea, 68, 1B<br>Edif. Sabater XV<br>03590 Altea, Alicante</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>+34 646 829 716</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>comercial@neopropiedades.es</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Lun-Vie: 9:30-14:00, 16:30-20:00<br>Sab: 10:00-13:00</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>2026 Neo Propiedades Inmobiliaria. Todos los derechos reservados.</span>
+    <span>
+      <a href="#">Aviso Legal</a> &middot;
+      <a href="#">Política de Privacidad</a> &middot;
+      <a href="#">Cookies</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

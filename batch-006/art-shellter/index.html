@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art Shellter &mdash; Creative Space in Calpe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ART SHELLTER — Dark Gallery Redesign
+   Palette: #100D0C base, #1C1713 elevated, #F5F0E6 cream text,
+            #C4704B terracotta, #C4B5A0 sand, #D4A567 gold
+   Typo: Cormorant Garamond (display) + DM Sans (body)
+   ============================================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:         #100D0C;
+  --bg-raised:  #1C1713;
+  --bg-footer:  #0A0807;
+  --cream:      #F5F0E6;
+  --sand:       #C4B5A0;
+  --terracotta: #C4704B;
+  --terracotta-dim: rgba(196,112,75,0.18);
+  --terracotta-border: rgba(196,112,75,0.28);
+  --gold:       #D4A567;
+  --surface:    rgba(255,255,255,0.04);
+  --surface-hover: rgba(255,255,255,0.07);
+  --divider:    rgba(245,240,230,0.08);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--cream);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(16,13,12,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--divider);
+}
+
+.nav__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav__links a {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sand);
+  transition: color 0.2s;
+}
+
+.nav__links a:hover { color: var(--cream); }
+
+.nav__cta {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  padding: 10px 24px;
+  background: var(--terracotta);
+  color: var(--cream);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.nav__cta:hover { opacity: 0.88; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://a.veronikasadventure.com/tour/calp-valencia-art-and-wine-painting-workshop-t956402-1.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  transform: scale(1.03);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(16,13,12,0.65);
+}
+
+.hero__gradient {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 260px;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 120px 40px 80px;
+  width: 100%;
+}
+
+.hero__eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 28px;
+}
+
+.hero__h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(64px, 8vw, 108px);
+  line-height: 0.95;
+  color: var(--cream);
+  margin-bottom: 32px;
+  max-width: 820px;
+}
+
+.hero__sub {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.125rem;
+  color: var(--sand);
+  letter-spacing: 0.04em;
+  margin-bottom: 52px;
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.06em;
+  padding: 16px 40px;
+  background: var(--terracotta);
+  color: var(--cream);
+  transition: opacity 0.2s, transform 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  letter-spacing: 0.06em;
+  padding: 16px 40px;
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(245,240,230,0.3);
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  border-color: var(--cream);
+  background: rgba(245,240,230,0.05);
+}
+
+.hero__next-session {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero__next-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ============================================================
+   SECTION SHARED
+   ============================================================ */
+
+.section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(36px, 4vw, 54px);
+  line-height: 1.1;
+  color: var(--cream);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ============================================================
+   WORKSHOPS
+   ============================================================ */
+
+.workshops {
+  background: var(--bg-raised);
+  padding: 96px 40px;
+}
+
+.workshops__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.workshops__header {
+  margin-bottom: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.workshops__header-left { max-width: 520px; }
+
+.workshops__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--sand);
+  margin-top: 16px;
+  line-height: 1.7;
+}
+
+.workshops__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--divider);
+  border: 1px solid var(--divider);
+}
+
+.workshop-card {
+  background: var(--surface);
+  padding: 36px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: background 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.workshop-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--terracotta);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.workshop-card:hover {
+  background: var(--surface-hover);
+}
+
+.workshop-card:hover::before {
+  transform: scaleX(1);
+}
+
+.workshop-card__img-wrap {
+  margin: -36px -28px 28px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.workshop-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.72) saturate(0.85);
+  transition: transform 0.6s ease;
+}
+
+.workshop-card:hover .workshop-card__img-wrap img {
+  transform: scale(1.05);
+}
+
+.workshop-card__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(10, 8, 7, 0.72);
+  border: 1px solid rgba(180, 140, 80, 0.4);
+  color: var(--gold);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  backdrop-filter: blur(4px);
+}
+
+.workshop-card__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 1.375rem;
+  color: var(--cream);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.workshop-card__tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.875rem;
+  color: var(--sand);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.workshop-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 20px;
+  border-top: 1px solid var(--divider);
+}
+
+.workshop-card__price {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.workshop-card__detail {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--sand);
+  opacity: 0.7;
+}
+
+/* ============================================================
+   GALLERY STATEMENT
+   ============================================================ */
+
+.gallery-statement {
+  position: relative;
+  height: 540px;
+  overflow: hidden;
+}
+
+.gallery-statement--text-only {
+  background: var(--surface);
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+}
+
+.gallery-statement--text-only .gallery-statement__overlay {
+  position: relative;
+}
+
+.gallery-statement__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  filter: brightness(0.55);
+}
+
+.gallery-statement__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.gallery-statement__quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(28px, 3.5vw, 48px);
+  color: var(--cream);
+  text-align: center;
+  max-width: 780px;
+  line-height: 1.3;
+}
+
+.gallery-statement__quote span {
+  color: var(--gold);
+}
+
+/* ============================================================
+   ABOUT / FOUNDERS
+   ============================================================ */
+
+.about {
+  background: var(--bg);
+  padding: 96px 40px;
+}
+
+.about__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.about__header {
+  margin-bottom: 64px;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about__photo-col {
+  position: relative;
+}
+
+.about__photo {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(20%) contrast(1.05);
+}
+
+.about__photo-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px 28px;
+  background: linear-gradient(to top, rgba(16,13,12,0.9) 60%, transparent);
+}
+
+.about__photo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+
+.about__photo-role {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+
+.about__text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding-top: 12px;
+}
+
+.about__founder {
+  border-left: 2px solid var(--terracotta);
+  padding-left: 24px;
+}
+
+.about__founder-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+
+.about__founder-credentials {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  margin-bottom: 14px;
+  line-height: 1.8;
+}
+
+.about__founder-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--sand);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   UPCOMING EVENTS
+   ============================================================ */
+
+.events {
+  background: var(--bg-raised);
+  padding: 96px 40px;
+}
+
+.events__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.events__header {
+  margin-bottom: 52px;
+}
+
+.events__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--divider);
+  border: 1px solid var(--divider);
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  align-items: center;
+  gap: 32px;
+  background: var(--surface);
+  padding: 28px 36px;
+  transition: background 0.2s;
+}
+
+.event-row:hover { background: var(--surface-hover); }
+
+.event-row__date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.event-row__day {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--terracotta);
+}
+
+.event-row__month {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-top: 4px;
+}
+
+.event-row__info {}
+
+.event-row__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+
+.event-row__detail {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.875rem;
+  color: var(--sand);
+}
+
+.event-row__cta {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  white-space: nowrap;
+  padding: 8px 20px;
+  border: 1px solid var(--terracotta-border);
+  transition: background 0.2s, color 0.2s;
+}
+
+.event-row__cta:hover {
+  background: var(--terracotta);
+  color: var(--cream);
+}
+
+/* ============================================================
+   GIFT & LOYALTY
+   ============================================================ */
+
+.extras {
+  background: var(--bg);
+  padding: 96px 40px;
+}
+
+.extras__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--divider);
+  border: 1px solid var(--divider);
+}
+
+.extras__block {
+  background: var(--surface);
+  padding: 56px 48px;
+}
+
+.extras__block-icon {
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.extras__block-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+
+.extras__block-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.9375rem;
+  color: var(--sand);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.gift-tiers {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.gift-tier {
+  padding: 10px 18px;
+  border: 1px solid var(--terracotta-border);
+  background: var(--terracotta-dim);
+}
+
+.gift-tier__price {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--gold);
+}
+
+.gift-tier__label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+  color: var(--sand);
+  margin-top: 2px;
+}
+
+.loyalty-stamps {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.loyalty-stamp {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--terracotta-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.loyalty-stamp.filled {
+  background: var(--terracotta-dim);
+  border-color: var(--terracotta);
+}
+
+.loyalty-stamp.special {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  font-size: 0.875rem;
+}
+
+.loyalty-note {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.8125rem;
+  color: var(--sand);
+  opacity: 0.8;
+}
+
+/* ============================================================
+   CONTACT / BOOK CTA
+   ============================================================ */
+
+.contact {
+  background: var(--bg-raised);
+  padding: 96px 40px;
+}
+
+.contact__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact__left {}
+
+.contact__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(40px, 4.5vw, 62px);
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.contact__title span { color: var(--gold); }
+
+.contact__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--sand);
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact__detail {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.contact__detail-icon {
+  font-size: 1rem;
+  margin-top: 2px;
+  opacity: 0.6;
+  flex-shrink: 0;
+  width: 20px;
+}
+
+.contact__detail-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.9375rem;
+  color: var(--sand);
+  line-height: 1.6;
+}
+
+.contact__detail-text strong {
+  color: var(--cream);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.contact__right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact__cta-block {
+  background: var(--surface);
+  border: 1px solid var(--terracotta-border);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact__cta-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--cream);
+}
+
+.contact__cta-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.875rem;
+  color: var(--sand);
+  line-height: 1.7;
+}
+
+.btn-full {
+  display: block;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  padding: 20px;
+  background: var(--terracotta);
+  color: var(--cream);
+  transition: opacity 0.2s;
+}
+
+.btn-full:hover { opacity: 0.88; }
+
+.contact__social {
+  display: flex;
+  gap: 12px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: var(--sand);
+  padding: 10px 18px;
+  border: 1px solid var(--divider);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.social-link:hover {
+  border-color: var(--sand);
+  color: var(--cream);
+}
+
+.contact__languages {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.8125rem;
+  color: var(--sand);
+  opacity: 0.7;
+  letter-spacing: 0.06em;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+  background: var(--bg-footer);
+  padding: 40px;
+  border-top: 1px solid var(--divider);
+}
+
+.footer__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer__left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__logo img {
+  height: 36px;
+  width: auto;
+  opacity: 0.7;
+}
+
+.footer__copy {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+  color: var(--sand);
+  opacity: 0.5;
+  letter-spacing: 0.06em;
+}
+
+.footer__kenaz {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.3;
+}
+
+.footer__kenaz-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .workshops__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about__photo {
+    aspect-ratio: 16/9;
+    object-position: center 30%;
+  }
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .extras__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav__inner { padding: 0 24px; }
+  .nav__links { display: none; }
+
+  .hero__content { padding: 100px 24px 60px; }
+  .hero__h1 { font-size: clamp(48px, 12vw, 80px); }
+
+  .workshops { padding: 64px 24px; }
+  .workshops__grid { grid-template-columns: 1fr; }
+  .workshops__header { flex-direction: column; align-items: flex-start; }
+
+  .gallery-statement { height: 360px; }
+
+  .about { padding: 64px 24px; }
+
+  .events { padding: 64px 24px; }
+  .event-row {
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+  .event-row__cta { display: none; }
+
+  .extras { padding: 64px 24px; }
+  .extras__block { padding: 40px 28px; }
+
+  .contact { padding: 64px 24px; }
+  .contact__cta-block { padding: 32px 24px; }
+  .contact__social { flex-wrap: wrap; }
+
+  .footer { padding: 32px 24px; }
+  .footer__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+}
+
+@media (max-width: 480px) {
+  .hero__h1 { font-size: clamp(40px, 13vw, 64px); }
+  .gift-tiers { flex-direction: column; }
+  .event-row { grid-template-columns: 64px 1fr; gap: 16px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo">
+      <img
+        src="https://static.tildacdn.net/tild3932-3464-4731-b762-663638373664/LOGO_OK.png"
+        alt="Art Shellter"
+      >
+    </a>
+    <ul class="nav__links">
+      <li><a href="#workshops">Workshops</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a href="#contact" class="nav__cta">Book a Workshop</a>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+
+<section class="hero" id="home">
+  <div class="hero__bg"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__gradient"></div>
+
+  <div class="hero__content">
+    <p class="hero__eyebrow">Creative Space &mdash; Calpe</p>
+    <h1 class="hero__h1">Create.<br>Something<br>beautiful.</h1>
+    <p class="hero__sub">Art workshops for everyone. From first brushstroke to finished canvas — in one afternoon.</p>
+    <div class="hero__actions">
+      <a href="#contact" class="btn-primary">Book a Workshop</a>
+      <a href="#workshops" class="btn-ghost">See all sessions</a>
+    </div>
+    <div style="margin-top: 52px;">
+      <span class="hero__next-session">
+        <span class="hero__next-dot"></span>
+        Next session: Friday 18 April &mdash; 18:00
+      </span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     WORKSHOPS
+     ============================================================ -->
+
+<section class="workshops" id="workshops">
+  <div class="workshops__inner">
+    <div class="workshops__header">
+      <div class="workshops__header-left">
+        <p class="section-label">What we create together</p>
+        <h2 class="section-title">Four ways to<br><em>lose track of time</em></h2>
+        <p class="workshops__subtitle">
+          Every session is guided by a Fine Arts professor. All materials included.
+          Bring yourself &mdash; we handle everything else.
+        </p>
+      </div>
+    </div>
+
+    <div class="workshops__grid">
+
+      <!-- Wine & Paint — photo-3: the actual wine+canvas table setup -->
+      <div class="workshop-card">
+        <div class="workshop-card__img-wrap">
+          <img
+            src="https://a.veronikasadventure.com/tour/calp-valencia-art-and-wine-painting-workshop-t956402-3.jpg"
+            alt="Wine and paint workshop setup — canvases, brushes and wine at Art Shellter"
+            style="object-position: center 30%;"
+          >
+          <span class="workshop-card__badge">Bestseller</span>
+        </div>
+        <div class="workshop-card__name">Wine &amp; Paint &mdash; Live Colours</div>
+        <div class="workshop-card__tagline">
+          Paint. Drink. Laugh. No experience needed &mdash; just curiosity and an empty glass.
+        </div>
+        <div class="workshop-card__meta">
+          <div class="workshop-card__price">50&euro;</div>
+          <div class="workshop-card__detail">Up to 3h &mdash; Fri &amp; Sat, 18:00</div>
+        </div>
+      </div>
+
+      <!-- Family Workshop — real photo from Art Shellter Tilda: people painting at studio table -->
+      <div class="workshop-card">
+        <div class="workshop-card__img-wrap">
+          <img
+            src="tilda-full1.jpg"
+            alt="Families painting together at the Art Shellter studio in Calpe"
+            style="object-position: center 40%;"
+          >
+          <span class="workshop-card__badge">All ages</span>
+        </div>
+        <div class="workshop-card__name">Family Workshop &mdash; We Paint Together!</div>
+        <div class="workshop-card__tagline">
+          One canvas, two generations. A Saturday morning that becomes a memory.
+        </div>
+        <div class="workshop-card__meta">
+          <div class="workshop-card__price">45&euro;</div>
+          <div class="workshop-card__detail">1 child + 1 adult &mdash; Saturdays, 11:00</div>
+        </div>
+      </div>
+
+      <!-- Pet Portrait — art brushes/palette, atmospheric -->
+      <div class="workshop-card">
+        <div class="workshop-card__img-wrap">
+          <img
+            src="brushes.jpg"
+            alt="Art brushes and palette for the Pet Portrait workshop at Art Shellter"
+            style="object-position: center center;"
+          >
+          <span class="workshop-card__badge">Personal</span>
+        </div>
+        <div class="workshop-card__name">Pet Portrait</div>
+        <div class="workshop-card__tagline">
+          Your dog. Your cat. Your rabbit. On canvas, forever &mdash; painted by your own hand.
+        </div>
+        <div class="workshop-card__meta">
+          <div class="workshop-card__price">50&euro;</div>
+          <div class="workshop-card__detail">Up to 3h &mdash; Tue&ndash;Fri</div>
+        </div>
+      </div>
+
+      <!-- Paint the Vase — ceramic/pottery atmospheric -->
+      <div class="workshop-card">
+        <div class="workshop-card__img-wrap">
+          <img
+            src="pottery.jpg"
+            alt="Ceramic vase painting at Art Shellter workshop"
+            style="object-position: center center;"
+          >
+          <span class="workshop-card__badge">Take it home</span>
+        </div>
+        <div class="workshop-card__name">Paint the Vase</div>
+        <div class="workshop-card__tagline">
+          Ceramic. Color. Kiln. Go home with something you made with your hands.
+        </div>
+        <div class="workshop-card__meta">
+          <div class="workshop-card__price">35&euro;</div>
+          <div class="workshop-card__detail">3h &mdash; Tue&ndash;Fri</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GALLERY STATEMENT
+     ============================================================ -->
+
+<section class="gallery-statement gallery-statement--text-only" id="gallery">
+  <div class="gallery-statement__overlay">
+    <p class="gallery-statement__quote">
+      Every session is unique.<br>
+      Every piece goes home <span>with you</span>.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ABOUT / FOUNDERS
+     ============================================================ -->
+
+<section class="about" id="about">
+  <div class="about__inner">
+    <div class="about__header">
+      <p class="section-label">The people behind it</p>
+      <h2 class="section-title">Art taught in<br><em>universities</em>.<br>Now taught in Calpe.</h2>
+    </div>
+
+    <div class="about__grid">
+
+      <div class="about__photo-col">
+        <img
+          class="about__photo"
+          src="https://a.veronikasadventure.com/tour/calp-valencia-art-and-wine-painting-workshop-t956402-2.jpg"
+          alt="Kalliopi &mdash; founder and art professor at Art Shellter"
+        >
+        <div class="about__photo-caption">
+          <div class="about__photo-name">Kalliopi</div>
+          <div class="about__photo-role">Founder &amp; Art Director</div>
+        </div>
+      </div>
+
+      <div class="about__text-col">
+
+        <div class="about__founder">
+          <div class="about__founder-name">Kalliopi</div>
+          <div class="about__founder-credentials">
+            Master of Fine Arts &mdash; Norland University, Sweden<br>
+            Art Professor &mdash; Aristotle University, Greece
+          </div>
+          <p class="about__founder-quote">
+            &ldquo;She&rsquo;s taught Fine Arts in universities across Europe.
+            Now she teaches in Calpe &mdash; with better wine and no grades.&rdquo;
+          </p>
+        </div>
+
+        <div class="about__founder">
+          <div class="about__founder-name">Sergey</div>
+          <div class="about__founder-credentials">
+            Co-founder &amp; Host
+          </div>
+          <p class="about__founder-quote">
+            &ldquo;Years building multinational business. One dream:
+            a cultural space where people slow down, create, and connect.
+            Art Shellter is that dream &mdash; with a fine wine spirit.&rdquo;
+          </p>
+        </div>
+
+        <div style="padding-top: 16px; border-top: 1px solid var(--divider);">
+          <p style="font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.875rem; color: var(--sand); line-height: 1.8;">
+            Calle de La Pau 13, Calpe &mdash; Est. 2024<br>
+            Spoken: <strong style="color: var(--cream); font-weight: 400;">EN &nbsp;ES &nbsp;FR &nbsp;RU</strong>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     UPCOMING EVENTS
+     ============================================================ -->
+
+<section class="events">
+  <div class="events__inner">
+    <div class="events__header">
+      <p class="section-label">Coming up</p>
+      <h2 class="section-title">Upcoming<br><em>sessions</em></h2>
+    </div>
+
+    <div class="events__list">
+
+      <div class="event-row">
+        <div class="event-row__date">
+          <div class="event-row__day">18</div>
+          <div class="event-row__month">April</div>
+        </div>
+        <div class="event-row__info">
+          <div class="event-row__name">Wine &amp; Paint + DJ Zucca Radio Sound</div>
+          <div class="event-row__detail">Friday &mdash; 18:00 &nbsp;&middot;&nbsp; 50&euro; per person &nbsp;&middot;&nbsp; Limited spots</div>
+        </div>
+        <a href="#contact" class="event-row__cta">Reserve</a>
+      </div>
+
+      <div class="event-row">
+        <div class="event-row__date">
+          <div class="event-row__day">19</div>
+          <div class="event-row__month">April</div>
+        </div>
+        <div class="event-row__info">
+          <div class="event-row__name">Family Workshop &mdash; We Paint Together!</div>
+          <div class="event-row__detail">Saturday &mdash; 11:00 &nbsp;&middot;&nbsp; 45&euro; (1 child + 1 adult)</div>
+        </div>
+        <a href="#contact" class="event-row__cta">Reserve</a>
+      </div>
+
+      <div class="event-row">
+        <div class="event-row__date">
+          <div class="event-row__day">22</div>
+          <div class="event-row__month">April</div>
+        </div>
+        <div class="event-row__info">
+          <div class="event-row__name">Open Workshop &mdash; Cement Figures</div>
+          <div class="event-row__detail">Tuesday &mdash; 18:00 &nbsp;&middot;&nbsp; Materials included</div>
+        </div>
+        <a href="#contact" class="event-row__cta">Reserve</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GIFT CARDS + LOYALTY
+     ============================================================ -->
+
+<section class="extras">
+  <div class="extras__inner">
+
+    <div class="extras__block">
+      <div class="extras__block-icon" style="font-size:1.75rem; letter-spacing:0.1em;">&#9672;</div>
+      <div class="extras__block-title">Gift Cards</div>
+      <div class="extras__block-sub">
+        Give someone a session they&rsquo;ll remember.
+        Available in three values &mdash; sent by email, instant delivery.
+      </div>
+      <div class="gift-tiers">
+        <div class="gift-tier">
+          <div class="gift-tier__price">35&euro;</div>
+          <div class="gift-tier__label">1 Workshop</div>
+        </div>
+        <div class="gift-tier">
+          <div class="gift-tier__price">65&euro;</div>
+          <div class="gift-tier__label">2 Workshops</div>
+        </div>
+        <div class="gift-tier">
+          <div class="gift-tier__price">100&euro;</div>
+          <div class="gift-tier__label">3-Workshop Pack</div>
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary" style="display: inline-block; font-size: 0.875rem; padding: 13px 28px;">Buy a gift card</a>
+    </div>
+
+    <div class="extras__block">
+      <div class="extras__block-icon" style="font-size:1.75rem;">&#9827;</div>
+      <div class="extras__block-title">Shell Loyalty Card</div>
+      <div class="extras__block-sub">
+        Come back. Every 10th workshop is on us &mdash; stamped with a shell,
+        redeemed with pleasure.
+      </div>
+      <div class="loyalty-stamps">
+        <div class="loyalty-stamp filled">&#9679;</div>
+        <div class="loyalty-stamp filled">&#9679;</div>
+        <div class="loyalty-stamp filled">&#9679;</div>
+        <div class="loyalty-stamp filled">&#9679;</div>
+        <div class="loyalty-stamp filled">&#9679;</div>
+        <div class="loyalty-stamp">&#9679;</div>
+        <div class="loyalty-stamp">&#9679;</div>
+        <div class="loyalty-stamp">&#9679;</div>
+        <div class="loyalty-stamp">&#9679;</div>
+        <div class="loyalty-stamp special">&#9733;</div>
+      </div>
+      <p class="loyalty-note">Collect 9 stamps. The 10th session is free.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT / BOOK
+     ============================================================ -->
+
+<section class="contact" id="contact">
+  <div class="contact__inner">
+    <div class="contact__grid">
+
+      <div class="contact__left">
+        <h2 class="contact__title">Ready to<br><span>paint</span>?</h2>
+        <p class="contact__subtitle">
+          Drop us a message or call directly. We&rsquo;ll confirm your spot within a few hours.
+          Private groups, corporate events, and custom sessions available on request.
+        </p>
+        <div class="contact__details">
+          <div class="contact__detail">
+            <div class="contact__detail-icon">&#128205;</div>
+            <div class="contact__detail-text">
+              <strong>Location</strong>
+              Calle de La Pau, 13 &mdash; Calpe, Alicante
+            </div>
+          </div>
+          <div class="contact__detail">
+            <div class="contact__detail-icon">&#128222;</div>
+            <div class="contact__detail-text">
+              <strong>Phone</strong>
+              +34 655 20 55 10 &nbsp;&middot;&nbsp; +34 604 46 64 36
+            </div>
+          </div>
+          <div class="contact__detail">
+            <div class="contact__detail-icon">&#9993;</div>
+            <div class="contact__detail-text">
+              <strong>Email</strong>
+              home@artshellter.com
+            </div>
+          </div>
+          <div class="contact__detail">
+            <div class="contact__detail-icon">&#127757;</div>
+            <div class="contact__detail-text">
+              <strong>Languages</strong>
+              English &nbsp;&middot;&nbsp; Espa&ntilde;ol &nbsp;&middot;&nbsp; Fran&ccedil;ais &nbsp;&middot;&nbsp; &#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact__right">
+        <div class="contact__cta-block">
+          <div class="contact__cta-headline">Book your workshop</div>
+          <p class="contact__cta-sub">
+            Tell us which workshop interests you, your preferred date,
+            and the number of people. We&rsquo;ll take care of the rest.
+          </p>
+          <a href="mailto:home@artshellter.com" class="btn-full">Send a message</a>
+          <a href="tel:+34655205510" class="btn-ghost" style="text-align: center; display: block; margin-top: 0; font-size: 0.875rem;">Call us directly</a>
+        </div>
+        <div class="contact__social">
+          <a href="https://instagram.com/art_shellter" class="social-link" target="_blank">
+            &#128247; @art_shellter
+          </a>
+          <a href="#" class="social-link">
+            &#128279; Facebook
+          </a>
+        </div>
+        <p class="contact__languages">artshellter.com</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__left">
+      <div class="footer__logo">
+        <img
+          src="https://static.tildacdn.net/tild3932-3464-4731-b762-663638373664/LOGO_OK.png"
+          alt="Art Shellter"
+        >
+      </div>
+      <p class="footer__copy">&copy; 2024 Art Shellter. Calpe, Alicante, Spain.</p>
+    </div>
+
+    <div class="footer__kenaz">
+      <span class="footer__kenaz-text">Built by Kenaz</span>
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 100 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M 68 18 L 30 50 L 68 82"
+          stroke="#f2f2f2"
+          stroke-width="7"
+          stroke-linecap="square"
+          stroke-linejoin="miter"
+          fill="none"
+        />
+      </svg>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

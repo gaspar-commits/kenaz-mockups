@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gravity Cartel — Surf Shop, School & House | Calpe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════════════════
+       GRAVITY CARTEL — Fullpage Responsive Mockup
+       Surf Shop + School + House — Calpe
+       Designed by Kenaz Studio
+       ══════════════════════════════════════════════════ */
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #1A1A1A;
+      --green-sea: #2D8B75;
+      --sand: #E8D5B0;
+      --white: #FAFAFA;
+      --coral: #E8654A;
+      --green-dark: #1f6b5a;
+      --coral-dark: #c94f38;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--black);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ───────────────────────────────────────── */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(26, 26, 26, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(250, 250, 250, 0.08);
+    }
+
+    .nav-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 60px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-brand span {
+      color: var(--green-sea);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: rgba(250, 250, 250, 0.7);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--white) !important;
+      background: var(--coral);
+      padding: 10px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+
+    .nav-cta:hover {
+      background: var(--coral-dark);
+      transform: translateY(-1px);
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    /* ── HERO ──────────────────────────────────────── */
+
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/hero-surfboards.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      opacity: 0.45;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(26, 26, 26, 0.7) 0%,
+        rgba(26, 26, 26, 0.3) 40%,
+        rgba(26, 26, 26, 0.5) 70%,
+        rgba(26, 26, 26, 0.85) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 40px;
+      max-width: 1000px;
+    }
+
+    .hero-tag {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green-sea);
+      margin-bottom: 24px;
+    }
+
+    .hero-headline {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.95;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      color: var(--coral);
+    }
+
+    .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      color: rgba(250, 250, 250, 0.75);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 44px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--white);
+      background: var(--coral);
+      padding: 16px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--coral-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--white);
+      background: transparent;
+      padding: 16px 40px;
+      border: 2px solid rgba(250, 250, 250, 0.3);
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-scroll span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250, 250, 250, 0.4);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(250,250,250,0.4), transparent);
+    }
+
+    /* ── TRIPLE PILLAR ────────────────────────────── */
+
+    .pillars {
+      padding: 120px 60px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .pillars-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-tag {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green-sea);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 1.05rem;
+      color: rgba(26, 26, 26, 0.6);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .pillar-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      cursor: pointer;
+      group: pillar;
+    }
+
+    .pillar-card-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .pillar-card:hover .pillar-card-img {
+      transform: scale(1.05);
+    }
+
+    .pillar-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(26, 26, 26, 0.1) 0%,
+        rgba(26, 26, 26, 0.4) 50%,
+        rgba(26, 26, 26, 0.85) 100%
+      );
+    }
+
+    .pillar-card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 36px 32px;
+      z-index: 2;
+    }
+
+    .pillar-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--green-sea);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .pillar-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--white);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .pillar-number {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      color: var(--green-sea);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .pillar-name {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .pillar-desc {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: rgba(250, 250, 250, 0.7);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .pillar-link {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--coral);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.3s ease;
+    }
+
+    .pillar-card:hover .pillar-link {
+      gap: 14px;
+    }
+
+    .pillar-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--coral);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* ── CALPE WAVES ──────────────────────────────── */
+
+    .calpe-waves {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .calpe-waves-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('img/ocean-waves.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+    }
+
+    .calpe-waves-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(26, 26, 26, 0.9) 0%,
+        rgba(45, 139, 117, 0.15) 50%,
+        rgba(26, 26, 26, 0.8) 100%
+      );
+    }
+
+    .calpe-waves-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 100px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .calpe-waves-text h2 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+
+    .calpe-waves-text h2 span {
+      color: var(--green-sea);
+    }
+
+    .calpe-waves-text p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 1.05rem;
+      color: rgba(250, 250, 250, 0.7);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .calpe-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .stat-card {
+      background: rgba(250, 250, 250, 0.05);
+      border: 1px solid rgba(250, 250, 250, 0.08);
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 2.8rem;
+      color: var(--coral);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.8rem;
+      color: rgba(250, 250, 250, 0.5);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── CTA SECTION ──────────────────────────────── */
+
+    .cta-section {
+      position: relative;
+      padding: 120px 60px;
+      background: var(--sand);
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(45, 139, 117, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(232, 101, 74, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .cta-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .cta-header p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 1.05rem;
+      color: rgba(26, 26, 26, 0.6);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .cta-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .cta-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 44px 36px;
+      text-align: center;
+      border: 1px solid rgba(26, 26, 26, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(26, 26, 26, 0.08);
+    }
+
+    .cta-card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-card-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .cta-card:nth-child(1) .cta-card-icon {
+      background: rgba(45, 139, 117, 0.1);
+    }
+    .cta-card:nth-child(1) .cta-card-icon svg {
+      stroke: var(--green-sea);
+    }
+
+    .cta-card:nth-child(2) .cta-card-icon {
+      background: rgba(232, 101, 74, 0.1);
+    }
+    .cta-card:nth-child(2) .cta-card-icon svg {
+      stroke: var(--coral);
+    }
+
+    .cta-card:nth-child(3) .cta-card-icon {
+      background: rgba(45, 139, 117, 0.1);
+    }
+    .cta-card:nth-child(3) .cta-card-icon svg {
+      stroke: var(--green-sea);
+    }
+
+    .cta-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .cta-card p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: rgba(26, 26, 26, 0.55);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .cta-card-btn {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    .cta-card-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .cta-card:nth-child(1) .cta-card-btn {
+      background: var(--green-sea);
+      color: var(--white);
+    }
+
+    .cta-card:nth-child(2) .cta-card-btn {
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .cta-card:nth-child(3) .cta-card-btn {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* ── FOOTER ───────────────────────────────────── */
+
+    footer {
+      background: var(--black);
+      padding: 80px 60px 40px;
+    }
+
+    .footer-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand h3 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand h3 span {
+      color: var(--green-sea);
+    }
+
+    .footer-brand p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: rgba(250, 250, 250, 0.5);
+      line-height: 1.7;
+      max-width: 320px;
+      margin-bottom: 24px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(250, 250, 250, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      background: var(--green-sea);
+    }
+
+    .footer-social svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--white);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .footer-col h4 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.88rem;
+      color: rgba(250, 250, 250, 0.5);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .footer-divider {
+      height: 1px;
+      background: rgba(250, 250, 250, 0.08);
+      margin-bottom: 32px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: rgba(250, 250, 250, 0.35);
+    }
+
+    .footer-kenaz {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: rgba(250, 250, 250, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-kenaz svg {
+      width: 16px;
+      height: 20px;
+      stroke: rgba(250, 250, 250, 0.25);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+    }
+
+    /* ══════════════════════════════════════════════════
+       RESPONSIVE — TABLET (768px)
+       ══════════════════════════════════════════════════ */
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        padding: 0 28px;
+        height: 64px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: flex;
+      }
+
+      .nav-brand {
+        font-size: 1.2rem;
+      }
+
+      .hero-content {
+        padding: 0 28px;
+      }
+
+      .hero-tag {
+        font-size: 0.72rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+      }
+
+      .pillars {
+        padding: 80px 28px;
+      }
+
+      .pillars-header {
+        margin-bottom: 48px;
+      }
+
+      .pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .pillar-card {
+        aspect-ratio: 16 / 10;
+      }
+
+      .calpe-waves-content {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 80px 28px;
+      }
+
+      .calpe-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .stat-card {
+        padding: 24px 16px;
+      }
+
+      .stat-number {
+        font-size: 2.2rem;
+      }
+
+      .cta-section {
+        padding: 80px 28px;
+      }
+
+      .cta-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .cta-card {
+        padding: 36px 28px;
+      }
+
+      footer {
+        padding: 60px 28px 32px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════
+       RESPONSIVE — MOBILE (480px)
+       ══════════════════════════════════════════════════ */
+
+    @media (max-width: 480px) {
+      .nav-inner {
+        padding: 0 20px;
+        height: 56px;
+      }
+
+      .nav-brand {
+        font-size: 1.05rem;
+      }
+
+      .hero {
+        min-height: 100vh;
+      }
+
+      .hero-content {
+        padding: 0 20px;
+      }
+
+      .hero-sub {
+        font-size: 0.95rem;
+      }
+
+      .hero-scroll {
+        bottom: 24px;
+      }
+
+      .pillars {
+        padding: 64px 20px;
+      }
+
+      .pillar-card {
+        aspect-ratio: 4 / 3;
+      }
+
+      .pillar-card-content {
+        padding: 28px 24px;
+      }
+
+      .pillar-name {
+        font-size: 1.35rem;
+      }
+
+      .pillar-desc {
+        font-size: 0.85rem;
+      }
+
+      .calpe-waves-content {
+        padding: 64px 20px;
+      }
+
+      .calpe-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .stat-card {
+        padding: 20px 12px;
+      }
+
+      .stat-number {
+        font-size: 1.8rem;
+      }
+
+      .stat-label {
+        font-size: 0.7rem;
+      }
+
+      .cta-section {
+        padding: 64px 20px;
+      }
+
+      .cta-card {
+        padding: 32px 24px;
+      }
+
+      footer {
+        padding: 48px 20px 28px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-brand">GRAVITY <span>CARTEL</span></div>
+      <ul class="nav-links">
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#school">School</a></li>
+        <li><a href="#house">House</a></li>
+        <li><a href="#calpe">Calpe</a></li>
+        <li><a href="#contact" class="nav-cta">Book Now</a></li>
+      </ul>
+      <div class="nav-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Surf Shop &middot; School &middot; House &mdash; Calpe</p>
+      <h1 class="hero-headline">Ride. Sleep.<br><em>Repeat.</em></h1>
+      <p class="hero-sub">Surf shop, escuela y alojamiento en la costa mediterr&aacute;nea. Todo lo que necesitas para vivir el surf en Calpe.</p>
+      <div class="hero-buttons">
+        <a href="#school" class="btn-primary">Reservar clase</a>
+        <a href="#shop" class="btn-secondary">Explorar tienda</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══ 3 PILARES ═══ -->
+  <section class="pillars" id="shop">
+    <div class="pillars-header">
+      <span class="section-tag">Lo que hacemos</span>
+      <h2 class="section-title">Tres pilares, una cultura</h2>
+      <p class="section-subtitle">No somos solo una tienda, ni solo una escuela. Somos el punto de encuentro del surf en Calpe.</p>
+    </div>
+    <div class="pillars-grid">
+
+      <!-- SHOP -->
+      <div class="pillar-card">
+        <div class="pillar-card-img" style="background-image: url('img/surf-shop.jpg')"></div>
+        <div class="pillar-card-overlay"></div>
+        <div class="pillar-card-content">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 2L3 8v12a2 2 0 002 2h14a2 2 0 002-2V8l-3-6H6z"/><line x1="3" y1="8" x2="21" y2="8"/><path d="M16 12a4 4 0 01-8 0"/></svg>
+          </div>
+          <span class="pillar-number">01 &mdash; Shop</span>
+          <h3 class="pillar-name">Surf Shop</h3>
+          <p class="pillar-desc">Tablas, neoprenos, accesorios y las mejores marcas del sector. Asesoramiento real de gente que surfea.</p>
+          <a href="#" class="pillar-link">
+            Ver productos
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- SCHOOL -->
+      <div class="pillar-card" id="school">
+        <div class="pillar-card-img" style="background-image: url('img/surfboard-closeup.jpg')"></div>
+        <div class="pillar-card-overlay"></div>
+        <div class="pillar-card-content">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <span class="pillar-number">02 &mdash; School</span>
+          <h3 class="pillar-name">Surf School</h3>
+          <p class="pillar-desc">Clases para todos los niveles. Desde tu primera ola hasta maniobras avanzadas. Grupos reducidos, instructores certificados.</p>
+          <a href="#" class="pillar-link">
+            Reservar clase
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- HOUSE -->
+      <div class="pillar-card" id="house">
+        <div class="pillar-card-img" style="background-image: url('img/surfhouse-room.jpg')"></div>
+        <div class="pillar-card-overlay"></div>
+        <div class="pillar-card-content">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <span class="pillar-number">03 &mdash; House</span>
+          <h3 class="pillar-name">Surf House</h3>
+          <p class="pillar-desc">Alojamiento a metros de la playa. Ambiente surfer, zona com&uacute;n, cocina compartida. Tu base en Calpe.</p>
+          <a href="#" class="pillar-link">
+            Ver habitaciones
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CALPE WAVES ═══ -->
+  <section class="calpe-waves" id="calpe">
+    <div class="calpe-waves-bg"></div>
+    <div class="calpe-waves-overlay"></div>
+    <div class="calpe-waves-content">
+      <div class="calpe-waves-text">
+        <span class="section-tag" style="color: var(--sand);">La experiencia</span>
+        <h2>Calpe no es Hawai.<br>Y eso es lo <span>mejor</span>.</h2>
+        <p>Olas accesibles, agua templada, el Pe&ntilde;&oacute;n de Ifach como tel&oacute;n de fondo. Aqu&iacute; el surf no es solo deporte: es estilo de vida mediterr&aacute;neo. Sin pretensiones, con toda la energ&iacute;a.</p>
+        <a href="#contact" class="btn-primary">Planificar mi viaje</a>
+      </div>
+      <div class="calpe-stats">
+        <div class="stat-card">
+          <div class="stat-number">300+</div>
+          <div class="stat-label">D&iacute;as de sol al a&ntilde;o</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">18&deg;C</div>
+          <div class="stat-label">Agua media anual</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Playas surf-friendly</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">12+</div>
+          <div class="stat-label">A&ntilde;os de experiencia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA SECTION ═══ -->
+  <section class="cta-section" id="contact">
+    <div class="cta-inner">
+      <div class="cta-header">
+        <span class="section-tag">Tu pr&oacute;ximo paso</span>
+        <h2>Elige c&oacute;mo empezar</h2>
+        <p>Tres formas de entrar en la cultura Gravity Cartel. Todas te llevan al agua.</p>
+      </div>
+      <div class="cta-cards">
+
+        <div class="cta-card">
+          <div class="cta-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <h3>Reservar clase</h3>
+          <p>Primera ola o nivel avanzado. Elige tu horario y nos vemos en la playa.</p>
+          <a href="#" class="cta-card-btn">Book a Lesson</a>
+        </div>
+
+        <div class="cta-card">
+          <div class="cta-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 2L3 8v12a2 2 0 002 2h14a2 2 0 002-2V8l-3-6H6z"/><line x1="3" y1="8" x2="21" y2="8"/><path d="M16 12a4 4 0 01-8 0"/></svg>
+          </div>
+          <h3>Explorar shop</h3>
+          <p>Tablas, neoprenos, accesorios. Marcas que usamos nosotros mismos.</p>
+          <a href="#" class="cta-card-btn">Ver Tienda</a>
+        </div>
+
+        <div class="cta-card">
+          <div class="cta-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Reservar habitaci&oacute;n</h3>
+          <p>Surf house a metros de la playa. Comunidad, buen rollo y cero preocupaciones.</p>
+          <a href="#" class="cta-card-btn">Book a Room</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>GRAVITY <span>CARTEL</span></h3>
+          <p>Surf shop, escuela y alojamiento en Calpe. Todo lo que necesitas para vivir el surf en el Mediterr&aacute;neo.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="#">Surf Shop</a></li>
+            <li><a href="#">Clases de surf</a></li>
+            <li><a href="#">Alquiler de material</a></li>
+            <li><a href="#">Surf House</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Info</h4>
+          <ul>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Condiciones del mar</a></li>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="#">Av. de los Ejrcitos Espa&ntilde;oles, Calpe</a></li>
+            <li><a href="tel:+34600000000">+34 600 000 000</a></li>
+            <li><a href="mailto:info@gravitycartel.com">info@gravitycartel.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Gravity Cartel. Todos los derechos reservados.</p>
+        <div class="footer-kenaz">
+          <svg viewBox="0 0 100 100">
+            <path d="M 68 18 L 30 50 L 68 82" stroke-width="7" fill="none"/>
+          </svg>
+          Dise&ntilde;ado por Kenaz Studio
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

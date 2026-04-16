@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&Oacute;ptica Costa Blanca — La boutique de sus ojos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     OPTICA COSTA BLANCA — Fullpage Mockup
+     Paleta: Azul #1A2744, Dorado #B8945A,
+     Blanco #FAFAFA, Gris claro #F0F0F0,
+     Gris oscuro #333333
+     Tipografia: Montserrat + Inter
+     ============================================ */
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #333333;
+    background: #FAFAFA;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ---- VARIABLES ---- */
+  :root {
+    --azul: #1A2744;
+    --dorado: #B8945A;
+    --blanco: #FAFAFA;
+    --gris-claro: #F0F0F0;
+    --gris-oscuro: #333333;
+    --montserrat: 'Montserrat', sans-serif;
+    --inter: 'Inter', sans-serif;
+  }
+
+  /* ==========================================
+     NAV
+     ========================================== */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(26, 39, 68, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0 60px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(184, 148, 90, 0.15);
+  }
+
+  .nav-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-brand-name {
+    font-family: var(--montserrat);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 4px;
+    color: var(--blanco);
+    text-transform: uppercase;
+  }
+
+  .nav-brand-tagline {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--dorado);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--inter);
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: rgba(250, 250, 250, 0.7);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--dorado);
+  }
+
+  .nav-cta {
+    font-family: var(--montserrat);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--azul) !important;
+    background: var(--dorado);
+    padding: 12px 28px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .nav-cta:hover {
+    background: #c9a56b;
+    color: var(--azul) !important;
+  }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .nav-hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--blanco);
+    transition: 0.3s;
+  }
+
+  /* ==========================================
+     HERO
+     ========================================== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--azul);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('img/hero-sunglasses.jpg') center center / cover no-repeat;
+    opacity: 0.3;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(26, 39, 68, 0.92) 0%,
+      rgba(26, 39, 68, 0.7) 50%,
+      rgba(26, 39, 68, 0.85) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 40px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-family: var(--inter);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    border: 1px solid rgba(184, 148, 90, 0.4);
+    padding: 10px 24px;
+    margin-bottom: 40px;
+  }
+
+  .hero-title {
+    font-family: var(--montserrat);
+    font-weight: 300;
+    font-size: 62px;
+    line-height: 1.15;
+    color: var(--blanco);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--dorado);
+  }
+
+  .hero-subtitle {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 18px;
+    color: rgba(250, 250, 250, 0.6);
+    margin-bottom: 48px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    font-family: var(--montserrat);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--azul);
+    background: var(--dorado);
+    padding: 18px 48px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .hero-cta:hover {
+    background: #c9a56b;
+    transform: translateY(-2px);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-scroll span {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(250, 250, 250, 0.35);
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(184, 148, 90, 0.5), transparent);
+  }
+
+  /* ==========================================
+     MARCAS
+     ========================================== */
+  .marcas {
+    padding: 80px 60px;
+    background: var(--blanco);
+    text-align: center;
+  }
+
+  .section-label {
+    font-family: var(--inter);
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: var(--montserrat);
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--azul);
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
+  }
+
+  .section-desc {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 16px;
+    color: rgba(51, 51, 51, 0.65);
+    max-width: 560px;
+    margin: 0 auto 56px;
+    line-height: 1.7;
+  }
+
+  .marcas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .marca-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    border: 1px solid rgba(26, 39, 68, 0.08);
+    background: var(--blanco);
+    transition: all 0.3s ease;
+  }
+
+  .marca-item:hover {
+    border-color: var(--dorado);
+    box-shadow: 0 8px 32px rgba(26, 39, 68, 0.06);
+  }
+
+  .marca-name {
+    font-family: var(--montserrat);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--azul);
+    margin-bottom: 6px;
+  }
+
+  .marca-tipo {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(51, 51, 51, 0.4);
+  }
+
+  /* ==========================================
+     SERVICIOS
+     ========================================== */
+  .servicios {
+    padding: 100px 60px;
+    background: var(--gris-claro);
+  }
+
+  .servicios-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .servicio-card {
+    position: relative;
+    overflow: hidden;
+    height: 380px;
+    background: var(--azul);
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .servicio-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.35;
+    transition: all 0.5s ease;
+  }
+
+  .servicio-card:hover .servicio-card-bg {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+
+  .servicio-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(26, 39, 68, 0.95) 0%,
+      rgba(26, 39, 68, 0.4) 60%,
+      rgba(26, 39, 68, 0.2) 100%
+    );
+  }
+
+  .servicio-card-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    width: 100%;
+  }
+
+  .servicio-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+  }
+
+  .servicio-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .servicio-name {
+    font-family: var(--montserrat);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--blanco);
+    margin-bottom: 8px;
+  }
+
+  .servicio-desc {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 14px;
+    color: rgba(250, 250, 250, 0.6);
+    line-height: 1.6;
+    max-width: 320px;
+  }
+
+  .servicio-link {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: var(--inter);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .servicio-link::after {
+    content: ' \2192';
+    transition: margin-left 0.3s ease;
+  }
+
+  .servicio-link:hover::after {
+    margin-left: 6px;
+  }
+
+  /* ==========================================
+     HISTORIA — 50 ANOS
+     ========================================== */
+  .historia {
+    padding: 120px 60px;
+    background: var(--blanco);
+  }
+
+  .historia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .historia-img {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+
+  .historia-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .historia-img-badge {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    background: var(--dorado);
+    color: var(--azul);
+    font-family: var(--montserrat);
+    font-weight: 800;
+    font-size: 32px;
+    padding: 16px 24px;
+    line-height: 1;
+  }
+
+  .historia-img-badge small {
+    display: block;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .historia-text {
+    max-width: 480px;
+  }
+
+  .historia-text .section-label {
+    text-align: left;
+  }
+
+  .historia-text .section-title {
+    text-align: left;
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .historia-body {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 15px;
+    color: rgba(51, 51, 51, 0.7);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .historia-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(26, 39, 68, 0.08);
+  }
+
+  .stat-number {
+    font-family: var(--montserrat);
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--azul);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-number span {
+    color: var(--dorado);
+    font-size: 24px;
+  }
+
+  .stat-label {
+    font-family: var(--inter);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(51, 51, 51, 0.45);
+  }
+
+  /* ==========================================
+     CTA — PEDIR CITA
+     ========================================== */
+  .cta-section {
+    position: relative;
+    padding: 120px 60px;
+    background: var(--azul);
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: url('img/glasses-detail.jpg') center center / cover no-repeat;
+    opacity: 0.15;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cta-content .section-label {
+    color: var(--dorado);
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: var(--montserrat);
+    font-weight: 700;
+    font-size: 42px;
+    color: var(--blanco);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .cta-desc {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 16px;
+    color: rgba(250, 250, 250, 0.55);
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-family: var(--montserrat);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--azul);
+    background: var(--dorado);
+    padding: 18px 48px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background: #c9a56b;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blanco);
+    border: 1px solid rgba(250, 250, 250, 0.2);
+    padding: 18px 48px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--dorado);
+    color: var(--dorado);
+  }
+
+  .cta-info {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    padding-top: 48px;
+    border-top: 1px solid rgba(250, 250, 250, 0.08);
+  }
+
+  .cta-info-item {
+    text-align: center;
+  }
+
+  .cta-info-label {
+    font-family: var(--inter);
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 8px;
+  }
+
+  .cta-info-value {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 14px;
+    color: rgba(250, 250, 250, 0.6);
+    line-height: 1.6;
+  }
+
+  /* ==========================================
+     FOOTER
+     ========================================== */
+  .footer {
+    padding: 64px 60px 40px;
+    background: #0f1a2e;
+    border-top: 1px solid rgba(184, 148, 90, 0.1);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto 48px;
+  }
+
+  .footer-brand-name {
+    font-family: var(--montserrat);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--blanco);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .footer-brand-tagline {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 12px;
+    color: var(--dorado);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .footer-brand-desc {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(250, 250, 250, 0.4);
+    line-height: 1.7;
+    max-width: 300px;
+  }
+
+  .footer-col-title {
+    font-family: var(--montserrat);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blanco);
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+  }
+
+  .footer-col ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-col ul li a {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(250, 250, 250, 0.4);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-col ul li a:hover {
+    color: var(--dorado);
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 32px;
+    border-top: 1px solid rgba(250, 250, 250, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 12px;
+    color: rgba(250, 250, 250, 0.25);
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-legal a {
+    font-family: var(--inter);
+    font-weight: 300;
+    font-size: 12px;
+    color: rgba(250, 250, 250, 0.25);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-legal a:hover {
+    color: var(--dorado);
+  }
+
+  /* ==========================================
+     RESPONSIVE — TABLET (768px)
+     ========================================== */
+  @media (max-width: 768px) {
+    .nav {
+      padding: 0 24px;
+      height: 70px;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .nav-hamburger {
+      display: flex;
+    }
+
+    .hero {
+      min-height: 600px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+    }
+
+    .hero-badge {
+      font-size: 10px;
+      letter-spacing: 3px;
+      padding: 8px 18px;
+      margin-bottom: 28px;
+    }
+
+    .marcas {
+      padding: 60px 24px;
+    }
+
+    .marcas-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .marca-item {
+      padding: 28px 16px;
+    }
+
+    .marca-name {
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .servicios {
+      padding: 60px 24px;
+    }
+
+    .servicios-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .servicio-card {
+      height: 300px;
+    }
+
+    .historia {
+      padding: 80px 24px;
+    }
+
+    .historia-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .historia-text .section-title {
+      font-size: 32px;
+    }
+
+    .historia-stats {
+      gap: 24px;
+    }
+
+    .stat-number {
+      font-size: 28px;
+    }
+
+    .cta-section {
+      padding: 80px 24px;
+    }
+
+    .cta-title {
+      font-size: 32px;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      text-align: center;
+    }
+
+    .cta-info {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .footer {
+      padding: 48px 24px 32px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 28px;
+    }
+  }
+
+  /* ==========================================
+     RESPONSIVE — MOBILE (480px)
+     ========================================== */
+  @media (max-width: 480px) {
+    .nav {
+      padding: 0 16px;
+      height: 64px;
+    }
+
+    .nav-brand-name {
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .nav-brand-tagline {
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    .hero {
+      min-height: 550px;
+    }
+
+    .hero-content {
+      padding: 0 20px;
+    }
+
+    .hero-badge {
+      font-size: 9px;
+      padding: 7px 14px;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: 30px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      margin-bottom: 36px;
+    }
+
+    .hero-cta {
+      font-size: 11px;
+      padding: 16px 36px;
+      letter-spacing: 2px;
+    }
+
+    .marcas {
+      padding: 48px 16px;
+    }
+
+    .marcas-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .marca-item {
+      padding: 20px 12px;
+    }
+
+    .marca-name {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
+
+    .marca-tipo {
+      font-size: 9px;
+    }
+
+    .servicios {
+      padding: 48px 16px;
+    }
+
+    .servicio-card {
+      height: 260px;
+    }
+
+    .servicio-card-content {
+      padding: 24px;
+    }
+
+    .servicio-name {
+      font-size: 18px;
+    }
+
+    .servicio-desc {
+      font-size: 13px;
+    }
+
+    .historia {
+      padding: 60px 16px;
+    }
+
+    .historia-grid {
+      gap: 32px;
+    }
+
+    .historia-text .section-title {
+      font-size: 26px;
+    }
+
+    .historia-body {
+      font-size: 14px;
+    }
+
+    .historia-stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat-number {
+      font-size: 24px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+    }
+
+    .cta-section {
+      padding: 60px 16px;
+    }
+
+    .cta-title {
+      font-size: 26px;
+    }
+
+    .cta-desc {
+      font-size: 14px;
+    }
+
+    .btn-primary, .btn-secondary {
+      font-size: 11px;
+      padding: 16px 32px;
+    }
+
+    .footer {
+      padding: 40px 16px 24px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .footer-brand-desc {
+      max-width: 100%;
+    }
+
+    .section-title {
+      font-size: 24px;
+    }
+
+    .section-desc {
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     NAV
+     ============================================ -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-brand-name">&Oacute;ptica Costa Blanca</div>
+    <div class="nav-brand-tagline">La boutique de sus ojos</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#marcas">Marcas</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#historia">Historia</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#cita" class="nav-cta">Pedir Cita</a></li>
+  </ul>
+  <div class="nav-hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Desde 1976 en Calpe</div>
+    <h1 class="hero-title">La boutique<br>de <em>sus ojos.</em></h1>
+    <p class="hero-subtitle">Medio siglo seleccionando lo mejor en visi&oacute;n y estilo.</p>
+    <a href="#cita" class="hero-cta">Pedir Cita</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Descubrir</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============================================
+     MARCAS
+     ============================================ -->
+<section class="marcas" id="marcas">
+  <p class="section-label">Colecciones exclusivas</p>
+  <h2 class="section-title">Marcas que merecen sus ojos</h2>
+  <p class="section-desc">Trabajamos solo con firmas que comparten nuestra obsesi&oacute;n por la calidad &oacute;ptica y el dise&ntilde;o sin concesiones.</p>
+  <div class="marcas-grid">
+    <div class="marca-item">
+      <div class="marca-name">Chopard</div>
+      <div class="marca-tipo">&Oacute;ptica de lujo</div>
+    </div>
+    <div class="marca-item">
+      <div class="marca-name">Silhouette</div>
+      <div class="marca-tipo">Ligereza extrema</div>
+    </div>
+    <div class="marca-item">
+      <div class="marca-name">Varilux</div>
+      <div class="marca-tipo">Lentes progresivas</div>
+    </div>
+    <div class="marca-item">
+      <div class="marca-name">Lindberg</div>
+      <div class="marca-tipo">Dise&ntilde;o dan&eacute;s minimal</div>
+    </div>
+    <div class="marca-item">
+      <div class="marca-name">Cartier</div>
+      <div class="marca-tipo">Lujo atemporal</div>
+    </div>
+    <div class="marca-item">
+      <div class="marca-name">Maui Jim</div>
+      <div class="marca-tipo">Polarizadas premium</div>
+    </div>
+    <div class="marca-item">
+      <div class="marca-name">Essilor</div>
+      <div class="marca-tipo">Tecnolog&iacute;a de lentes</div>
+    </div>
+    <div class="marca-item">
+      <div class="marca-name">Tom Ford</div>
+      <div class="marca-tipo">Moda contemporanea</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SERVICIOS
+     ============================================ -->
+<section class="servicios" id="servicios">
+  <div class="servicios-header">
+    <p class="section-label">Nuestros servicios</p>
+    <h2 class="section-title">Visi&oacute;n completa, atenci&oacute;n integral</h2>
+    <p class="section-desc">Cada servicio combina tecnolog&iacute;a de &uacute;ltima generaci&oacute;n con la experiencia de medio siglo cuidando ojos.</p>
+  </div>
+  <div class="servicios-grid">
+    <!-- Graduacion -->
+    <div class="servicio-card">
+      <div class="servicio-card-bg" style="background-image: url('img/interior-optica.jpg')"></div>
+      <div class="servicio-card-overlay"></div>
+      <div class="servicio-card-content">
+        <div class="servicio-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="24" r="10" stroke="#B8945A" stroke-width="1.5"/>
+            <circle cx="32" cy="24" r="10" stroke="#B8945A" stroke-width="1.5"/>
+            <path d="M26 24h-4" stroke="#B8945A" stroke-width="1.5"/>
+            <path d="M6 24H4M44 24h-2" stroke="#B8945A" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="servicio-name">Graduaci&oacute;n de la vista</h3>
+        <p class="servicio-desc">Examen visual completo con tecnolog&iacute;a de &uacute;ltima generaci&oacute;n. Gabinete propio equipado con los mejores instrumentos &oacute;pticos.</p>
+        <a href="#" class="servicio-link">Reservar examen</a>
+      </div>
+    </div>
+
+    <!-- Gafas de sol -->
+    <div class="servicio-card">
+      <div class="servicio-card-bg" style="background-image: url('img/sunglasses-display.jpg')"></div>
+      <div class="servicio-card-overlay"></div>
+      <div class="servicio-card-content">
+        <div class="servicio-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="16" r="8" stroke="#B8945A" stroke-width="1.5"/>
+            <path d="M24 8V4M36 16l4-2M12 16l-4-2M32 10l2-3M16 10l-2-3" stroke="#B8945A" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M8 28h32M12 28l-2 12h8l2-8h8l2 8h8l-2-12" stroke="#B8945A" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="servicio-name">Gafas de sol</h3>
+        <p class="servicio-desc">Las mejores colecciones de gafas de sol polarizadas y de dise&ntilde;o. Protecci&oacute;n y estilo en la Costa Blanca.</p>
+        <a href="#" class="servicio-link">Ver colecci&oacute;n</a>
+      </div>
+    </div>
+
+    <!-- Lentes de contacto -->
+    <div class="servicio-card">
+      <div class="servicio-card-bg" style="background-image: url('img/frames-elegant.jpg')"></div>
+      <div class="servicio-card-overlay"></div>
+      <div class="servicio-card-content">
+        <div class="servicio-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="24" cy="24" rx="16" ry="12" stroke="#B8945A" stroke-width="1.5"/>
+            <circle cx="24" cy="24" r="6" stroke="#B8945A" stroke-width="1.5"/>
+            <circle cx="24" cy="24" r="2" fill="#B8945A"/>
+          </svg>
+        </div>
+        <h3 class="servicio-name">Lentes de contacto</h3>
+        <p class="servicio-desc">Adaptaci&oacute;n profesional de lentes de contacto. Desde lentes diarias hasta multifocales de &uacute;ltima generaci&oacute;n.</p>
+        <a href="#" class="servicio-link">M&aacute;s informaci&oacute;n</a>
+      </div>
+    </div>
+
+    <!-- Baja vision -->
+    <div class="servicio-card">
+      <div class="servicio-card-bg" style="background-image: url('img/lenses-surface.jpg')"></div>
+      <div class="servicio-card-overlay"></div>
+      <div class="servicio-card-content">
+        <div class="servicio-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="12" stroke="#B8945A" stroke-width="1.5"/>
+            <path d="M29 29l10 10" stroke="#B8945A" stroke-width="2" stroke-linecap="round"/>
+            <path d="M14 20h12M20 14v12" stroke="#B8945A" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="servicio-name">Baja vision</h3>
+        <p class="servicio-desc">Soluciones especializadas para personas con baja visi&oacute;n. Ayudas &oacute;pticas, lupas y sistemas de magnificaci&oacute;n personalizados.</p>
+        <a href="#" class="servicio-link">Consultar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     HISTORIA — 50 ANOS
+     ============================================ -->
+<section class="historia" id="historia">
+  <div class="historia-grid">
+    <div class="historia-img">
+      <img src="img/interior-optica.jpg" alt="Interior de &Oacute;ptica Costa Blanca">
+      <div class="historia-img-badge">
+        50
+        <small>a&ntilde;os cuidando su vista</small>
+      </div>
+    </div>
+    <div class="historia-text">
+      <p class="section-label">Nuestra historia</p>
+      <h2 class="section-title">Medio siglo mirando<br>por usted</h2>
+      <p class="historia-body">En 1976, cuando Calpe todav&iacute;a era un pueblo de pescadores que miraba al Pe&ntilde;&oacute;n de Ifach, abrimos nuestras puertas con una convicci&oacute;n simple: la visi&oacute;n es demasiado importante para dejarla en manos de cualquiera.</p>
+      <p class="historia-body">Cincuenta a&ntilde;os despu&eacute;s, esa convicci&oacute;n no ha cambiado. Lo que ha cambiado es la tecnolog&iacute;a que tenemos para materializarla. Hoy combinamos equipamiento de &uacute;ltima generaci&oacute;n con algo que ning&uacute;n aparato puede replicar: la experiencia de tres generaciones dedicadas a la salud visual.</p>
+      <div class="historia-stats">
+        <div>
+          <div class="stat-number">50<span>+</span></div>
+          <div class="stat-label">A&ntilde;os de experiencia</div>
+        </div>
+        <div>
+          <div class="stat-number">15k<span>+</span></div>
+          <div class="stat-label">Pacientes atendidos</div>
+        </div>
+        <div>
+          <div class="stat-number">40<span>+</span></div>
+          <div class="stat-label">Marcas premium</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CTA — PEDIR CITA
+     ============================================ -->
+<section class="cta-section" id="cita">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <p class="section-label">Reserve su visita</p>
+    <h2 class="cta-title">Su visi&oacute;n merece una atenci&oacute;n<br>que est&eacute; a la altura</h2>
+    <p class="cta-desc">Venga a conocernos. Sin compromiso, sin prisas. Le escuchamos, le evaluamos, y le proponemos exactamente lo que necesita.</p>
+    <div class="cta-buttons">
+      <a href="tel:+34965836000" class="btn-primary">Llamar Ahora</a>
+      <a href="#contacto" class="btn-secondary">Escribirnos</a>
+    </div>
+    <div class="cta-info">
+      <div class="cta-info-item">
+        <div class="cta-info-label">Direcci&oacute;n</div>
+        <div class="cta-info-value">Av. Gabriel Mir&oacute;, 32<br>03710 Calpe, Alicante</div>
+      </div>
+      <div class="cta-info-item">
+        <div class="cta-info-label">Tel&eacute;fono</div>
+        <div class="cta-info-value">+34 965 836 000</div>
+      </div>
+      <div class="cta-info-item">
+        <div class="cta-info-label">Horario</div>
+        <div class="cta-info-value">Lun - Vie: 9:30 - 13:30 / 17:00 - 20:00<br>Sab: 10:00 - 13:30</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer" id="contacto">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">&Oacute;ptica Costa Blanca</div>
+      <div class="footer-brand-tagline">La boutique de sus ojos</div>
+      <p class="footer-brand-desc">Desde 1976 ofreciendo la mejor selecci&oacute;n de gafas y la atenci&oacute;n visual m&aacute;s completa de la Costa Blanca.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Servicios</div>
+      <ul>
+        <li><a href="#">Graduaci&oacute;n</a></li>
+        <li><a href="#">Gafas de sol</a></li>
+        <li><a href="#">Lentes de contacto</a></li>
+        <li><a href="#">Baja visi&oacute;n</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Marcas</div>
+      <ul>
+        <li><a href="#">Chopard</a></li>
+        <li><a href="#">Silhouette</a></li>
+        <li><a href="#">Varilux</a></li>
+        <li><a href="#">Ver todas</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contacto</div>
+      <ul>
+        <li><a href="tel:+34965836000">+34 965 836 000</a></li>
+        <li><a href="mailto:info@opticacostablanca.es">info@opticacostablanca.es</a></li>
+        <li><a href="#">Google Maps</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 &Oacute;ptica Costa Blanca. Todos los derechos reservados.</div>
+    <div class="footer-legal">
+      <a href="#">Aviso legal</a>
+      <a href="#">Privacidad</a>
+      <a href="#">Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<!-- KENAZ WATERMARK -->
+<div style="position:fixed;bottom:20px;right:24px;z-index:9999;display:flex;align-items:center;gap:10px;background:rgba(26,39,68,0.85);backdrop-filter:blur(8px);padding:10px 18px;border:1px solid rgba(184,148,90,0.3);">
+  <svg viewBox="0 0 100 100" style="width:18px;height:18px;stroke:#B8945A;fill:none;stroke-width:7;" stroke-linecap="square" stroke-linejoin="miter"><path d="M 68 18 L 30 50 L 68 82"/></svg>
+  <span style="font-family:'Inter',sans-serif;font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,250,250,0.6);">Designed by Kenaz Studio</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Florister&iacute;a Alicia — 35 a&ntilde;os creando emociones con flores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  /* ====== RESET ====== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: #5A4A3A;
+    background: #FAFAFA;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* ====== TYPOGRAPHY ====== */
+  .font-display { font-family: 'Cormorant Garamond', serif; }
+  .font-body { font-family: 'Lato', sans-serif; }
+
+  /* ====== COLORS ====== */
+  :root {
+    --verde-salvia: #7D8B6E;
+    --rosa-suave: #E8C4C4;
+    --blanco: #FAFAFA;
+    --marron-tallo: #5A4A3A;
+    --crema: #F5F0E8;
+    --rosa-hover: #d4a8a8;
+    --verde-hover: #6a7a5c;
+  }
+
+  /* ====== NAV ====== */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    height: 80px;
+    background: rgba(250,250,250,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(125,139,110,0.12);
+    transition: box-shadow 0.3s ease;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    letter-spacing: 0.18em;
+    color: var(--marron-tallo);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .nav-logo span {
+    color: var(--verde-salvia);
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--marron-tallo);
+    transition: color 0.3s ease;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--verde-salvia);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--verde-salvia); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 30px;
+    background: var(--verde-salvia);
+    color: var(--blanco);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  .nav-cta:hover {
+    background: var(--verde-hover);
+    transform: translateY(-1px);
+  }
+
+  /* Mobile menu */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 110;
+  }
+  .nav-hamburger span {
+    width: 26px;
+    height: 2px;
+    background: var(--marron-tallo);
+    transition: all 0.3s ease;
+  }
+
+  /* ====== HERO ====== */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(90,74,58,0.35) 0%,
+      rgba(90,74,58,0.50) 40%,
+      rgba(90,74,58,0.65) 100%
+    );
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 40px;
+    max-width: 900px;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--blanco);
+    border: 1px solid rgba(250,250,250,0.5);
+    padding: 8px 24px;
+    margin-bottom: 28px;
+    opacity: 0.9;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 4.2rem;
+    line-height: 1.1;
+    color: var(--blanco);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 40px rgba(90,74,58,0.3);
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 500;
+  }
+  .hero-sub {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(250,250,250,0.9);
+    letter-spacing: 0.04em;
+    margin-bottom: 40px;
+  }
+  .hero-cta {
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 16px 44px;
+    background: var(--verde-salvia);
+    color: var(--blanco);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .hero-cta:hover {
+    background: var(--verde-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(125,139,110,0.35);
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(250,250,250,0.7);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: rgba(250,250,250,0.4);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* ====== SERVICIOS ====== */
+  .servicios {
+    padding: 120px 60px;
+    background: var(--blanco);
+  }
+  .section-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--verde-salvia);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.8rem;
+    color: var(--marron-tallo);
+    text-align: center;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .section-line {
+    width: 60px;
+    height: 1px;
+    background: var(--rosa-suave);
+    margin: 0 auto 60px;
+  }
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .servicio-card {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--crema);
+    border: 1px solid rgba(125,139,110,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .servicio-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(90,74,58,0.08);
+  }
+  .servicio-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .servicio-icon svg {
+    width: 40px;
+    height: 40px;
+    stroke: var(--verde-salvia);
+    fill: none;
+    stroke-width: 1.2;
+  }
+  .servicio-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--marron-tallo);
+    margin-bottom: 10px;
+  }
+  .servicio-card p {
+    font-size: 0.88rem;
+    color: #7a6b5c;
+    line-height: 1.6;
+  }
+
+  /* ====== BODAS ====== */
+  .bodas {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 680px;
+  }
+  .bodas-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .bodas-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .bodas-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 80px;
+    background: var(--crema);
+  }
+  .bodas-content .section-label {
+    text-align: left;
+  }
+  .bodas-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.6rem;
+    color: var(--marron-tallo);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .bodas-content h2 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--verde-salvia);
+  }
+  .bodas-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #7a6b5c;
+    margin-bottom: 20px;
+  }
+  .bodas-features {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .bodas-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.92rem;
+    color: var(--marron-tallo);
+  }
+  .bodas-feature-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--rosa-suave);
+    flex-shrink: 0;
+  }
+  .btn-secondary {
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    border: 1.5px solid var(--verde-salvia);
+    color: var(--verde-salvia);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+  }
+  .btn-secondary:hover {
+    background: var(--verde-salvia);
+    color: var(--blanco);
+  }
+
+  /* ====== HISTORIA ====== */
+  .historia {
+    padding: 120px 60px;
+    background: var(--blanco);
+  }
+  .historia-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .historia-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .historia-img img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+  .historia-img-accent {
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--rosa-suave);
+    z-index: -1;
+  }
+  .historia-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.6rem;
+    color: var(--marron-tallo);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .historia-content h2 span {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--verde-salvia);
+    margin-bottom: 12px;
+  }
+  .historia-content p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #7a6b5c;
+    margin-bottom: 18px;
+  }
+  .historia-stat {
+    display: flex;
+    gap: 40px;
+    margin-top: 36px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(125,139,110,0.15);
+  }
+  .historia-stat-item {
+    text-align: center;
+  }
+  .historia-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 2.4rem;
+    color: var(--verde-salvia);
+    line-height: 1;
+  }
+  .historia-stat-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #9a8b7c;
+    margin-top: 6px;
+  }
+
+  /* ====== CTA ====== */
+  .cta-section {
+    padding: 100px 60px;
+    background: var(--verde-salvia);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+  .cta-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 3rem;
+    color: var(--blanco);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .cta-section p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(250,250,250,0.85);
+    margin-bottom: 44px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    background: var(--blanco);
+    color: var(--verde-salvia);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn-cta-primary:hover {
+    background: var(--crema);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .btn-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border: 1.5px solid rgba(250,250,250,0.6);
+    color: var(--blanco);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn-cta-secondary:hover {
+    border-color: var(--blanco);
+    background: rgba(250,250,250,0.1);
+  }
+  .btn-cta-tertiary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border: 1.5px solid rgba(250,250,250,0.6);
+    color: var(--blanco);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn-cta-tertiary:hover {
+    border-color: var(--blanco);
+    background: rgba(250,250,250,0.1);
+  }
+  .btn-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+
+  /* ====== FOOTER ====== */
+  .footer {
+    padding: 80px 60px 40px;
+    background: var(--marron-tallo);
+    color: rgba(250,250,250,0.7);
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+  }
+  .footer-brand h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blanco);
+    margin-bottom: 16px;
+  }
+  .footer-brand p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .footer-social {
+    display: flex;
+    gap: 14px;
+  }
+  .footer-social a {
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(250,250,250,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .footer-social a:hover {
+    border-color: var(--rosa-suave);
+    background: rgba(232,196,196,0.1);
+  }
+  .footer-social a svg {
+    width: 16px;
+    height: 16px;
+    fill: rgba(250,250,250,0.7);
+  }
+  .footer-col h4 {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blanco);
+    margin-bottom: 20px;
+  }
+  .footer-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-col li {
+    font-size: 0.88rem;
+  }
+  .footer-col a {
+    transition: color 0.3s ease;
+  }
+  .footer-col a:hover {
+    color: var(--rosa-suave);
+  }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid rgba(250,250,250,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+  }
+
+  /* ====== RESPONSIVE 768px ====== */
+  @media (max-width: 768px) {
+    .nav { padding: 0 28px; height: 70px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-cta { display: none; }
+
+    .hero h1 { font-size: 2.8rem; }
+    .hero-sub { font-size: 0.95rem; }
+    .hero-content { padding: 0 24px; }
+    .hero-badge { font-size: 0.65rem; padding: 6px 18px; }
+
+    .servicios { padding: 80px 28px; }
+    .servicios-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .section-title { font-size: 2.2rem; }
+
+    .bodas { grid-template-columns: 1fr; }
+    .bodas-img { height: 400px; }
+    .bodas-content { padding: 60px 40px; }
+    .bodas-content h2 { font-size: 2.1rem; }
+
+    .historia { padding: 80px 28px; }
+    .historia-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .historia-img img { height: 360px; }
+    .historia-img-accent { display: none; }
+    .historia-content h2 { font-size: 2.1rem; }
+
+    .cta-section { padding: 80px 28px; }
+    .cta-section h2 { font-size: 2.2rem; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+
+    .footer { padding: 60px 28px 30px; }
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  /* ====== RESPONSIVE 480px ====== */
+  @media (max-width: 480px) {
+    .nav { padding: 0 20px; height: 64px; }
+    .nav-logo { font-size: 1.1rem; letter-spacing: 0.12em; }
+
+    .hero { min-height: 600px; }
+    .hero h1 { font-size: 2rem; }
+    .hero-sub { font-size: 0.88rem; margin-bottom: 30px; }
+    .hero-cta { padding: 14px 32px; font-size: 0.75rem; }
+    .hero-badge { font-size: 0.6rem; letter-spacing: 0.2em; }
+    .hero-scroll { display: none; }
+
+    .servicios { padding: 60px 20px; }
+    .servicios-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .servicio-card { padding: 28px 14px; }
+    .servicio-card h3 { font-size: 1.05rem; }
+    .servicio-card p { font-size: 0.82rem; }
+    .section-title { font-size: 1.8rem; }
+    .section-label { font-size: 0.65rem; }
+
+    .bodas-img { height: 300px; }
+    .bodas-content { padding: 48px 24px; }
+    .bodas-content h2 { font-size: 1.7rem; }
+    .bodas-content p { font-size: 0.92rem; }
+
+    .historia { padding: 60px 20px; }
+    .historia-img img { height: 280px; }
+    .historia-content h2 { font-size: 1.7rem; }
+    .historia-content p { font-size: 0.92rem; }
+    .historia-stat { gap: 24px; }
+    .historia-stat-num { font-size: 1.8rem; }
+
+    .cta-section { padding: 64px 20px; }
+    .cta-section h2 { font-size: 1.8rem; }
+    .cta-section p { font-size: 0.92rem; }
+    .btn-cta-primary,
+    .btn-cta-secondary,
+    .btn-cta-tertiary { width: 100%; justify-content: center; }
+
+    .footer { padding: 48px 20px 24px; }
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== NAV ====== -->
+<nav class="nav">
+  <a href="#" class="nav-logo">Floristeria <span>Alicia</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Ramos</a></li>
+    <li><a href="#bodas">Bodas</a></li>
+    <li><a href="#servicios">Eventos</a></li>
+    <li><a href="#historia">Tienda</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Pedir ramo</a>
+  <div class="nav-hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="img/hero-bouquet.jpg" alt="Ramo de flores elegante">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Calpe &mdash; Desde 1991</div>
+    <h1>35 a&ntilde;os creando <em>emociones</em> con flores</h1>
+    <p class="hero-sub">Ramos, bodas y eventos con el cuidado artesanal que solo la experiencia puede dar.</p>
+    <a href="#contacto" class="hero-cta">Pide tu ramo</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ====== SERVICIOS ====== -->
+<section class="servicios" id="servicios">
+  <p class="section-label">Lo que hacemos</p>
+  <h2 class="section-title">Cada flor tiene un prop&oacute;sito</h2>
+  <div class="section-line"></div>
+  <div class="servicios-grid">
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 44 C24 44 6 30 6 18 C6 10 12 4 20 6 C22 6.5 23.5 8 24 10 C24.5 8 26 6.5 28 6 C36 4 42 10 42 18 C42 30 24 44 24 44Z" stroke-linejoin="round"/>
+          <line x1="24" y1="44" x2="24" y2="24"/>
+          <path d="M24 32 C20 28 16 28 14 30" fill="none"/>
+          <path d="M24 28 C28 24 32 24 34 26" fill="none"/>
+        </svg>
+      </div>
+      <h3>Ramos</h3>
+      <p>Composiciones &uacute;nicas para cada momento y cada persona.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="18" r="10" fill="none"/>
+          <circle cx="24" cy="18" r="4" fill="none"/>
+          <path d="M14 18 C14 18 10 18 8 22" fill="none"/>
+          <path d="M34 18 C34 18 38 18 40 22" fill="none"/>
+          <path d="M20 28 L18 44" fill="none"/>
+          <path d="M28 28 L30 44" fill="none"/>
+          <path d="M16 44 L32 44" fill="none"/>
+        </svg>
+      </div>
+      <h3>Bodas</h3>
+      <p>35 a&ntilde;os vistiendo las bodas m&aacute;s bonitas de la Costa Blanca.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="20" width="36" height="24" rx="2" fill="none"/>
+          <path d="M6 20 L24 8 L42 20" fill="none"/>
+          <circle cx="16" cy="32" r="3" fill="none"/>
+          <circle cx="32" cy="32" r="3" fill="none"/>
+          <line x1="16" y1="35" x2="16" y2="40" />
+          <line x1="32" y1="35" x2="32" y2="40" />
+        </svg>
+      </div>
+      <h3>Eventos</h3>
+      <p>Decoraci&oacute;n floral para cada celebraci&oacute;n, de lo &iacute;ntimo a lo grandioso.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="6" width="32" height="36" rx="2" fill="none"/>
+          <path d="M14 18 L34 18" fill="none"/>
+          <path d="M14 26 L28 26" fill="none"/>
+          <circle cx="20" cy="36" r="4" fill="none"/>
+          <path d="M16 10 L16 6 M24 10 L24 6 M32 10 L32 6" fill="none"/>
+        </svg>
+      </div>
+      <h3>Decoracion</h3>
+      <p>Espacios que cobran vida con arreglos florales a medida.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="14" width="32" height="24" rx="3" fill="none"/>
+          <path d="M8 22 L24 32 L40 22" fill="none"/>
+          <path d="M14 8 L24 14 L34 8" fill="none"/>
+          <circle cx="24" cy="6" r="2" fill="none"/>
+        </svg>
+      </div>
+      <h3>Envios</h3>
+      <p>Flores frescas en tu puerta. Calpe y alrededores, mismo d&iacute;a.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== BODAS ====== -->
+<section class="bodas" id="bodas">
+  <div class="bodas-img">
+    <img src="img/wedding-arrangement.jpg" alt="Arreglo floral para bodas">
+  </div>
+  <div class="bodas-content">
+    <p class="section-label">Nuestra especialidad</p>
+    <h2>Especialistas en bodas en la <em>Costa Blanca</em></h2>
+    <p>Cada boda es &uacute;nica. Trabajamos contigo desde la primera idea hasta el &uacute;ltimo p&eacute;talo para que la decoraci&oacute;n floral cuente vuestra historia.</p>
+    <div class="bodas-features">
+      <div class="bodas-feature">
+        <div class="bodas-feature-dot"></div>
+        <span>Ramo de novia y cortejo nupcial</span>
+      </div>
+      <div class="bodas-feature">
+        <div class="bodas-feature-dot"></div>
+        <span>Centros de mesa y decoraci&oacute;n de ceremonia</span>
+      </div>
+      <div class="bodas-feature">
+        <div class="bodas-feature-dot"></div>
+        <span>Arcos florales y photocalls naturales</span>
+      </div>
+      <div class="bodas-feature">
+        <div class="bodas-feature-dot"></div>
+        <span>Coordinaci&oacute;n con wedding planner y venue</span>
+      </div>
+      <div class="bodas-feature">
+        <div class="bodas-feature-dot"></div>
+        <span>Prueba de estilo sin compromiso</span>
+      </div>
+    </div>
+    <a href="#contacto" class="btn-secondary">Consultar disponibilidad</a>
+  </div>
+</section>
+
+<!-- ====== HISTORIA ====== -->
+<section class="historia" id="historia">
+  <div class="historia-inner">
+    <div class="historia-img">
+      <img src="img/shop-interior.jpg" alt="Interior de Floristeria Alicia">
+      <div class="historia-img-accent"></div>
+    </div>
+    <div class="historia-content">
+      <h2>
+        <span>Nuestra historia</span>
+        Desde 1991, el mismo amor por cada tallo
+      </h2>
+      <p>Alicia abri&oacute; las puertas de su florister&iacute;a en Calpe hace 35 a&ntilde;os, con una idea simple: que cada ramo transmita exactamente lo que las palabras no alcanzan.</p>
+      <p>Hoy, con un equipo de cinco floristas y miles de bodas, eventos y momentos especiales detr&aacute;s, esa idea sigue siendo la misma. Lo que cambi&oacute; es la experiencia.</p>
+      <div class="historia-stat">
+        <div class="historia-stat-item">
+          <div class="historia-stat-num">35</div>
+          <div class="historia-stat-label">A&ntilde;os</div>
+        </div>
+        <div class="historia-stat-item">
+          <div class="historia-stat-num">5</div>
+          <div class="historia-stat-label">Floristas</div>
+        </div>
+        <div class="historia-stat-item">
+          <div class="historia-stat-num">+800</div>
+          <div class="historia-stat-label">Bodas</div>
+        </div>
+        <div class="historia-stat-item">
+          <div class="historia-stat-num">Calpe</div>
+          <div class="historia-stat-label">Desde siempre</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA ====== -->
+<section class="cta-section" id="contacto">
+  <h2>Tu pr&oacute;ximo ramo est&aacute; a un mensaje</h2>
+  <p>Escribenos por WhatsApp, llamanos o pasate por la tienda. Las mejores flores de Calpe te esperan.</p>
+  <div class="cta-buttons">
+    <a href="#" class="btn-cta-primary">
+      <span class="btn-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.553 4.12 1.52 5.855L.053 23.676a.5.5 0 00.611.611l5.821-1.467A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.94 0-3.76-.562-5.296-1.53l-.38-.227-3.448.869.88-3.387-.248-.394A9.946 9.946 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      </span>
+      WhatsApp
+    </a>
+    <a href="tel:+34965837200" class="btn-cta-secondary">
+      <span class="btn-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/></svg>
+      </span>
+      Llamar
+    </a>
+    <a href="#" class="btn-cta-tertiary">
+      <span class="btn-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg>
+      </span>
+      Email
+    </a>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Floristeria Alicia</h3>
+      <p>35 a&ntilde;os creando emociones con flores en Calpe. Ramos, bodas, eventos y mucho m&aacute;s.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#">Ramos</a></li>
+        <li><a href="#">Bodas</a></li>
+        <li><a href="#">Eventos</a></li>
+        <li><a href="#">Decoraci&oacute;n</a></li>
+        <li><a href="#">Env&iacute;os</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Horario</h4>
+      <ul>
+        <li>Lun - Vie: 9:30 - 14:00</li>
+        <li>y 17:00 - 20:00</li>
+        <li>S&aacute;bados: 10:00 - 14:00</li>
+        <li>Domingos: Cerrado</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li>C/ La Ni&ntilde;a, 8</li>
+        <li>03710 Calpe, Alicante</li>
+        <li>Tel: +34 965 837 200</li>
+        <li>info@floristeriaalicia.es</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Florister&iacute;a Alicia. Todos los derechos reservados.</span>
+    <span>Aviso legal &nbsp;|&nbsp; Pol&iacute;tica de privacidad</span>
+  </div>
+</footer>
+
+<!-- KENAZ WATERMARK -->
+<div style="position:fixed;bottom:20px;right:24px;z-index:9999;display:flex;align-items:center;gap:10px;background:rgba(90,74,58,0.85);backdrop-filter:blur(8px);padding:10px 18px;border:1px solid rgba(125,139,110,0.3);">
+  <svg viewBox="0 0 100 100" style="width:18px;height:18px;stroke:#7D8B6E;fill:none;stroke-width:7;" stroke-linecap="square" stroke-linejoin="miter"><path d="M 68 18 L 30 50 L 68 82"/></svg>
+  <span style="font-family:'Lato',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,250,250,0.6);">Designed by Kenaz Studio</span>
+</div>
+
+</body>
+</html>

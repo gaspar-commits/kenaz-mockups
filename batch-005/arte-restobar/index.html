@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arte Restobar — Cocina de Autor en Calpe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ========== RESET ========== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+    background: #1A1A1A;
+    color: #F5F0E8;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+  ul { list-style: none; }
+
+  /* ========== TYPOGRAPHY ========== */
+  .font-display { font-family: 'DM Serif Display', serif; }
+  .font-body { font-family: 'Source Sans 3', sans-serif; }
+
+  /* ========== COLORS ========== */
+  :root {
+    --negro: #1A1A1A;
+    --terracotta: #C4704B;
+    --crema: #F5F0E8;
+    --blanco: #FAFAFA;
+    --gris: #6B6B6B;
+    --terracotta-dark: #A85D3D;
+    --negro-light: #242424;
+  }
+
+  /* ========== UTILITY ========== */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+  .section-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    color: var(--crema);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .section-desc {
+    font-size: 1.1rem;
+    color: var(--gris);
+    max-width: 540px;
+    line-height: 1.7;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--terracotta);
+    color: var(--blanco);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  .btn-primary:hover {
+    background: var(--terracotta-dark);
+    transform: translateY(-1px);
+  }
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid var(--terracotta);
+    color: var(--terracotta);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 15px 38px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn-outline:hover {
+    background: var(--terracotta);
+    color: var(--blanco);
+  }
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--terracotta);
+    margin: 0 auto;
+  }
+
+  /* ========== NAV ========== */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196, 112, 75, 0.15);
+    padding: 0 60px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--crema);
+    letter-spacing: 0.08em;
+  }
+  .nav-brand span { color: var(--terracotta); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gris);
+    transition: color 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--crema); }
+  .nav-cta {
+    background: var(--terracotta) !important;
+    color: var(--blanco) !important;
+    padding: 10px 24px !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .nav-cta:hover { background: var(--terracotta-dark) !important; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--crema);
+    transition: all 0.3s ease;
+  }
+
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(26, 26, 26, 0.95) 0%,
+      rgba(26, 26, 26, 0.85) 35%,
+      rgba(26, 26, 26, 0.55) 65%,
+      rgba(26, 26, 26, 0.35) 100%
+    );
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    padding: 0 60px;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(196, 112, 75, 0.15);
+    border: 1px solid rgba(196, 112, 75, 0.3);
+    padding: 8px 20px;
+    margin-bottom: 32px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+  }
+  .hero-badge svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--terracotta);
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    color: var(--crema);
+    line-height: 1.08;
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .hero-sub {
+    font-size: 1.2rem;
+    color: var(--gris);
+    line-height: 1.7;
+    margin-bottom: 44px;
+    max-width: 520px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  /* ========== LOREM BANNER (tongue-in-cheek) ========== */
+  .lorem-banner {
+    background: var(--terracotta);
+    padding: 14px 0;
+    text-align: center;
+    overflow: hidden;
+  }
+  .lorem-banner p {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blanco);
+    white-space: nowrap;
+  }
+
+  /* ========== CARTA / PLATOS ========== */
+  .carta {
+    padding: 120px 0;
+    background: var(--negro);
+  }
+  .carta-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .carta-header .section-desc {
+    margin: 0 auto;
+  }
+  .carta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .carta-card {
+    background: var(--negro-light);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .carta-card:hover {
+    transform: translateY(-4px);
+  }
+  .carta-card-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+  }
+  .carta-card-body {
+    padding: 28px 24px;
+  }
+  .carta-card-category {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 10px;
+  }
+  .carta-card-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--crema);
+    margin-bottom: 8px;
+  }
+  .carta-card-desc {
+    font-size: 0.9rem;
+    color: var(--gris);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .carta-card-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--terracotta);
+  }
+  .carta-footer {
+    text-align: center;
+    margin-top: 56px;
+  }
+
+  /* ========== COCTELES ========== */
+  .cocteles {
+    padding: 120px 0;
+    background: var(--negro-light);
+    position: relative;
+    overflow: hidden;
+  }
+  .cocteles-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .cocteles-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .cocteles-images img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  .cocteles-images img:first-child {
+    grid-column: 1 / -1;
+    height: 320px;
+  }
+  .cocteles-text .section-title {
+    margin-top: 8px;
+  }
+  .coctel-list {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .coctel-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid rgba(107, 107, 107, 0.2);
+    padding-bottom: 16px;
+  }
+  .coctel-item-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--crema);
+  }
+  .coctel-item-detail {
+    font-size: 0.85rem;
+    color: var(--gris);
+    margin-top: 4px;
+  }
+  .coctel-item-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--terracotta);
+    white-space: nowrap;
+    margin-left: 20px;
+  }
+
+  /* ========== REVIEWS / THEFORK ========== */
+  .reviews {
+    padding: 120px 0;
+    background: var(--negro);
+    text-align: center;
+  }
+  .reviews-score {
+    margin: 48px 0 40px;
+  }
+  .reviews-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(5rem, 10vw, 9rem);
+    color: var(--terracotta);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .reviews-out-of {
+    font-size: 1.4rem;
+    color: var(--gris);
+    font-weight: 300;
+  }
+  .reviews-stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 48px;
+  }
+  .reviews-stars svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--terracotta);
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 20px;
+    text-align: left;
+  }
+  .review-card {
+    background: var(--negro-light);
+    padding: 36px 32px;
+    border-left: 3px solid var(--terracotta);
+  }
+  .review-text {
+    font-size: 1rem;
+    color: var(--crema);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .review-author {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gris);
+    letter-spacing: 0.05em;
+  }
+  .review-rating {
+    font-size: 0.85rem;
+    color: var(--terracotta);
+    margin-top: 4px;
+  }
+
+  /* ========== CTA FINAL ========== */
+  .cta-section {
+    position: relative;
+    padding: 140px 0;
+    text-align: center;
+    overflow: hidden;
+  }
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .cta-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cta-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 26, 26, 0.88);
+  }
+  .cta-content {
+    position: relative;
+    z-index: 1;
+  }
+  .cta-content .section-title {
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+  .cta-content .section-desc {
+    margin: 0 auto 44px;
+    text-align: center;
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .cta-phone {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--crema);
+    margin-top: 32px;
+  }
+  .cta-phone a {
+    color: var(--terracotta);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  .cta-phone a:hover { border-color: var(--terracotta); }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    background: #111111;
+    padding: 80px 0 40px;
+    border-top: 1px solid rgba(107, 107, 107, 0.15);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 60px;
+  }
+  .footer-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--crema);
+    margin-bottom: 16px;
+  }
+  .footer-brand span { color: var(--terracotta); }
+  .footer-about {
+    font-size: 0.95rem;
+    color: var(--gris);
+    line-height: 1.7;
+    max-width: 320px;
+  }
+  .footer-col h4 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 20px;
+  }
+  .footer-col a, .footer-col p {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--gris);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+  }
+  .footer-col a:hover { color: var(--crema); }
+  .footer-bottom {
+    border-top: 1px solid rgba(107, 107, 107, 0.15);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--gris);
+  }
+  .footer-social {
+    display: flex;
+    gap: 20px;
+  }
+  .footer-social a {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(107, 107, 107, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .footer-social a:hover {
+    border-color: var(--terracotta);
+    background: rgba(196, 112, 75, 0.1);
+  }
+  .footer-social svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--gris);
+    transition: fill 0.3s ease;
+  }
+  .footer-social a:hover svg { fill: var(--terracotta); }
+
+  /* ========== RESPONSIVE 768px ========== */
+  @media (max-width: 768px) {
+    .container { padding: 0 32px; }
+    .nav { padding: 0 32px; height: 70px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .hero { min-height: 600px; }
+    .hero-content { padding: 0 32px; }
+    .hero h1 { font-size: 2.6rem; }
+    .hero-sub { font-size: 1.05rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+    .carta { padding: 80px 0; }
+    .carta-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .carta-card-img { height: 220px; }
+
+    .cocteles { padding: 80px 0; }
+    .cocteles-inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .cocteles-images { order: -1; }
+    .cocteles-images img:first-child { height: 260px; }
+    .cocteles-images img { height: 220px; }
+
+    .reviews { padding: 80px 0; }
+    .reviews-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .cta-section { padding: 100px 0; }
+
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+  }
+
+  /* ========== RESPONSIVE 480px ========== */
+  @media (max-width: 480px) {
+    .container { padding: 0 20px; }
+    .nav { padding: 0 20px; height: 64px; }
+    .nav-brand { font-size: 1.15rem; }
+
+    .hero { min-height: 520px; }
+    .hero-content { padding: 0 20px; }
+    .hero h1 { font-size: 2rem; }
+    .hero-badge { padding: 6px 14px; font-size: 0.7rem; }
+    .hero-sub { font-size: 0.95rem; margin-bottom: 32px; }
+    .btn-primary, .btn-outline { padding: 14px 28px; font-size: 0.8rem; width: 100%; text-align: center; }
+
+    .carta-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .carta-card-img { height: 200px; }
+    .carta-card-body { padding: 20px 18px; }
+
+    .cocteles-images { grid-template-columns: 1fr; }
+    .cocteles-images img:first-child { height: 220px; }
+    .cocteles-images img { height: 200px; }
+    .coctel-item { flex-direction: column; gap: 4px; }
+    .coctel-item-price { margin-left: 0; }
+
+    .reviews-number { font-size: 5rem; }
+    .review-card { padding: 24px 20px; }
+
+    .cta-section { padding: 80px 0; }
+    .cta-actions { flex-direction: column; }
+    .cta-phone { font-size: 1.15rem; }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav">
+  <div class="nav-brand font-display">ARTE <span>RESTOBAR</span></div>
+  <div class="nav-links">
+    <a href="#carta">Carta</a>
+    <a href="#cocteles">Cocteles</a>
+    <a href="#reviews">Opiniones</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#reservar" class="nav-cta">Reservar</a>
+  </div>
+  <div class="nav-hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="img/hero-plato.jpg" alt="Plato de cocina de autor">
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      9/10 en TheFork
+    </div>
+    <h1 class="font-display">Cocina de autor.<br><em>Sin lorem ipsum.</em></h1>
+    <p class="hero-sub">Producto mediterraneo, tecnica contemporanea y cocteles de autor en el corazon de Calpe. Esto es lo que tu web deberia contar.</p>
+    <div class="hero-actions">
+      <a href="#reservar" class="btn-primary">Reservar mesa</a>
+      <a href="#carta" class="btn-outline">Ver la carta</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LOREM BANNER ==================== -->
+<div class="lorem-banner">
+  <p>Tu web actual tiene lorem ipsum visible. Esto es lo que deberia tener.</p>
+</div>
+
+<!-- ==================== CARTA ==================== -->
+<section class="carta" id="carta">
+  <div class="container">
+    <div class="carta-header">
+      <p class="section-label">Nuestra carta</p>
+      <h2 class="section-title">Platos que hablan<br>por si solos</h2>
+      <p class="section-desc">Producto local, tecnica depurada, presentacion impecable. Cada plato es una declaracion de intenciones.</p>
+    </div>
+    <div class="carta-grid">
+      <div class="carta-card">
+        <img class="carta-card-img" src="img/plato-1.jpg" alt="Tataki de atun rojo">
+        <div class="carta-card-body">
+          <p class="carta-card-category">Del mar</p>
+          <h3 class="carta-card-name font-display">Tataki de atun rojo</h3>
+          <p class="carta-card-desc">Con ponzu casero, wakame y sesamo negro tostado. Producto de lonja de Calpe.</p>
+          <p class="carta-card-price">18 &euro;</p>
+        </div>
+      </div>
+      <div class="carta-card">
+        <img class="carta-card-img" src="img/plato-2.jpg" alt="Risotto trufado">
+        <div class="carta-card-body">
+          <p class="carta-card-category">De la tierra</p>
+          <h3 class="carta-card-name font-display">Risotto trufado</h3>
+          <p class="carta-card-desc">Carnaroli al dente, parmesano 24 meses, laminado de trufa negra de temporada.</p>
+          <p class="carta-card-price">22 &euro;</p>
+        </div>
+      </div>
+      <div class="carta-card">
+        <img class="carta-card-img" src="img/plato-3.jpg" alt="Ensalada de burrata">
+        <div class="carta-card-body">
+          <p class="carta-card-category">Entrantes</p>
+          <h3 class="carta-card-name font-display">Burrata con tomate seco</h3>
+          <p class="carta-card-desc">Burrata cremosa, tomate confitado, albahaca fresca y reduccion de PX.</p>
+          <p class="carta-card-price">16 &euro;</p>
+        </div>
+      </div>
+    </div>
+    <div class="carta-footer">
+      <a href="#" class="btn-outline">Ver carta completa</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== COCTELES ==================== -->
+<section class="cocteles" id="cocteles">
+  <div class="container">
+    <div class="cocteles-inner">
+      <div class="cocteles-text">
+        <p class="section-label">Cocteleria de autor</p>
+        <h2 class="section-title">Cada coctel tiene<br>una historia</h2>
+        <p class="section-desc">Destilados premium, ingredientes de temporada, tecnica de barra. No servimos copas: creamos experiencias.</p>
+        <div class="coctel-list">
+          <div class="coctel-item">
+            <div>
+              <p class="coctel-item-name font-display">Calpe Sour</p>
+              <p class="coctel-item-detail">Gin local, limon de Ifach, clara, bitter de naranja amarga</p>
+            </div>
+            <span class="coctel-item-price">12 &euro;</span>
+          </div>
+          <div class="coctel-item">
+            <div>
+              <p class="coctel-item-name font-display">Terracotta Old Fashioned</p>
+              <p class="coctel-item-detail">Bourbon, sirope de higo, angostura, piel de naranja ahumada</p>
+            </div>
+            <span class="coctel-item-price">14 &euro;</span>
+          </div>
+          <div class="coctel-item">
+            <div>
+              <p class="coctel-item-name font-display">Negroni Mediterraneo</p>
+              <p class="coctel-item-detail">Gin botanico, vermut rojo artesano, Campari, romero fresco</p>
+            </div>
+            <span class="coctel-item-price">13 &euro;</span>
+          </div>
+          <div class="coctel-item">
+            <div>
+              <p class="coctel-item-name font-display">Humo y Miel</p>
+              <p class="coctel-item-detail">Mezcal, miel de azahar, lima, sal ahumada, chile seco</p>
+            </div>
+            <span class="coctel-item-price">13 &euro;</span>
+          </div>
+        </div>
+      </div>
+      <div class="cocteles-images">
+        <img src="img/coctel-1.jpg" alt="Coctel de autor servido en barra">
+        <img src="img/coctel-2.jpg" alt="Coctel clasico reinterpretado">
+        <img src="img/coctel-3.jpg" alt="Preparacion de coctel artesanal">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== REVIEWS ==================== -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <p class="section-label">Lo que dicen de nosotros</p>
+    <div class="reviews-score">
+      <p class="reviews-number font-display">9/10</p>
+      <p class="reviews-out-of">en TheFork &mdash; basado en +320 opiniones</p>
+    </div>
+    <div class="reviews-stars">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+    </div>
+    <div class="divider" style="margin-bottom: 48px;"></div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <p class="review-text">"Cada plato es una obra de arte. El tataki de atun fue lo mejor que hemos comido en la Costa Blanca. Repetiremos seguro."</p>
+        <p class="review-author">Maria L.</p>
+        <p class="review-rating">10/10 &mdash; TheFork</p>
+      </div>
+      <div class="review-card">
+        <p class="review-text">"Ambiente increible, cocteles impecables y un servicio que te hace sentir como en casa. Calpe necesitaba un sitio asi."</p>
+        <p class="review-author">David R.</p>
+        <p class="review-rating">9/10 &mdash; TheFork</p>
+      </div>
+      <div class="review-card">
+        <p class="review-text">"Fuimos por los cocteles y nos quedamos por la carta. El risotto trufado es espectacular. Reservad con tiempo, se llena."</p>
+        <p class="review-author">Carmen S.</p>
+        <p class="review-rating">9/10 &mdash; TheFork</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA RESERVA ==================== -->
+<section class="cta-section" id="reservar">
+  <div class="cta-bg">
+    <img src="img/interior-bar.jpg" alt="Interior de Arte Restobar">
+  </div>
+  <div class="cta-content container">
+    <p class="section-label">Tu mesa te espera</p>
+    <h2 class="section-title font-display">Reserva tu experiencia<br>en Arte Restobar</h2>
+    <p class="section-desc">Cocina de autor, cocteleria creativa y un espacio pensado para disfrutar. En el corazon de Calpe.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-primary">Reservar en TheFork</a>
+      <a href="#" class="btn-outline">Reservar por WhatsApp</a>
+    </div>
+    <p class="cta-phone">O llamanos al <a href="tel:+34965000000">965 000 000</a></p>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer" id="contacto">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand font-display">ARTE <span>RESTOBAR</span></p>
+        <p class="footer-about">Cocina de autor y cocteleria creativa en Calpe. Producto local, tecnica contemporanea y un espacio donde cada detalle importa.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegar</h4>
+        <a href="#carta">Carta</a>
+        <a href="#cocteles">Cocteles</a>
+        <a href="#reviews">Opiniones</a>
+        <a href="#reservar">Reservar</a>
+      </div>
+      <div class="footer-col">
+        <h4>Horarios</h4>
+        <p>Mar - Jue: 19:00 - 23:30</p>
+        <p>Vie - Sab: 19:00 - 00:30</p>
+        <p>Domingo: 13:00 - 16:00</p>
+        <p>Lunes: Cerrado</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>Calle Mayor, 12</p>
+        <p>03710 Calpe, Alicante</p>
+        <p style="margin-top: 8px;"><a href="tel:+34965000000">965 000 000</a></p>
+        <p><a href="mailto:hola@arterestobar.es">hola@arterestobar.es</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Arte Restobar. Todos los derechos reservados.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" aria-label="TripAdvisor">
+          <svg viewBox="0 0 24 24"><path d="M12.006 4.295c-2.67 0-5.338.784-7.645 2.353H0l1.963 2.135a5.997 5.997 0 004.3 10.125 5.993 5.993 0 005.743-4.252 5.993 5.993 0 005.743 4.252 5.997 5.997 0 004.3-10.125L24 6.648h-4.35a13.573 13.573 0 00-7.644-2.353zM6.263 17.658a4.846 4.846 0 110-9.692 4.846 4.846 0 010 9.692zm11.474 0a4.846 4.846 0 110-9.692 4.846 4.846 0 010 9.692zM6.263 9.116a3.696 3.696 0 100 7.392 3.696 3.696 0 000-7.392zm11.474 0a3.696 3.696 0 100 7.392 3.696 3.696 0 000-7.392z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

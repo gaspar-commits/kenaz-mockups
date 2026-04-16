@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurante La Fosa — Arrocería del Paseo Marítimo | Calpe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ========== RESET ========== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+    color: #2a2a2a;
+    background: #faf8f5;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* ========== VARIABLES ========== */
+  :root {
+    --burdeos: #a2100f;
+    --burdeos-dark: #7a0c0b;
+    --burdeos-light: #c4342e;
+    --azul: #1a3c5e;
+    --azul-light: #2a5a8a;
+    --crema: #f5f0e8;
+    --terracotta: #c4704b;
+    --fondo: #faf8f5;
+    --texto: #2a2a2a;
+    --texto-light: #5a5a5a;
+    --blanco: #ffffff;
+    --sombra: 0 4px 24px rgba(0,0,0,0.08);
+    --sombra-hover: 0 8px 40px rgba(0,0,0,0.12);
+    --radius: 4px;
+  }
+
+  /* ========== TYPOGRAPHY ========== */
+  .heading {
+    font-family: 'Cormorant', serif;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--azul);
+  }
+  .heading--white { color: var(--blanco); }
+  .heading--burdeos { color: var(--burdeos); }
+
+  /* ========== NAV ========== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(250, 248, 245, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 0 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .nav-logo-name {
+    font-family: 'Cormorant', serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 3px;
+    color: var(--azul);
+    text-transform: uppercase;
+  }
+  .nav-logo-sub {
+    font-family: 'Cormorant', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--terracotta);
+    letter-spacing: 1px;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--texto-light);
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--burdeos); }
+  .btn-reservar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--burdeos);
+    color: var(--blanco);
+    padding: 12px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-reservar:hover { background: var(--burdeos-dark); transform: translateY(-1px); }
+
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 900px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.6) 100%),
+      url('img/hero-penon.jpg') center 40%/cover no-repeat;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 40px;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 8px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant', serif;
+    font-weight: 700;
+    font-size: 82px;
+    color: var(--blanco);
+    line-height: 1.05;
+    margin-bottom: 28px;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.3);
+  }
+  .hero-sub {
+    font-size: 21px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.95);
+    line-height: 1.6;
+    margin-bottom: 48px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 12px rgba(0,0,0,0.4);
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn-hero-primary {
+    background: var(--burdeos);
+    color: var(--blanco);
+    padding: 18px 42px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 2px solid var(--burdeos);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-hero-primary:hover { background: var(--burdeos-dark); border-color: var(--burdeos-dark); }
+  .btn-hero-outline {
+    background: transparent;
+    color: var(--blanco);
+    padding: 18px 42px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-hero-outline:hover { border-color: var(--blanco); background: rgba(255,255,255,0.1); }
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.6);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.5), transparent);
+  }
+
+  /* ========== SECTION DEFAULTS ========== */
+  section { padding: 120px 80px; }
+  .section-label {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--terracotta);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Cormorant', serif;
+    font-weight: 700;
+    font-size: 52px;
+    color: var(--azul);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .section-subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--texto-light);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  /* ========== ARROCES ========== */
+  .arroces { background: var(--fondo); }
+  .arroces-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+  .arroces-header .section-subtitle {
+    margin: 0 auto;
+  }
+  .arroces-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .arroz-card {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+    transition: all 0.4s;
+  }
+  .arroz-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-hover);
+  }
+  .arroz-card-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+  }
+  .arroz-card-body {
+    padding: 28px 24px;
+  }
+  .arroz-card-name {
+    font-family: 'Cormorant', serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--azul);
+    margin-bottom: 8px;
+  }
+  .arroz-card-desc {
+    font-size: 14px;
+    color: var(--texto-light);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .arroz-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .arroz-card-price {
+    font-family: 'Cormorant', serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--burdeos);
+  }
+  .arroz-card-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    background: rgba(196, 112, 75, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* ========== TERRAZA ========== */
+  .terraza {
+    position: relative;
+    padding: 0;
+    min-height: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .terraza-img {
+    width: 100%;
+    height: 100%;
+    min-height: 700px;
+    object-fit: cover;
+  }
+  .terraza-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 80px;
+    background: var(--crema);
+  }
+  .terraza-content .section-title {
+    margin-bottom: 28px;
+  }
+  .terraza-text {
+    font-size: 17px;
+    color: var(--texto-light);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .terraza-stat {
+    display: flex;
+    gap: 48px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  .terraza-stat-item {}
+  .terraza-stat-number {
+    font-family: 'Cormorant', serif;
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--burdeos);
+    line-height: 1;
+  }
+  .terraza-stat-label {
+    font-size: 13px;
+    color: var(--texto-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ========== CARTA ========== */
+  .carta {
+    background: var(--azul);
+    text-align: center;
+  }
+  .carta .section-label { color: rgba(255,255,255,0.5); }
+  .carta .section-title { color: var(--blanco); }
+  .carta .section-subtitle { color: rgba(255,255,255,0.6); margin: 0 auto 64px; }
+  .carta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .carta-category {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 40px 28px;
+    transition: all 0.3s;
+  }
+  .carta-category:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.15);
+  }
+  .carta-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+  .carta-cat-name {
+    font-family: 'Cormorant', serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--blanco);
+    margin-bottom: 16px;
+  }
+  .carta-cat-items {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 2;
+  }
+  .carta-cat-price {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: 'Cormorant', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--terracotta);
+  }
+
+  /* ========== MENUS DESTACADOS ========== */
+  .menus {
+    background: var(--crema);
+    padding: 100px 80px;
+  }
+  .menus-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .menus-header .section-subtitle { margin: 0 auto; }
+  .menus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .menu-card {
+    background: var(--blanco);
+    border-radius: 6px;
+    padding: 48px 36px;
+    text-align: center;
+    box-shadow: var(--sombra);
+    position: relative;
+    overflow: hidden;
+  }
+  .menu-card--featured {
+    border: 2px solid var(--burdeos);
+  }
+  .menu-card--featured::before {
+    content: 'Recomendado';
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    background: var(--burdeos);
+    color: var(--blanco);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 40px;
+    transform: rotate(45deg);
+  }
+  .menu-card-name {
+    font-family: 'Cormorant', serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--azul);
+    margin-bottom: 8px;
+  }
+  .menu-card-price {
+    font-family: 'Cormorant', serif;
+    font-weight: 700;
+    font-size: 44px;
+    color: var(--burdeos);
+    margin-bottom: 4px;
+  }
+  .menu-card-price-note {
+    font-size: 13px;
+    color: var(--texto-light);
+    margin-bottom: 28px;
+  }
+  .menu-card-divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+    margin: 0 auto 28px;
+  }
+  .menu-card-items {
+    font-size: 15px;
+    color: var(--texto-light);
+    line-height: 2.2;
+  }
+
+  /* ========== REVIEWS ========== */
+  .reviews { background: var(--fondo); }
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .reviews-header .section-subtitle { margin: 0 auto; }
+  .reviews-ratings {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+  .rating-badge {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--blanco);
+    padding: 16px 28px;
+    border-radius: 6px;
+    box-shadow: var(--sombra);
+  }
+  .rating-score {
+    font-family: 'Cormorant', serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--burdeos);
+  }
+  .rating-source {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto);
+    letter-spacing: 0.5px;
+  }
+  .rating-count {
+    font-size: 12px;
+    color: var(--texto-light);
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .review-card {
+    background: var(--blanco);
+    padding: 40px 32px;
+    border-radius: 6px;
+    box-shadow: var(--sombra);
+  }
+  .review-stars {
+    color: #e8a838;
+    font-size: 16px;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+  }
+  .review-text {
+    font-size: 15px;
+    color: var(--texto);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .review-author {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--azul);
+  }
+  .review-source-tag {
+    font-size: 12px;
+    color: var(--texto-light);
+  }
+
+  /* ========== CTA SECTION ========== */
+  .cta-section {
+    position: relative;
+    padding: 140px 80px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(26,60,94,0.85) 0%, rgba(26,60,94,0.92) 100%),
+      url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=2560&q=80&auto=format') center/cover no-repeat;
+  }
+  .cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .cta-content .section-title {
+    color: var(--blanco);
+    font-size: 56px;
+    margin-bottom: 20px;
+  }
+  .cta-subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .btn-cta-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--burdeos);
+    color: var(--blanco);
+    padding: 18px 36px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: var(--radius);
+    border: 2px solid var(--burdeos);
+    transition: all 0.3s;
+  }
+  .btn-cta-phone:hover { background: var(--burdeos-dark); border-color: var(--burdeos-dark); }
+  .btn-cta-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--blanco);
+    padding: 18px 36px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: var(--radius);
+    border: 2px solid rgba(255,255,255,0.4);
+    transition: all 0.3s;
+  }
+  .btn-cta-whatsapp:hover { border-color: var(--blanco); background: rgba(255,255,255,0.08); }
+  .cta-phone-number {
+    font-family: 'Cormorant', serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 2px;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: #0f1f2e;
+    color: rgba(255,255,255,0.6);
+    padding: 80px 80px 40px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  .footer-logo-name {
+    font-family: 'Cormorant', serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--blanco);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .footer-logo-sub {
+    font-family: 'Cormorant', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--terracotta);
+    margin-bottom: 20px;
+  }
+  .footer-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.45);
+  }
+  .footer-heading {
+    font-family: 'Cormorant', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--blanco);
+    margin-bottom: 20px;
+  }
+  .footer-links a {
+    display: block;
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    padding: 6px 0;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--terracotta); }
+  .footer-info p {
+    font-size: 14px;
+    line-height: 2;
+  }
+  .footer-info strong {
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+  }
+  .footer-social {
+    display: flex;
+    gap: 16px;
+  }
+  .footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    transition: all 0.3s;
+  }
+  .footer-social a:hover {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+  }
+
+  /* ========== DIVIDER ========== */
+  .section-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--terracotta);
+    margin: 16px auto 0;
+  }
+  .section-divider--left {
+    margin: 16px 0 0;
+  }
+
+  /* ========== MAP EMBED ========== */
+  .footer-map {
+    width: 100%;
+    height: 200px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 16px;
+    background: #1a2a3a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-map-placeholder {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* ========== KENAZ WATERMARK ========== */
+  .kenaz-watermark {
+    position: fixed;
+    bottom: 20px;
+    right: 24px;
+    z-index: 9999;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 10px 18px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+  }
+  .kenaz-watermark-text {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .kenaz-watermark svg {
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-name">La Fosa</span>
+    <span class="nav-logo-sub">Arrocería</span>
+  </div>
+  <div class="nav-links">
+    <a href="#arroces">Carta</a>
+    <a href="#arroces">Arroces</a>
+    <a href="#terraza">Terraza</a>
+    <a href="#reservas">Reservas</a>
+    <a href="#contacto">Contacto</a>
+    <button class="btn-reservar">Reservar Mesa</button>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Paseo Marítimo &middot; Playa de la Fosa &middot; Calpe</div>
+    <h1>Donde el arroz<br>mira al mar</h1>
+    <p class="hero-sub">
+      Arrocería del paseo marítimo. Más de 30 años<br>
+      cocinando frente al Peñón de Ifach.
+    </p>
+    <div class="hero-ctas">
+      <a href="#reservas" class="btn-hero-primary">Reservar Mesa</a>
+      <a href="#arroces" class="btn-hero-outline">Ver la Carta</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Descubre</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ==================== NUESTROS ARROCES ==================== -->
+<section class="arroces" id="arroces">
+  <div class="arroces-header">
+    <div class="section-label">Nuestra especialidad</div>
+    <h2 class="section-title">Nuestros Arroces</h2>
+    <p class="section-subtitle">
+      Doce variedades elaboradas con producto fresco del Mediterráneo.
+      Cada arroz, un homenaje a la tradición marinera de Calpe.
+    </p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="arroces-grid">
+
+    <div class="arroz-card">
+      <img class="arroz-card-img" src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=800&h=560&q=80&auto=format&fit=crop" alt="Arroz caldoso de marisco">
+      <div class="arroz-card-body">
+        <div class="arroz-card-name">Arroz Caldoso de Marisco</div>
+        <div class="arroz-card-desc">Gamba roja, cigala, mejillones y caldo de roca. El clásico de la casa.</div>
+        <div class="arroz-card-meta">
+          <span class="arroz-card-price">19,50 &euro;</span>
+          <span class="arroz-card-tag">Estrella</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arroz-card">
+      <img class="arroz-card-img" src="https://images.unsplash.com/photo-1515443961218-a51367888e4b?w=800&h=560&q=80&auto=format&fit=crop" alt="Paella Valenciana">
+      <div class="arroz-card-body">
+        <div class="arroz-card-name">Paella Valenciana</div>
+        <div class="arroz-card-desc">Pollo, conejo, garrofón, ferradura y romero. Receta fiel a la tradición.</div>
+        <div class="arroz-card-meta">
+          <span class="arroz-card-price">17,00 &euro;</span>
+          <span class="arroz-card-tag">Tradición</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arroz-card">
+      <img class="arroz-card-img" src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800&h=560&q=80&auto=format&fit=crop" alt="Arroz Negro">
+      <div class="arroz-card-body">
+        <div class="arroz-card-name">Arroz Negro</div>
+        <div class="arroz-card-desc">Tinta de calamar, sepia, gambas y alioli casero. Intenso y profundo.</div>
+        <div class="arroz-card-meta">
+          <span class="arroz-card-price">18,50 &euro;</span>
+          <span class="arroz-card-tag">Imprescindible</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arroz-card">
+      <img class="arroz-card-img" src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=800&h=560&q=80&auto=format&fit=crop" alt="Arroz con Bogavante">
+      <div class="arroz-card-body">
+        <div class="arroz-card-name">Arroz con Bogavante</div>
+        <div class="arroz-card-desc">Medio bogavante por persona, caldo de sus cabezas y un punto caldoso.</div>
+        <div class="arroz-card-meta">
+          <span class="arroz-card-price">28,00 &euro;</span>
+          <span class="arroz-card-tag">Premium</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arroz-card">
+      <img class="arroz-card-img" src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=800&h=560&q=80&auto=format&fit=crop" alt="Arroz de Sepia y Gambas">
+      <div class="arroz-card-body">
+        <div class="arroz-card-name">Arroz de Sepia y Gambas</div>
+        <div class="arroz-card-desc">Sepia fresca cortada a mano, gamba blanca y un sofrito paciente.</div>
+        <div class="arroz-card-meta">
+          <span class="arroz-card-price">18,00 &euro;</span>
+          <span class="arroz-card-tag">Favorito</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="arroz-card">
+      <img class="arroz-card-img" src="https://images.unsplash.com/photo-1551326844-4df70f78d0e9?w=800&h=560&q=80&auto=format&fit=crop" alt="Arroz de Verduras">
+      <div class="arroz-card-body">
+        <div class="arroz-card-name">Arroz de Verduras</div>
+        <div class="arroz-card-desc">Alcachofa, pimiento, judía verde, tomate y azafrán. Sin proteína, todo sabor.</div>
+        <div class="arroz-card-meta">
+          <span class="arroz-card-price">15,00 &euro;</span>
+          <span class="arroz-card-tag">Vegetariano</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== TERRAZA ==================== -->
+<section class="terraza" id="terraza">
+  <img class="terraza-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80&auto=format&fit=crop" alt="Terraza con vista al mar">
+  <div class="terraza-content">
+    <div class="section-label">La experiencia</div>
+    <h2 class="section-title">Comer frente<br>al Peñón de Ifach</h2>
+    <div class="section-divider section-divider--left"></div>
+    <p class="terraza-text" style="margin-top: 28px;">
+      Nuestra terraza se extiende sobre el paseo marítimo de la Playa de la Fosa,
+      con el Peñón de Ifach como telón de fondo. Es el lugar donde un buen arroz
+      se convierte en un recuerdo.
+    </p>
+    <p class="terraza-text">
+      Ochenta comensales, brisa marina, y la tranquilidad de un paseo marítimo
+      que mantiene la escala humana del Calpe de siempre.
+    </p>
+    <div class="terraza-stat">
+      <div class="terraza-stat-item">
+        <div class="terraza-stat-number">80</div>
+        <div class="terraza-stat-label">Comensales</div>
+      </div>
+      <div class="terraza-stat-item">
+        <div class="terraza-stat-number">30+</div>
+        <div class="terraza-stat-label">Años</div>
+      </div>
+      <div class="terraza-stat-item">
+        <div class="terraza-stat-number">12</div>
+        <div class="terraza-stat-label">Tipos de arroz</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CARTA ==================== -->
+<section class="carta" id="carta">
+  <div class="section-label">Desde el Mediterráneo</div>
+  <h2 class="section-title">Nuestra Carta</h2>
+  <p class="section-subtitle">
+    Producto fresco, recetas con historia, y el respeto por una cocina
+    que no necesita complicarse para ser extraordinaria.
+  </p>
+  <div class="section-divider" style="background: var(--terracotta); opacity: 0.5;"></div>
+  <div class="carta-grid" style="margin-top: 64px;">
+    <div class="carta-category">
+      <div class="carta-icon">&#127858;</div>
+      <div class="carta-cat-name">Arroces</div>
+      <div class="carta-cat-items">
+        Caldoso de marisco<br>
+        Paella valenciana<br>
+        Arroz negro<br>
+        Con bogavante<br>
+        De sepia y gambas<br>
+        De verduras
+      </div>
+      <div class="carta-cat-price">Desde 15 &euro;</div>
+    </div>
+    <div class="carta-category">
+      <div class="carta-icon">&#129424;</div>
+      <div class="carta-cat-name">Pescados</div>
+      <div class="carta-cat-items">
+        Lubina a la sal<br>
+        Dorada a la espalda<br>
+        Merluza a la plancha<br>
+        Rape al horno<br>
+        Fritura mixta
+      </div>
+      <div class="carta-cat-price">Según mercado</div>
+    </div>
+    <div class="carta-category">
+      <div class="carta-icon">&#129366;</div>
+      <div class="carta-cat-name">Tapas</div>
+      <div class="carta-cat-items">
+        Gambas al ajillo<br>
+        Pulpo a la brasa<br>
+        Boquerones en vinagre<br>
+        Mejillones al vapor<br>
+        Jamón ibérico
+      </div>
+      <div class="carta-cat-price">Desde 8 &euro;</div>
+    </div>
+    <div class="carta-category">
+      <div class="carta-icon">&#127860;</div>
+      <div class="carta-cat-name">Menús</div>
+      <div class="carta-cat-items">
+        Menú del día<br>
+        <em style="color:rgba(255,255,255,0.4)">(17 &ndash; 18,50 &euro;)</em><br>
+        Menú del Chef<br>
+        <em style="color:rgba(255,255,255,0.4)">(26 &euro;)</em><br>
+        Menú fin de semana
+      </div>
+      <div class="carta-cat-price">Desde 17 &euro;</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MENUS DESTACADOS ==================== -->
+<section class="menus">
+  <div class="menus-header">
+    <div class="section-label">Para cada ocasión</div>
+    <h2 class="section-title">Menús Especiales</h2>
+    <p class="section-subtitle">
+      Tres propuestas pensadas para disfrutar sin decidir.
+    </p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="menus-grid">
+    <div class="menu-card">
+      <div class="menu-card-name">Menú del Día</div>
+      <div class="menu-card-price">17 &euro;</div>
+      <div class="menu-card-price-note">por persona</div>
+      <div class="menu-card-divider"></div>
+      <div class="menu-card-items">
+        Entrante a elegir<br>
+        Plato principal<br>
+        Postre casero<br>
+        Bebida incluida<br>
+        Pan y aceite
+      </div>
+    </div>
+    <div class="menu-card menu-card--featured">
+      <div class="menu-card-name">Menú del Chef</div>
+      <div class="menu-card-price">26 &euro;</div>
+      <div class="menu-card-price-note">por persona</div>
+      <div class="menu-card-divider"></div>
+      <div class="menu-card-items">
+        Aperitivo de la casa<br>
+        Dos entrantes<br>
+        Arroz del día<br>
+        Postre especial<br>
+        Maridaje recomendado
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-name">Menú Fin de Semana</div>
+      <div class="menu-card-price">18,50 &euro;</div>
+      <div class="menu-card-price-note">por persona</div>
+      <div class="menu-card-divider"></div>
+      <div class="menu-card-items">
+        Tapa de temporada<br>
+        Arroz a elegir<br>
+        Postre del día<br>
+        Bebida incluida<br>
+        Café
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== REVIEWS ==================== -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header">
+    <div class="section-label">Nuestros clientes</div>
+    <h2 class="section-title">Lo que dicen de nosotros</h2>
+    <p class="section-subtitle">
+      Casi mil opiniones en Google y un 9 sobre 10 en TheFork.
+      Los arroces y las vistas hablan por sí solos.
+    </p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="reviews-ratings">
+    <div class="rating-badge">
+      <div class="rating-score">4.2</div>
+      <div>
+        <div class="rating-source">Google</div>
+        <div class="rating-count">994 opiniones</div>
+      </div>
+    </div>
+    <div class="rating-badge">
+      <div class="rating-score">9/10</div>
+      <div>
+        <div class="rating-source">TheFork</div>
+        <div class="rating-count">Excelente</div>
+      </div>
+    </div>
+    <div class="rating-badge">
+      <div class="rating-score">4.8</div>
+      <div>
+        <div class="rating-source">Restaurant Guru</div>
+        <div class="rating-count">Destacado</div>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">
+        &laquo;El arroz caldoso de marisco es de los mejores que he probado
+        en la Costa Blanca. La terraza con vistas al Peñón es espectacular,
+        sobre todo al atardecer. Repetiremos seguro.&raquo;
+      </p>
+      <div class="review-author">Maria G.</div>
+      <div class="review-source-tag">Google Reviews</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">
+        &laquo;Vinimos por recomendación y no nos decepcionó. El arroz negro
+        estaba increíble y el servicio fue muy atento. La ubicación es inmejorable,
+        justo en el paseo marítimo de la Fosa.&raquo;
+      </p>
+      <div class="review-author">Carlos M.</div>
+      <div class="review-source-tag">TheFork</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">
+        &laquo;Llevamos más de 20 años viniendo cada verano. La calidad se mantiene,
+        los arroces siguen siendo honestos y generosos. Un sitio de toda la vida
+        que merece la pena conocer.&raquo;
+      </p>
+      <div class="review-author">Familia Rodriguez</div>
+      <div class="review-source-tag">Google Reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA RESERVAS ==================== -->
+<section class="cta-section" id="reservas">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <div class="section-label" style="color: rgba(255,255,255,0.5);">Reserve su mesa</div>
+    <h2 class="section-title" style="color: #fff;">Reserva tu mesa<br>frente al mar</h2>
+    <p class="cta-subtitle">
+      Llama o escríbenos por WhatsApp. Te esperamos en el paseo marítimo
+      de la Playa de la Fosa, Calpe.
+    </p>
+    <div class="cta-actions">
+      <a href="tel:+34601670333" class="btn-cta-phone">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        Llamar ahora
+      </a>
+      <a href="https://wa.me/34601670333" class="btn-cta-whatsapp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+        WhatsApp
+      </a>
+    </div>
+    <div class="cta-phone-number">+34 601 670 333</div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer id="contacto">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo-name">La Fosa</div>
+      <div class="footer-logo-sub">Arrocería &middot; Paseo Marítimo</div>
+      <p class="footer-desc">
+        Más de treinta años cocinando arroz frente al mar.
+        Restaurante familiar en la Playa de la Fosa, Calpe,
+        con la mejor vista al Peñón de Ifach.
+      </p>
+    </div>
+    <div>
+      <div class="footer-heading">Navegación</div>
+      <div class="footer-links">
+        <a href="#arroces">Nuestros Arroces</a>
+        <a href="#terraza">La Terraza</a>
+        <a href="#carta">Carta Completa</a>
+        <a href="#reviews">Opiniones</a>
+        <a href="#reservas">Reservar Mesa</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Horario</div>
+      <div class="footer-info">
+        <p><strong>Lunes:</strong> Cerrado</p>
+        <p><strong>Mar &ndash; Dom:</strong> 12:30 &ndash; 15:30</p>
+        <p><strong>Mar &ndash; Sab:</strong> 18:30 &ndash; 22:00</p>
+      </div>
+      <div style="margin-top: 24px;">
+        <div class="footer-heading">Contacto</div>
+        <div class="footer-info">
+          <p><strong>Tel:</strong> +34 601 670 333</p>
+          <p><strong>Email:</strong> restaurantelafosacalpe@gmail.com</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Donde estamos</div>
+      <div class="footer-info">
+        <p>Paseo Marítimo, Playa de la Fosa</p>
+        <p>03710 Calpe, Alicante</p>
+      </div>
+      <div class="footer-map">
+        <div class="footer-map-placeholder">
+          Google Maps<br>
+          Playa de la Fosa, Calpe
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">
+      &copy; 2026 Restaurante La Fosa &mdash; Arrocería. Todos los derechos reservados.
+    </div>
+    <div class="footer-social">
+      <a href="#" title="Facebook">f</a>
+      <a href="tel:+34601670333" title="Teléfono">&#9742;</a>
+      <a href="https://wa.me/34601670333" title="WhatsApp">W</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== KENAZ WATERMARK ==================== -->
+<div class="kenaz-watermark">
+  <svg width="16" height="20" viewBox="0 0 100 100" fill="none" stroke="#f2f2f2" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M 68 18 L 30 50 L 68 82"/>
+  </svg>
+  <span class="kenaz-watermark-text">Mockup por Kenaz</span>
+</div>
+
+</body>
+</html>

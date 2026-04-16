@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centro Salufit | Salud Integral en Calpe</title>
+<!-- NOTE: tildes correctas en todo el contenido visible -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== RESET ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  /* ===== TOKENS ===== */
+  :root {
+    --green: #2E8B6E;
+    --green-dark: #236B55;
+    --green-light: #3AA47F;
+    --green-pale: #E8F5EF;
+    --blue: #1A3A5C;
+    --blue-dark: #0F2640;
+    --blue-light: #234B73;
+    --white: #FAFAFA;
+    --off-white: #F5F7F6;
+    --gray-50: #F9FAFB;
+    --gray-100: #F0F2F1;
+    --gray-200: #E0E3E1;
+    --gray-400: #9CA3A0;
+    --gray-500: #6B7370;
+    --gray-600: #4A5250;
+    --gray-700: #333938;
+    --gray-800: #1E2422;
+    --gold: #E8B84B;
+    --gold-light: #F5D580;
+    --shadow-xs: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 28px rgba(0,0,0,0.08);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,0.10);
+    --shadow-xl: 0 24px 64px rgba(0,0,0,0.14);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-full: 100px;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --nav-h: 72px;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--gray-700);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  img { display: block; max-width: 100%; }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(250,250,250,0.88);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--gray-200);
+    height: var(--nav-h);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 clamp(20px, 5vw, 80px);
+  }
+
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 18px;
+  }
+
+  .nav-wordmark {
+    font-family: 'Poppins', sans-serif; font-weight: 700;
+    font-size: 21px; color: var(--blue); letter-spacing: -0.5px;
+  }
+  .nav-wordmark span { color: var(--green); }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 28px; list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px;
+    color: var(--gray-500); letter-spacing: 0.15px;
+    transition: color 0.25s var(--ease);
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 2px; background: var(--green); border-radius: 1px;
+    transition: width 0.25s var(--ease);
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--green) !important; color: white !important;
+    padding: 10px 26px; border-radius: var(--radius-full);
+    font-weight: 600 !important; font-size: 13px !important;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 14px rgba(46,139,110,0.3);
+    transition: all 0.25s var(--ease) !important;
+  }
+  .nav-cta:hover {
+    background: var(--green-dark) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(46,139,110,0.4);
+  }
+  .nav-cta::after { display: none !important; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: calc(var(--nav-h) + 40px) clamp(20px, 5vw, 80px) 60px;
+    overflow: hidden;
+    background: var(--blue-dark);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+  }
+  .hero-bg-gradient {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(15,38,64,0.55) 0%, rgba(15,38,64,0.42) 40%, rgba(15,38,64,0.70) 100%);
+    z-index: 1;
+  }
+  /* Abstract geometric shapes for visual interest without photos */
+  .hero-bg-photo {
+    position: absolute; inset: 0; z-index: 0;
+  }
+  .hero-bg-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 30%;
+    display: block;
+  }
+
+  .hero-bg-shapes {
+    position: absolute; inset: 0; z-index: 0; overflow: hidden;
+  }
+  .hero-bg-shapes::before {
+    content: '';
+    position: absolute; top: -20%; right: -10%;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(46,139,110,0.08) 0%, transparent 70%);
+  }
+  .hero-bg-shapes::after {
+    content: '';
+    position: absolute; bottom: -30%; left: -15%;
+    width: 1000px; height: 1000px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,58,92,0.12) 0%, transparent 70%);
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; max-width: 960px;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-full);
+    padding: 10px 24px;
+    margin-bottom: 36px;
+  }
+  .hero-badge-dot {
+    width: 8px; height: 8px;
+    background: var(--green-light);
+    border-radius: 50%;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(58,164,127,0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(58,164,127,0); }
+  }
+  .hero-badge span {
+    font-weight: 500; font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Poppins', sans-serif; font-weight: 800;
+    font-size: clamp(34px, 5.2vw, 68px);
+    line-height: 1.06; color: white;
+    margin-bottom: 8px; letter-spacing: -1.5px;
+  }
+  .hero h1 .hl { color: var(--green-light); }
+
+  .hero-sub {
+    font-family: 'Poppins', sans-serif; font-weight: 300;
+    font-size: clamp(17px, 1.8vw, 24px);
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 28px; letter-spacing: -0.2px;
+  }
+
+  .hero-rating {
+    display: inline-flex; align-items: center; gap: 14px;
+    margin-bottom: 44px;
+  }
+  .hero-stars { display: flex; gap: 3px; }
+  .hero-stars svg { width: 22px; height: 22px; fill: var(--gold); }
+  .hero-rating-text {
+    font-weight: 500; font-size: 14px; color: rgba(255,255,255,0.65);
+  }
+  .hero-rating-text strong { color: white; font-weight: 700; }
+
+  .hero-actions {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px;
+    text-decoration: none; border-radius: var(--radius-full);
+    padding: 16px 36px; cursor: pointer; border: none;
+    letter-spacing: 0.2px; transition: all 0.25s var(--ease);
+  }
+  .btn-primary {
+    background: var(--green); color: white;
+    box-shadow: 0 8px 24px rgba(46,139,110,0.35);
+  }
+  .btn-primary:hover {
+    background: var(--green-dark); transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(46,139,110,0.45);
+  }
+  .btn-outline {
+    background: transparent; color: white;
+    border: 2px solid rgba(255,255,255,0.25);
+  }
+  .btn-outline:hover {
+    border-color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.06);
+    transform: translateY(-2px);
+  }
+
+  /* ===== STATS BAR ===== */
+  .stats-bar {
+    background: var(--blue);
+    padding: 52px clamp(20px, 5vw, 80px);
+  }
+  .stats-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 24px; text-align: center;
+  }
+  .stat-item { padding: 8px 0; }
+  .stat-number {
+    font-family: 'Poppins', sans-serif; font-weight: 800;
+    font-size: clamp(28px, 3vw, 44px);
+    color: var(--green-light); line-height: 1; margin-bottom: 6px;
+    letter-spacing: -1px;
+  }
+  .stat-label {
+    font-weight: 400; font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase; letter-spacing: 2px;
+  }
+
+  /* ===== SHARED SECTION ===== */
+  .section {
+    padding: 100px clamp(20px, 5vw, 80px);
+  }
+  .section-header {
+    text-align: center; max-width: 700px; margin: 0 auto 64px;
+  }
+  .section-tag {
+    display: inline-block;
+    font-weight: 600; font-size: 12px;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--green); margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Poppins', sans-serif; font-weight: 700;
+    font-size: clamp(26px, 3.2vw, 42px);
+    color: var(--blue); line-height: 1.15;
+    letter-spacing: -0.8px; margin-bottom: 14px;
+  }
+  .section-desc {
+    font-weight: 400; font-size: 16px;
+    color: var(--gray-500); line-height: 1.7;
+  }
+
+  /* ===== SERVICES ===== */
+  .services-section { background: var(--off-white); }
+
+  .services-grid {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all 0.3s var(--ease);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    border: 1px solid var(--gray-200);
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--green-light);
+  }
+
+  .service-visual {
+    width: 100%; height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .service-visual img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    display: block;
+  }
+  .service-visual svg {
+    width: 64px; height: 64px;
+    opacity: 0.9;
+    position: relative; z-index: 1;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+  }
+  /* icon overlay for cards with photos */
+  .service-visual.has-photo::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.42) 100%);
+    z-index: 0;
+  }
+  .service-visual.has-photo svg {
+    stroke: white;
+  }
+  .service-visual.fisio { background: linear-gradient(135deg, #D8EFE8, #BFDED2); }
+  .service-visual.dental { background: linear-gradient(135deg, #D4E6F2, #BACED8); }
+  .service-visual.nutri { background: linear-gradient(135deg, #DFF0EB, #C8E4DC); }
+  .service-visual.psico { background: linear-gradient(135deg, #D8E8F2, #C0D6E8); }
+  .service-visual.entrena { background: linear-gradient(135deg, #E0EDD8, #CCDFC4); }
+  .service-visual.estetica { background: linear-gradient(135deg, #D8EDE8, #BEDDD6); }
+
+  .service-body { padding: 28px; }
+  .service-name {
+    font-family: 'Poppins', sans-serif; font-weight: 700;
+    font-size: 20px; color: var(--blue);
+    margin-bottom: 8px; letter-spacing: -0.3px;
+  }
+  .service-desc {
+    font-size: 14px; color: var(--gray-500);
+    line-height: 1.65; margin-bottom: 16px;
+  }
+  .service-detail {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-weight: 600; font-size: 13px; color: var(--green);
+    letter-spacing: 0.2px;
+  }
+  .service-detail svg { width: 16px; height: 16px; }
+
+  /* ===== POSIDONIA HUB ===== */
+  .posidonia {
+    position: relative;
+    padding: 120px clamp(20px, 5vw, 80px);
+    background: var(--blue-dark);
+    overflow: hidden;
+  }
+  .posidonia-bg {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+  .posidonia-bg::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140%; height: 140%;
+    background:
+      radial-gradient(ellipse 40% 50% at 30% 60%, rgba(46,139,110,0.12), transparent),
+      radial-gradient(ellipse 50% 40% at 70% 30%, rgba(46,139,110,0.08), transparent);
+  }
+  /* Animated wave lines */
+  .posidonia-waves {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+    overflow: hidden; opacity: 0.06;
+  }
+  .posidonia-waves svg {
+    position: absolute; bottom: 0; width: 200%; height: 100%;
+  }
+
+  .posidonia-content {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+
+  .posidonia-text .section-tag { color: var(--green-light); }
+  .posidonia-text .section-title { color: white; }
+
+  .posidonia-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800; font-size: clamp(36px, 4vw, 56px);
+    color: white; letter-spacing: -1.5px;
+    line-height: 1.05; margin-bottom: 20px;
+  }
+  .posidonia-label span { color: var(--green-light); }
+
+  .posidonia-desc {
+    font-size: 16px; color: rgba(255,255,255,0.65);
+    line-height: 1.8; margin-bottom: 32px;
+  }
+
+  .posidonia-features {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .posidonia-features li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 15px; color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+  }
+  .posidonia-features .check {
+    flex-shrink: 0; width: 22px; height: 22px;
+    background: rgba(46,139,110,0.2);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+  .posidonia-features .check svg { width: 12px; height: 12px; }
+
+  .posidonia-visual {
+    position: relative;
+    background: rgba(255,255,255,0.04);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 48px;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; min-height: 420px;
+    text-align: center;
+  }
+  .posidonia-icon {
+    width: 100px; height: 100px;
+    margin-bottom: 28px;
+    opacity: 0.9;
+  }
+  .posidonia-badge-first {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(46,139,110,0.15);
+    border: 1px solid rgba(46,139,110,0.3);
+    border-radius: var(--radius-full);
+    padding: 10px 22px;
+    margin-bottom: 24px;
+  }
+  .posidonia-badge-first span {
+    font-weight: 600; font-size: 13px;
+    color: var(--green-light);
+    letter-spacing: 0.5px;
+  }
+  .posidonia-visual-title {
+    font-family: 'Poppins', sans-serif; font-weight: 700;
+    font-size: 24px; color: white;
+    margin-bottom: 12px; letter-spacing: -0.3px;
+  }
+  .posidonia-visual-desc {
+    font-size: 14px; color: rgba(255,255,255,0.5);
+    line-height: 1.6; max-width: 320px;
+  }
+
+  /* ===== EFFICACY ===== */
+  .efficacy {
+    background: var(--green-pale);
+    padding: 80px clamp(20px, 5vw, 80px);
+  }
+  .efficacy-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+  }
+  .efficacy-stat {
+    text-align: center;
+  }
+  .efficacy-number {
+    font-family: 'Poppins', sans-serif; font-weight: 900;
+    font-size: clamp(56px, 7vw, 96px);
+    color: var(--green); line-height: 1;
+    letter-spacing: -3px;
+  }
+  .efficacy-label {
+    font-family: 'Poppins', sans-serif; font-weight: 600;
+    font-size: 18px; color: var(--green-dark);
+    margin-top: 8px;
+  }
+  .efficacy-text h3 {
+    font-family: 'Poppins', sans-serif; font-weight: 700;
+    font-size: 28px; color: var(--blue);
+    margin-bottom: 16px; letter-spacing: -0.5px;
+  }
+  .efficacy-text p {
+    font-size: 16px; color: var(--gray-500);
+    line-height: 1.7;
+  }
+  .efficacy-text .efficacy-sub {
+    margin-top: 12px; font-weight: 500;
+    color: var(--green-dark); font-size: 14px;
+  }
+
+  /* ===== REVIEWS ===== */
+  .reviews-section {
+    background: white;
+  }
+  .reviews-hero {
+    text-align: center; margin-bottom: 64px;
+  }
+  .reviews-big-score {
+    font-family: 'Poppins', sans-serif; font-weight: 900;
+    font-size: clamp(72px, 10vw, 140px);
+    color: var(--blue); line-height: 1;
+    letter-spacing: -4px;
+  }
+  .reviews-stars-row {
+    display: flex; justify-content: center; gap: 8px;
+    margin: 16px 0 12px;
+  }
+  .reviews-stars-row svg { width: 32px; height: 32px; fill: var(--gold); }
+  .reviews-google-text {
+    font-weight: 500; font-size: 16px; color: var(--gray-500);
+  }
+  .reviews-google-text strong { color: var(--blue); font-weight: 700; }
+  .reviews-distinction {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-pale);
+    border-radius: var(--radius-full);
+    padding: 10px 24px; margin-top: 16px;
+  }
+  .reviews-distinction span {
+    font-weight: 600; font-size: 14px; color: var(--green-dark);
+  }
+
+  .reviews-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .review-card {
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    border: 1px solid var(--gray-200);
+    transition: all 0.25s var(--ease);
+  }
+  .review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .review-stars {
+    display: flex; gap: 3px; margin-bottom: 16px;
+  }
+  .review-stars svg { width: 16px; height: 16px; fill: var(--gold); }
+  .review-text {
+    font-size: 15px; color: var(--gray-600);
+    line-height: 1.65; margin-bottom: 20px;
+    font-style: italic;
+  }
+  .review-author {
+    font-weight: 600; font-size: 14px; color: var(--gray-700);
+  }
+  .review-source {
+    font-size: 12px; color: var(--gray-400); margin-top: 2px;
+  }
+
+  /* ===== LANGUAGES ===== */
+  .languages {
+    background: var(--off-white);
+    padding: 64px clamp(20px, 5vw, 80px);
+  }
+  .languages-inner {
+    max-width: 1000px; margin: 0 auto;
+    text-align: center;
+  }
+  .languages-title {
+    font-family: 'Poppins', sans-serif; font-weight: 600;
+    font-size: 18px; color: var(--blue);
+    margin-bottom: 28px; letter-spacing: -0.3px;
+  }
+  .languages-grid {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+  }
+  .lang-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    padding: 12px 24px;
+    font-weight: 500; font-size: 14px; color: var(--gray-600);
+    transition: all 0.25s var(--ease);
+  }
+  .lang-pill:hover {
+    border-color: var(--green);
+    color: var(--green);
+  }
+  .lang-flag { font-size: 18px; }
+
+  /* ===== CTA FINAL ===== */
+  .cta-section {
+    position: relative;
+    padding: 120px clamp(20px, 5vw, 80px);
+    background: var(--blue-dark);
+    text-align: center;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(46,139,110,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cta-content {
+    position: relative; z-index: 1;
+    max-width: 700px; margin: 0 auto;
+  }
+  .cta-title {
+    font-family: 'Poppins', sans-serif; font-weight: 800;
+    font-size: clamp(28px, 3.5vw, 44px);
+    color: white; margin-bottom: 16px;
+    letter-spacing: -1px; line-height: 1.15;
+  }
+  .cta-desc {
+    font-size: 17px; color: rgba(255,255,255,0.6);
+    margin-bottom: 40px; line-height: 1.7;
+  }
+  .cta-actions {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .cta-contact {
+    font-size: 14px; color: rgba(255,255,255,0.45);
+  }
+  .cta-contact a {
+    color: var(--green-light); text-decoration: none;
+    font-weight: 500;
+  }
+  .cta-contact a:hover { text-decoration: underline; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--gray-800);
+    padding: 64px clamp(20px, 5vw, 80px) 32px;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+  .footer-brand .nav-wordmark {
+    font-size: 24px; margin-bottom: 16px;
+  }
+  .footer-brand .nav-wordmark span { color: var(--green-light); }
+  .footer-brand p {
+    font-size: 14px; color: rgba(255,255,255,0.4);
+    line-height: 1.65; max-width: 280px;
+  }
+  .footer-col h4 {
+    font-family: 'Poppins', sans-serif; font-weight: 600;
+    font-size: 14px; color: white;
+    letter-spacing: 0.5px; margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a, .footer-col ul li span {
+    font-size: 14px; color: rgba(255,255,255,0.45);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--green-light); }
+
+  .footer-bottom {
+    max-width: 1200px; margin: 48px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-copy {
+    font-size: 13px; color: rgba(255,255,255,0.3);
+  }
+  .footer-legal {
+    display: flex; gap: 24px;
+  }
+  .footer-legal a {
+    font-size: 13px; color: rgba(255,255,255,0.3);
+    text-decoration: none;
+  }
+  .footer-legal a:hover { color: rgba(255,255,255,0.6); }
+
+  /* ===== KENAZ WATERMARK ===== */
+  .kenaz-watermark {
+    position: fixed; bottom: 20px; right: 24px;
+    z-index: 9999;
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(5,5,5,0.85);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-full);
+    padding: 10px 20px 10px 14px;
+    border: 1px solid rgba(242,242,242,0.1);
+  }
+  .kenaz-rune {
+    width: 24px; height: 24px;
+    opacity: 0.7;
+  }
+  .kenaz-rune svg { width: 100%; height: 100%; }
+  .kenaz-label {
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 11px; color: rgba(242,242,242,0.5);
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    .posidonia-content { grid-template-columns: 1fr; gap: 48px; }
+    .posidonia-visual { min-height: 320px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    :root { --nav-h: 64px; }
+    .nav-links { display: none; }
+    .stats-grid { grid-template-columns: repeat(3, 1fr); }
+    .stats-grid .stat-item:nth-child(4),
+    .stats-grid .stat-item:nth-child(5) {
+      grid-column: span 1;
+    }
+    .services-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .efficacy-inner { grid-template-columns: 1fr; text-align: center; }
+    .efficacy-text { text-align: left; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .hero h1 { font-size: clamp(28px, 7vw, 42px); }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 320px; justify-content: center; }
+    .cta-actions { flex-direction: column; align-items: center; }
+    .posidonia-label { font-size: clamp(28px, 6vw, 40px); }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .section { padding: 64px 16px; }
+    .posidonia { padding: 80px 16px; }
+    .reviews-big-score { font-size: 80px; }
+    .languages-grid { gap: 10px; }
+    .lang-pill { padding: 10px 18px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <a href="#" class="nav-brand">
+    <div class="nav-logo">S</div>
+    <div class="nav-wordmark">SALU<span>FIT</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#posidonia">Posidonia Hub</a></li>
+    <li><a href="#opiniones">Opiniones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#contacto" class="nav-cta">Pedir Cita</a></li>
+  </ul>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-photo">
+      <img src="img/physio-room.jpg" alt="Centro Salufit — sala de fisioterapia" loading="eager">
+    </div>
+    <div class="hero-bg-shapes"></div>
+    <div class="hero-bg-gradient"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span>Centro integral de salud en Calpe</span>
+    </div>
+    <h1>La cl&iacute;nica <span class="hl">mejor valorada</span> de Calpe.<br>Y de toda la provincia de Alicante.</h1>
+    <p class="hero-sub">Fisioterapia, odontolog&iacute;a, nutrici&oacute;n, psicolog&iacute;a, entrenamiento y medicina est&eacute;tica.<br>Todo bajo un mismo techo.</p>
+    <div class="hero-rating">
+      <div class="hero-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      </div>
+      <span class="hero-rating-text"><strong>5.0</strong> &middot; 500+ opiniones en Google</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn btn-primary">Reservar consulta</a>
+      <a href="#servicios" class="btn btn-outline">Conocer servicios</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STATS BAR ========== -->
+<section class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number">400m&sup2;</div>
+      <div class="stat-label">Instalaciones</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">10</div>
+      <div class="stat-label">Salas</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">15+</div>
+      <div class="stat-label">Profesionales</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">6.040+</div>
+      <div class="stat-label">Pacientes atendidos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">5.0</div>
+      <div class="stat-label">Google reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICIOS ========== -->
+<section id="servicios" class="section services-section">
+  <div class="section-header">
+    <div class="section-tag">Servicios</div>
+    <h2 class="section-title">Seis disciplinas. Un solo centro.</h2>
+    <p class="section-desc">Todo lo que necesitas para cuidar tu salud, diagnosticado y tratado por especialistas que trabajan juntos, no aislados.</p>
+    <!-- tildes en servicios van con HTML entities -->
+  </div>
+  <div class="services-grid">
+
+    <!-- Fisioterapia -->
+    <div class="service-card">
+      <div class="service-visual fisio has-photo">
+        <img src="img/fisio.jpg" alt="Sala de fisioterapia">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#2E8B6E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 8c-6 0-11 4-11 10s5 10 11 10 11-4 11-10-5-10-11-10z"/>
+          <path d="M20 34c-4 2-8 8-8 14h40c0-6-4-12-8-14"/>
+          <path d="M28 48v8M36 48v8"/>
+          <path d="M24 38l-6 6M40 38l6 6"/>
+        </svg>
+      </div>
+      <div class="service-body">
+        <h3 class="service-name">Fisioterapia y Osteopat&iacute;a</h3>
+        <p class="service-desc">Punci&oacute;n seca, ecograf&iacute;a, neurodin&aacute;mica, ejercicio terap&eacute;utico y m&aacute;s. El 39% de pacientes recibe el alta en la segunda sesi&oacute;n.</p>
+        <span class="service-detail">
+          Liderado por David Baydal, Col. 4268
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Odontologia -->
+    <div class="service-card">
+      <div class="service-visual dental has-photo">
+        <img src="img/dental-equipment.jpg" alt="Equipamiento dental">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#1A3A5C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12c-6 0-10 5-10 12 0 8 4 16 8 24 2 4 4 6 6 6s3-2 4-4l2-6 2 6c1 2 2 4 4 4s4-2 6-6c4-8 8-16 8-24 0-7-4-12-10-12-4 0-6 2-8 4-2-2-4-4-8-4z"/>
+          <path d="M26 24h12"/>
+        </svg>
+      </div>
+      <div class="service-body">
+        <h3 class="service-name">Odontolog&iacute;a</h3>
+        <p class="service-desc">Odontolog&iacute;a conservadora, implantes, endodoncia, cirug&iacute;a oral, ortodoncia y odontopediatr&iacute;a. Dra. Mar&iacute;a Pastor Vall&eacute;s al frente.</p>
+        <span class="service-detail">
+          Equipo dental especializado
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Nutricion -->
+    <div class="service-card">
+      <div class="service-visual nutri has-photo">
+        <img src="img/nutrition-food.jpg" alt="Nutrición saludable">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#2E8B6E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 6v14"/>
+          <path d="M26 6v10c0 4 2.5 7 6 8"/>
+          <path d="M38 6v10c0 4-2.5 7-6 8"/>
+          <path d="M32 28v6"/>
+          <ellipse cx="32" cy="44" rx="14" ry="12"/>
+          <path d="M24 42c2-4 6-6 8-6s6 2 8 6"/>
+        </svg>
+      </div>
+      <div class="service-body">
+        <h3 class="service-name">Nutrici&oacute;n &mdash; Programa Nutre-T</h3>
+        <p class="service-desc">Sesiones de 50 minutos que van m&aacute;s all&aacute; de contar calor&iacute;as. Planes personalizados con seguimiento continuo.</p>
+        <span class="service-detail">
+          Roger, Laura y Ana Ruiz
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Psicologia -->
+    <div class="service-card">
+      <div class="service-visual psico has-photo">
+        <img src="img/psicologia.jpg" alt="Consulta de psicología">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#1A3A5C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 14c-8 0-14 5.5-14 13 0 4.5 2.5 8.5 6 11"/>
+          <path d="M32 14c8 0 14 5.5 14 13 0 4.5-2.5 8.5-6 11"/>
+          <path d="M18 38c-3 1.5-5 4.5-5 8 0 4 3.5 7 8 7"/>
+          <path d="M46 38c3 1.5 5 4.5 5 8 0 4-3.5 7-8 7"/>
+          <path d="M21 53h22"/>
+          <path d="M32 38v15"/>
+        </svg>
+      </div>
+      <div class="service-body">
+        <h3 class="service-name">Psicolog&iacute;a</h3>
+        <p class="service-desc">Acompa&ntilde;amiento psicol&oacute;gico profesional complementado con meditaci&oacute;n y mindfulness. La salud mental como pilar, no como accesorio.</p>
+        <span class="service-detail">
+          Noelia &middot; Ignacio (meditaci&oacute;n)
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Entrenamiento -->
+    <div class="service-card">
+      <div class="service-visual entrena has-photo">
+        <img src="img/training.jpg" alt="Sala de entrenamiento">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#3D7A3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 32h48"/>
+          <rect x="12" y="24" width="6" height="16" rx="2"/>
+          <rect x="46" y="24" width="6" height="16" rx="2"/>
+          <rect x="18" y="20" width="4" height="24" rx="1"/>
+          <rect x="42" y="20" width="4" height="24" rx="1"/>
+          <path d="M6 28v8M58 28v8"/>
+        </svg>
+      </div>
+      <div class="service-body">
+        <h3 class="service-name">Entrenamiento personal y grupal</h3>
+        <p class="service-desc">Sala de 110 m&sup2; para actividades grupales. Sesiones individuales y colectivas con entrenadores din&aacute;micos y especializados.</p>
+        <span class="service-detail">
+          Jos&eacute; Vicente &middot; Silvio
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Medicina estetica -->
+    <div class="service-card">
+      <div class="service-visual estetica has-photo">
+        <img src="img/estetica.jpg" alt="Medicina estética facial">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#2E8B6E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="32" cy="30" r="16"/>
+          <path d="M32 14v-6M32 52v-6"/>
+          <path d="M14 30H8M56 30h-6"/>
+          <path d="M19.5 19.5l-4.2-4.2M48.7 48.7l-4.2-4.2"/>
+          <path d="M44.5 19.5l4.2-4.2M15.3 48.7l4.2-4.2"/>
+          <circle cx="32" cy="30" r="6"/>
+        </svg>
+      </div>
+      <div class="service-body">
+        <h3 class="service-name">Medicina est&eacute;tica facial</h3>
+        <p class="service-desc">Tratamientos de &aacute;cido hialur&oacute;nico y est&eacute;tica no invasiva. Resultados naturales supervisados por profesionales de la salud, no por esteticistas.</p>
+        <span class="service-detail">
+          Equipo m&eacute;dico especializado
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== POSIDONIA HUB ========== -->
+<section id="posidonia" class="posidonia">
+  <div class="posidonia-bg">
+    <div class="posidonia-waves">
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path d="M0,80 C320,120 640,40 960,80 C1120,100 1280,60 1440,80 L1440,200 L0,200 Z" fill="white"/>
+        <path d="M0,100 C360,60 720,140 1080,100 C1260,80 1350,110 1440,100 L1440,200 L0,200 Z" fill="white" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+  <div class="posidonia-content">
+    <div class="posidonia-text">
+      <div class="section-tag">Innovaci&oacute;n</div>
+      <div class="posidonia-label"><span>Posidonia</span> Hub</div>
+      <p class="posidonia-desc">
+        La primera sala de neuromodulaci&oacute;n inmersiva de Espa&ntilde;a. Inaugurada en febrero de 2024, dise&ntilde;ada al 100% por los profesionales del centro. Una experiencia multisensorial que combina ciencia y bienestar.
+      </p>
+      <ul class="posidonia-features">
+        <li>
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#3AA47F" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></div>
+          Sill&oacute;n adaptativo con sistema de movimiento integrado
+        </li>
+        <li>
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#3AA47F" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></div>
+          Proyecciones visuales inmersivas con ambiente marino
+        </li>
+        <li>
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#3AA47F" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></div>
+          Aromaterapia oce&aacute;nica + sonidos ASMR + audio frecuencial
+        </li>
+        <li>
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#3AA47F" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></div>
+          Indicado para estr&eacute;s, dolor cr&oacute;nico, trastornos del sue&ntilde;o y fatiga
+        </li>
+        <li>
+          <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#3AA47F" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></div>
+          Tecnolog&iacute;a NESA de neuromodulaci&oacute;n no invasiva
+        </li>
+      </ul>
+    </div>
+    <div class="posidonia-visual">
+      <div class="posidonia-badge-first">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3AA47F" stroke-width="2.5" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <span>Primera en Espa&ntilde;a</span>
+      </div>
+      <!-- Abstract ocean/wave SVG illustration -->
+      <svg class="posidonia-icon" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="45" stroke="rgba(58,164,127,0.2)" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="32" stroke="rgba(58,164,127,0.15)" stroke-width="1"/>
+        <circle cx="50" cy="50" r="20" stroke="rgba(58,164,127,0.1)" stroke-width="0.8"/>
+        <path d="M20 55 C30 45, 40 60, 50 50 C60 40, 70 55, 80 48" stroke="#3AA47F" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M25 62 C35 52, 45 67, 55 57 C65 47, 72 60, 78 55" stroke="rgba(58,164,127,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <h3 class="posidonia-visual-title">Experiencia inmersiva</h3>
+      <p class="posidonia-visual-desc">Donde la neurociencia se encuentra con el Mediterr&aacute;neo. Dise&ntilde;ado para transformar, no para relajar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EFFICACY ========== -->
+<section class="efficacy">
+  <div class="efficacy-inner">
+    <div class="efficacy-stat">
+      <div class="efficacy-number">39%</div>
+      <div class="efficacy-label">Alta en la 2.&ordf; sesi&oacute;n</div>
+    </div>
+    <div class="efficacy-text">
+      <h3>Resultados medibles, no promesas</h3>
+      <p>Seg&uacute;n encuesta interna a m&aacute;s de 500 pacientes, el 39% recibi&oacute; el alta en la segunda sesi&oacute;n de fisioterapia. Un 35% adicional, en la tercera.</p>
+      <p class="efficacy-sub">Eso no es marketing. Es lo que pasa cuando el diagn&oacute;stico es preciso y el tratamiento, el correcto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== REVIEWS ========== -->
+<section id="opiniones" class="section reviews-section">
+  <div class="section-header">
+    <div class="section-tag">Opiniones</div>
+    <div class="reviews-hero">
+      <div class="reviews-big-score">5.0</div>
+      <div class="reviews-stars-row">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      </div>
+      <p class="reviews-google-text"><strong>500+ opiniones</strong> en Google Maps</p>
+      <div class="reviews-distinction">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#236B55" stroke-width="2" stroke-linecap="round"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>
+        <span>Mejor valorada de la provincia de Alicante</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      </div>
+      <p class="review-text">"Me hicieron sentir tranquila desde el primer minuto. La sensaci&oacute;n de seguridad que transmiten es algo que no hab&iacute;a encontrado en ning&uacute;n otro centro."</p>
+      <div class="review-author">Beatriz L.C.</div>
+      <div class="review-source">Google Maps</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      </div>
+      <p class="review-text">"&Aacute;lvaro y David me atendieron muy bien. Excelentes explicaciones con ecograf&iacute;a. Uno de los mejores fisioterapeutas que he conocido."</p>
+      <div class="review-author">Andrea F.</div>
+      <div class="review-source">Google Maps</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      </div>
+      <p class="review-text">"Mar&iacute;a Pastor es la mejor odont&oacute;loga. El equipo con Carla es excelente. Competencia t&eacute;cnica y calidades humanas dif&iacute;ciles de encontrar."</p>
+      <div class="review-author">Andros</div>
+      <div class="review-source">Google Maps</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      </div>
+      <p class="review-text">"Jos&eacute; Vicente es din&aacute;mico, activo y energ&eacute;tico. Explica todo con paciencia. Te motiva a dar lo mejor de ti en cada sesi&oacute;n de entrenamiento."</p>
+      <div class="review-author">Natasha D.G.</div>
+      <div class="review-source">Google Maps</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      </div>
+      <p class="review-text">"Mar&iacute;a es una profesional, te lo explica todo s&uacute;per bien. El personal explica todo a fondo y mandan videos de ejercicios por WhatsApp para seguimiento."</p>
+      <div class="review-author">Sandra L.M.</div>
+      <div class="review-source">Google Maps</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      </div>
+      <p class="review-text">"Uno de los mejores fisioterapeutas que he conocido. Competencia t&eacute;cnica y calidades humanas excepcionales. La tranquilidad que transmiten no tiene precio."</p>
+      <div class="review-author">Paciente verificado</div>
+      <div class="review-source">Google Maps</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LANGUAGES ========== -->
+<section class="languages">
+  <div class="languages-inner">
+    <div class="languages-title">Te atendemos en tu idioma</div>
+    <div class="languages-grid">
+      <div class="lang-pill"><span class="lang-flag">&#127466;&#127480;</span> Espa&ntilde;ol</div>
+      <div class="lang-pill"><span class="lang-flag">&#127468;&#127463;</span> English</div>
+      <div class="lang-pill"><span class="lang-flag">&#127467;&#127479;</span> Fran&ccedil;ais</div>
+      <div class="lang-pill"><span class="lang-flag">&#127465;&#127466;</span> Deutsch</div>
+      <div class="lang-pill"><span class="lang-flag">&#127470;&#127481;</span> Italiano</div>
+      <div class="lang-pill"><span class="lang-flag">&#127466;&#127480;</span> Catal&agrave;</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA FINAL ========== -->
+<section id="contacto" class="cta-section">
+  <div class="cta-content">
+    <h2 class="cta-title">Tu salud merece el centro mejor valorado de Alicante</h2>
+    <p class="cta-desc">Primera consulta de valoraci&oacute;n sin compromiso. Explicamos, diagnosticamos, y despu&eacute;s decides.</p>
+    <div class="cta-actions">
+      <a href="tel:+34629011055" class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Llamar: 629 011 055
+      </a>
+      <a href="mailto:info@centrosalufit.com" class="btn btn-outline">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Escribir email
+      </a>
+    </div>
+    <p class="cta-contact">
+      Calle Austria, 4, Bajo &middot; 03710 Calp, Alicante<br>
+      <a href="mailto:info@centrosalufit.com">info@centrosalufit.com</a> &middot;
+      <a href="tel:+34629011055">+34 629 011 055</a>
+    </p>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-wordmark">SALU<span>FIT</span></div>
+      <p>Centro integral de salud y bienestar en Calpe. Fisioterapia, odontolog&iacute;a, nutrici&oacute;n, psicolog&iacute;a, entrenamiento y medicina est&eacute;tica.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#">Fisioterapia</a></li>
+        <li><a href="#">Odontolog&iacute;a</a></li>
+        <li><a href="#">Nutrici&oacute;n</a></li>
+        <li><a href="#">Psicolog&iacute;a</a></li>
+        <li><a href="#">Entrenamiento</a></li>
+        <li><a href="#">Medicina est&eacute;tica</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Programas</h4>
+      <ul>
+        <li><a href="#">Posidonia Hub</a></li>
+        <li><a href="#">Programa Nutre-T</a></li>
+        <li><a href="#">Programa Desbloquea-T</a></li>
+        <li><a href="#">Programa Entrena-T</a></li>
+        <li><a href="#">Threet &mdash; Turismo de salud</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><span>Calle Austria, 4, Bajo</span></li>
+        <li><span>03710 Calp, Alicante</span></li>
+        <li><a href="tel:+34629011055">+34 629 011 055</a></li>
+        <li><a href="mailto:info@centrosalufit.com">info@centrosalufit.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2025 Centro Salufit. Todos los derechos reservados.</div>
+    <div class="footer-legal">
+      <a href="#">Aviso legal</a>
+      <a href="#">Pol&iacute;tica de privacidad</a>
+      <a href="#">Pol&iacute;tica de cookies</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== KENAZ WATERMARK ========== -->
+<div class="kenaz-watermark">
+  <div class="kenaz-rune">
+    <svg viewBox="0 0 100 100" fill="none">
+      <path d="M 68 18 L 30 50 L 68 82" stroke="#f2f2f2" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter"/>
+    </svg>
+  </div>
+  <span class="kenaz-label">Kenaz Studio</span>
+</div>
+
+</body>
+</html>

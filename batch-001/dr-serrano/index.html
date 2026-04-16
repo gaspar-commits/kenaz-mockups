@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Stephane Serrano — Medicina Estetica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal: #1a1a2e;
+    --charcoal-light: #2a2a3e;
+    --lavanda: #d4c5e2;
+    --lavanda-soft: #ece5f3;
+    --lavanda-bg: #f5f1f9;
+    --white: #fefefe;
+    --silver: #a8a8b8;
+    --gold: #c4a870;
+    --gold-hover: #d4b880;
+    --text-muted: #6b6b7b;
+    --border: #e8e4ee;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* ======================== NAV ======================== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(254, 254, 254, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: var(--charcoal);
+    text-transform: uppercase;
+  }
+
+  .nav-logo span {
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--charcoal);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--gold);
+  }
+
+  .nav-lang {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--silver);
+    letter-spacing: 1px;
+    display: flex;
+    gap: 4px;
+  }
+
+  .nav-lang .active {
+    color: var(--charcoal);
+  }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    padding: 12px 28px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold-hover);
+  }
+
+  /* ======================== HERO ======================== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 900px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--charcoal);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(26, 26, 46, 0.82) 0%, rgba(26, 26, 46, 0.55) 50%, rgba(26, 26, 46, 0.35) 100%),
+      url('img/hero-clinic.png') center/cover no-repeat;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 120px;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .hero h1 {
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  .hero-fr {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--lavanda);
+    font-style: italic;
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(254, 254, 254, 0.75);
+    line-height: 1.7;
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    padding: 18px 40px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-hover);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(254, 254, 254, 0.3);
+    padding: 18px 40px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--white);
+  }
+
+  /* Decorative line */
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: 120px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  /* ======================== CREDENTIALS STRIP ======================== */
+  .credentials {
+    background: var(--charcoal);
+    padding: 48px 80px;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    border-top: 1px solid rgba(212, 197, 226, 0.1);
+  }
+
+  .credential-item {
+    text-align: center;
+  }
+
+  .credential-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .credential-label {
+    font-size: 12px;
+    color: var(--silver);
+    letter-spacing: 1px;
+  }
+
+  .credential-divider {
+    width: 1px;
+    background: rgba(212, 197, 226, 0.15);
+    align-self: stretch;
+  }
+
+  /* ======================== SECTION SHARED ======================== */
+  .section {
+    padding: 120px 80px;
+  }
+
+  .section-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+  }
+
+  .section-subtitle {
+    font-size: 17px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 64px;
+  }
+
+  /* ======================== TREATMENTS ======================== */
+  .treatments {
+    background: var(--white);
+  }
+
+  .treatments-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .treatments-header .section-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .treatment-zones {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .treatment-zone {
+    /* zone wrapper */
+  }
+
+  .zone-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .treatment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .treatment-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 36px 32px;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .treatment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    transform-origin: left;
+  }
+
+  .treatment-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .treatment-card:hover {
+    border-color: var(--lavanda);
+    box-shadow: 0 8px 32px rgba(26, 26, 46, 0.06);
+  }
+
+  .treatment-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .treatment-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .treatment-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .treatment-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ======================== DR. SERRANO ======================== */
+  .doctor {
+    background: var(--lavanda-bg);
+  }
+
+  .doctor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .doctor-image {
+    aspect-ratio: 3 / 4;
+    background:
+      linear-gradient(135deg, var(--lavanda-soft) 0%, var(--lavanda) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .doctor-image-inner {
+    width: 100%;
+    height: 100%;
+    background:
+      linear-gradient(160deg, #1a1a2e 0%, #2a2a4e 40%, #3a2a4e 70%, #1a1a2e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .doctor-initials {
+    font-family: 'Outfit', sans-serif;
+    font-size: 96px;
+    font-weight: 700;
+    color: var(--lavanda);
+    letter-spacing: 8px;
+    opacity: 0.85;
+    line-height: 1;
+  }
+
+  .doctor-image-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  .doctor-image-line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .doctor-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(to top, var(--lavanda-bg), transparent);
+  }
+
+  .doctor-bio {
+    padding: 20px 0;
+  }
+
+  .doctor-bio .section-label {
+    margin-bottom: 24px;
+  }
+
+  .doctor-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    line-height: 1.15;
+  }
+
+  .doctor-title-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+
+  .doctor-text {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .doctor-creds {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .doctor-cred {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .doctor-cred-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .doctor-cred-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .doctor-cred-text {
+    font-size: 14px;
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+
+  .doctor-cred-text span {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  /* ======================== CLINICS ======================== */
+  .clinics {
+    background: var(--white);
+  }
+
+  .clinics-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .clinics-header .section-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .clinics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .clinic-card {
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .clinic-map {
+    height: 220px;
+    background: var(--lavanda-soft);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .clinic-map-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e8e4ee 0%, #d4c5e2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .clinic-map-pin {
+    width: 48px;
+    height: 48px;
+    background: var(--gold);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .clinic-map-pin::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: var(--white);
+    border-radius: 50%;
+    transform: rotate(45deg);
+  }
+
+  .clinic-info {
+    padding: 40px 36px;
+  }
+
+  .clinic-city {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+  }
+
+  .clinic-detail {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+    align-items: flex-start;
+  }
+
+  .clinic-detail svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .clinic-detail-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .clinic-detail-text strong {
+    color: var(--charcoal);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ======================== CTA SECTION ======================== */
+  .cta-section {
+    background: var(--charcoal);
+    padding: 120px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212, 197, 226, 0.08) 0%, transparent 70%);
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-fr {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--lavanda);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .cta-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .cta-sub {
+    font-size: 17px;
+    color: var(--silver);
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .cta-phone {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 2px;
+  }
+
+  .cta-phone-label {
+    font-size: 12px;
+    color: var(--silver);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* ======================== FOOTER ======================== */
+  footer {
+    background: #121222;
+    padding: 80px 80px 48px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 64px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(254, 254, 254, 0.06);
+  }
+
+  .footer-brand {
+    /* col 1 */
+  }
+
+  .footer-logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .footer-logo span {
+    color: var(--gold);
+  }
+
+  .footer-tagline {
+    font-size: 14px;
+    color: var(--silver);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    max-width: 280px;
+  }
+
+  .footer-badges {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .footer-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--silver);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border: 1px solid rgba(254, 254, 254, 0.08);
+  }
+
+  .footer-badge svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .footer-col-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .footer-col p {
+    font-size: 13px;
+    color: var(--silver);
+    line-height: 1.8;
+    margin-bottom: 4px;
+  }
+
+  .footer-col a {
+    font-size: 13px;
+    color: var(--silver);
+    text-decoration: none;
+    line-height: 2;
+    display: block;
+    transition: color 0.3s;
+  }
+
+  .footer-col a:hover {
+    color: var(--gold);
+  }
+
+  .footer-bottom {
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-legal {
+    font-size: 12px;
+    color: rgba(168, 168, 184, 0.5);
+  }
+
+  .footer-langs {
+    font-size: 12px;
+    color: var(--silver);
+    letter-spacing: 1px;
+  }
+
+  /* ======================== TREATMENT BANNERS ======================== */
+  .treatment-banner {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+    margin-top: 64px;
+  }
+
+  .treatment-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.7) contrast(1.05);
+  }
+
+  .treatment-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(26, 26, 46, 0.75) 0%, rgba(26, 26, 46, 0.2) 60%, transparent 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+  }
+
+  .treatment-banner-text {
+    max-width: 480px;
+  }
+
+  .treatment-banner-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .treatment-banner-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .treatment-banner-sub {
+    font-size: 14px;
+    color: rgba(254, 254, 254, 0.7);
+    line-height: 1.6;
+  }
+
+  /* ======================== VISUAL BREAK ======================== */
+  .visual-break {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+  }
+
+  .visual-break img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.6) contrast(1.1);
+  }
+
+  .visual-break-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26, 26, 46, 0.5) 0%, rgba(26, 26, 46, 0.8) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .visual-break-line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .visual-break-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--lavanda);
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .visual-break-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav>
+  <div class="nav-logo">Dr. Stephane <span>Serrano</span></div>
+  <ul class="nav-links">
+    <li><a href="#tratamientos">Tratamientos</a></li>
+    <li><a href="#doctor">Dr. Serrano</a></li>
+    <li><a href="#clinicas">Clinicas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li>
+      <div class="nav-lang">
+        <span class="active">ES</span>
+        <span>/</span>
+        <span>FR</span>
+      </div>
+    </li>
+    <li><button class="nav-cta">Reservar Consulta</button></li>
+  </ul>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Medicina Estetica &mdash; Costa Blanca</div>
+    <h1>Precision que<br>se siente.</h1>
+    <div class="hero-fr">La beaute est une science.</div>
+    <p class="hero-sub">Medicina estetica con criterio medico.<br>Dos clinicas en la Costa Blanca. Formacion francesa.</p>
+    <div class="hero-buttons">
+      <button class="btn-primary">Reservar Consulta</button>
+      <button class="btn-secondary">Ver Tratamientos</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CREDENTIALS ===================== -->
+<div class="credentials">
+  <div class="credential-item">
+    <div class="credential-value">Doctorado</div>
+    <div class="credential-label">Universite Aix-Marseille II</div>
+  </div>
+  <div class="credential-divider"></div>
+  <div class="credential-item">
+    <div class="credential-value">Master</div>
+    <div class="credential-label">Medicina Estetica &mdash; Univ. Valencia</div>
+  </div>
+  <div class="credential-divider"></div>
+  <div class="credential-item">
+    <div class="credential-value">SEME #2620</div>
+    <div class="credential-label">Sello de Calidad Acreditado</div>
+  </div>
+  <div class="credential-divider"></div>
+  <div class="credential-item">
+    <div class="credential-value">Col. 030307906</div>
+    <div class="credential-label">Colegiado en Alicante</div>
+  </div>
+</div>
+
+<!-- ===================== TREATMENTS ===================== -->
+<section id="tratamientos" class="section treatments">
+  <div class="treatments-header">
+    <div class="section-label">Tratamientos</div>
+    <h2 class="section-title">Resultados naturales,<br>tecnica precisa.</h2>
+    <p class="section-subtitle">Cada procedimiento se adapta a la anatomia unica de su rostro. Sin excesos. Sin artificialidad. Medicina estetica como debe ser.</p>
+  </div>
+
+  <div class="treatment-zones">
+    <!-- Zone: Rejuvenecimiento Facial -->
+    <div class="treatment-zone">
+      <div class="zone-title">Rejuvenecimiento Facial</div>
+      <div class="treatment-grid">
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
+          </div>
+          <div class="treatment-name">Acido Hialuronico</div>
+          <div class="treatment-desc">Restauracion de volumen y estructura facial con tecnica de microcanula francesa.</div>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+          <div class="treatment-name">Toxina Botulinica</div>
+          <div class="treatment-desc">Tratamiento de lineas de expresion con dosificacion precisa y resultado natural.</div>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2v4m0 12v4m-8-10h4m12 0h4m-5.66-5.66l-2.83 2.83m-5.02 5.02l-2.83 2.83m0-10.68l2.83 2.83m5.02 5.02l2.83 2.83"/></svg>
+          </div>
+          <div class="treatment-name">Mesoterapia Facial</div>
+          <div class="treatment-desc">Cocktail de vitaminas y minerales inyectados para revitalizar la piel en profundidad.</div>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div class="treatment-name">Bioestimulacion</div>
+          <div class="treatment-desc">Estimulacion del colageno propio mediante inductores biologicos de ultima generacion.</div>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4m-8.66-14.5l3.46 2m10.4 6l3.46 2m-17.32 0l3.46-2m10.4-6l3.46-2"/></svg>
+          </div>
+          <div class="treatment-name">Peeling Medico</div>
+          <div class="treatment-desc">Renovacion cutanea controlada para unificar tono, textura y luminosidad.</div>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3l1.45 4.46L18 9l-4.55 1.54L12 15l-1.45-4.46L6 9l4.55-1.54z"/></svg>
+          </div>
+          <div class="treatment-name">Skinbooster</div>
+          <div class="treatment-desc">Microinyecciones de acido hialuronico fluido para hidratacion profunda y glow natural.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner: Injectable -->
+    <div class="treatment-banner">
+      <img src="img/treatment-injectable.png" alt="Inyectables de precision">
+      <div class="treatment-banner-overlay">
+        <div class="treatment-banner-text">
+          <div class="treatment-banner-label">Precision Francesa</div>
+          <div class="treatment-banner-title">Cada inyeccion es una decision medica.</div>
+          <div class="treatment-banner-sub">Productos premium. Tecnica de microcanula. Resultados que se sienten, no que se notan.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zone: Tratamientos Especificos -->
+    <div class="treatment-zone">
+      <div class="zone-title">Tratamientos por Zona</div>
+      <div class="treatment-grid">
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M8 12h8"/></svg>
+          </div>
+          <div class="treatment-name">Labios</div>
+          <div class="treatment-desc">Perfilado, volumen y rehidratacion labial con tecnica de precision milimetrica.</div>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div class="treatment-name">Ojeras</div>
+          <div class="treatment-desc">Correccion del surco lagrimal y ojera oscura con acido hialuronico especifico.</div>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="treatment-name">Pomulos</div>
+          <div class="treatment-desc">Restauracion del triangulo de juventud con volumetria anatomica precisa.</div>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <div class="treatment-name">Menton y Mandibula</div>
+          <div class="treatment-desc">Definicion de perfil y angulo mandibular con tecnica de reestructuracion facial.</div>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+          <div class="treatment-name">Papada</div>
+          <div class="treatment-desc">Reduccion del contorno submentoniano con tratamientos lipoliticos inyectables.</div>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="treatment-name">Nariz sin Cirugia</div>
+          <div class="treatment-desc">Rinomodelacion con acido hialuronico para corregir imperfecciones sin bisturi.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner: Mesotherapy -->
+    <div class="treatment-banner">
+      <img src="img/treatment-mesotherapy.png" alt="Mesoterapia de precision">
+      <div class="treatment-banner-overlay">
+        <div class="treatment-banner-text">
+          <div class="treatment-banner-label">Bioestimulacion</div>
+          <div class="treatment-banner-title">La piel responde cuando se trata con criterio.</div>
+          <div class="treatment-banner-sub">Micro-needling controlado. Protocolos personalizados segun el estado de cada piel.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISUAL BREAK ===================== -->
+<div class="visual-break">
+  <img src="img/treatment-rejuvenation.png" alt="Rejuvenecimiento">
+  <div class="visual-break-overlay">
+    <div class="visual-break-line"></div>
+    <div class="visual-break-text">La beaute est une science.</div>
+    <div class="visual-break-sub">Dr. Stephane Serrano</div>
+    <div class="visual-break-line"></div>
+  </div>
+</div>
+
+<!-- ===================== DR. SERRANO ===================== -->
+<section id="doctor" class="section doctor">
+  <div class="doctor-grid">
+    <div class="doctor-image">
+      <div class="doctor-image-inner">
+        <div class="doctor-image-line"></div>
+        <div class="doctor-initials">SS</div>
+        <div class="doctor-image-name">Dr. Stephane Serrano</div>
+        <div class="doctor-image-line"></div>
+      </div>
+    </div>
+    <div class="doctor-bio">
+      <div class="section-label">El Medico</div>
+      <h2 class="doctor-name">Dr. Stephane Yvon<br>Rene Serrano</h2>
+      <div class="doctor-title-text">Medecin Esthetique</div>
+      <p class="doctor-text">
+        Nacido en Marsella y formado entre Francia y Espana, el Dr. Serrano
+        combina la tradicion medica francesa con la exigencia de la
+        medicina estetica contemporanea. Su enfoque: resultados que se
+        sienten, no que se notan.
+      </p>
+      <p class="doctor-text">
+        Doctorado por la Universite Aix-Marseille II y Master en Medicina
+        Estetica por la Universidad de Valencia. Miembro acreditado de la
+        SEME (Sociedad Espanola de Medicina Estetica) con Sello de Calidad.
+      </p>
+      <div class="doctor-creds">
+        <div class="doctor-cred">
+          <div class="doctor-cred-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg>
+          </div>
+          <div class="doctor-cred-text">Doctorado &mdash; <span>Universite Aix-Marseille II</span></div>
+        </div>
+        <div class="doctor-cred">
+          <div class="doctor-cred-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          </div>
+          <div class="doctor-cred-text">Master en Medicina Estetica &mdash; <span>Universidad de Valencia</span></div>
+        </div>
+        <div class="doctor-cred">
+          <div class="doctor-cred-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="doctor-cred-text">SEME #2620 &mdash; <span>Sello de Calidad Acreditado</span></div>
+        </div>
+        <div class="doctor-cred">
+          <div class="doctor-cred-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg>
+          </div>
+          <div class="doctor-cred-text">Colegiado 030307906 &mdash; <span>Alicante</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLINICS ===================== -->
+<section id="clinicas" class="section clinics">
+  <div class="clinics-header">
+    <div class="section-label">Clinicas</div>
+    <h2 class="section-title">Dos sedes, un criterio.</h2>
+    <p class="section-subtitle">Consulta presencial en Calpe y Benidorm. Entorno medico profesional, atencion personalizada, sin prisas.</p>
+  </div>
+
+  <div class="clinics-grid">
+    <!-- Calpe -->
+    <div class="clinic-card">
+      <div class="clinic-map">
+        <div class="clinic-map-inner">
+          <div class="clinic-map-pin"></div>
+        </div>
+      </div>
+      <div class="clinic-info">
+        <h3 class="clinic-city">Calpe</h3>
+        <div class="clinic-detail">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="clinic-detail-text">
+            <strong>Av. Diputacion 24</strong>
+            Edificio Cristal, Planta 1<br>
+            03710 Calpe, Alicante
+          </div>
+        </div>
+        <div class="clinic-detail">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="clinic-detail-text">
+            <strong>Horario</strong>
+            Lunes a Viernes: 15:30 &ndash; 17:30
+          </div>
+        </div>
+        <div class="clinic-detail">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="clinic-detail-text">
+            <strong>Cita previa</strong>
+            +34 606 753 052
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benidorm -->
+    <div class="clinic-card">
+      <div class="clinic-map">
+        <div class="clinic-map-inner">
+          <div class="clinic-map-pin"></div>
+        </div>
+      </div>
+      <div class="clinic-info">
+        <h3 class="clinic-city">Benidorm</h3>
+        <div class="clinic-detail">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="clinic-detail-text">
+            <strong>Av. Alfonso Puchades 19, Local 2</strong>
+            Edificio Hipocampo<br>
+            03501 Benidorm, Alicante
+          </div>
+        </div>
+        <div class="clinic-detail">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="clinic-detail-text">
+            <strong>Horario</strong>
+            Lunes a Viernes: 10:00 &ndash; 12:45 / 18:00 &ndash; 19:30
+          </div>
+        </div>
+        <div class="clinic-detail">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="clinic-detail-text">
+            <strong>Cita previa</strong>
+            +34 606 753 052
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section id="contacto" class="section cta-section">
+  <div class="cta-content">
+    <div class="cta-fr">Votre transformation commence ici.</div>
+    <h2 class="cta-title">Su transformacion comienza aqui.</h2>
+    <p class="cta-sub">Primera consulta personalizada. Sin compromiso. En espanol o en francais.</p>
+    <div class="cta-buttons">
+      <button class="btn-primary">Reservar Consulta</button>
+    </div>
+    <div class="cta-phone">+34 606 753 052</div>
+    <div class="cta-phone-label">Cita previa telefonica</div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Dr. Stephane <span>Serrano</span></div>
+      <p class="footer-tagline">Medicina estetica con formacion francesa y atencion personalizada en la Costa Blanca.</p>
+      <div class="footer-badges">
+        <div class="footer-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          SEME
+        </div>
+        <div class="footer-badge">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg>
+          Colegiado
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Calpe</div>
+      <p>Av. Diputacion 24</p>
+      <p>Edificio Cristal, Planta 1</p>
+      <p>L&ndash;V 15:30 &ndash; 17:30</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Benidorm</div>
+      <p>Av. Alfonso Puchades 19</p>
+      <p>Edificio Hipocampo, Local 2</p>
+      <p>L&ndash;V 10:00 &ndash; 12:45 / 18:00 &ndash; 19:30</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contacto</div>
+      <a href="tel:+34606753052">+34 606 753 052</a>
+      <p style="margin-top: 16px; font-size: 12px; color: rgba(168,168,184,0.5);">Francais &middot; Espanol</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">&copy; 2026 Dr. Stephane Serrano. Colegiado 030307906. Todos los derechos reservados.</div>
+    <div class="footer-langs">ES / FR</div>
+  </div>
+</footer>
+
+</body>
+</html>

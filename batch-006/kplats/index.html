@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K'Plats &mdash; Cocina de Autor &middot; Calpe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Inter:wght@200;300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   K'PLATS — FULLPAGE MOCKUP
+   Kenaz Studio Production
+   ================================================================ */
+
+/* === RESET === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0F0F0F;
+  color: #F5F0E8;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { border: none; cursor: pointer; font-family: inherit; }
+
+/* === CUSTOM PROPERTIES === */
+:root {
+  --negro: #0F0F0F;
+  --negro-deep: #0A0A0A;
+  --negro-card: #161616;
+  --negro-elevated: #1A1A1A;
+  --dorado: #C9A96E;
+  --dorado-dark: #A88B52;
+  --dorado-light: #D4BA85;
+  --dorado-muted: rgba(201, 169, 110, 0.06);
+  --sage: #7A8B6F;
+  --sage-muted: rgba(122, 139, 111, 0.12);
+  --blanco: #FAFAFA;
+  --crema: #F5F0E8;
+  --crema-dark: #E0D8CC;
+  --gris: #6B6B6B;
+  --gris-light: #999;
+  --gris-subtle: #333;
+  --nav-h: 80px;
+  --section-py: clamp(100px, 10vw, 160px);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* === TYPOGRAPHY CLASSES === */
+.font-display { font-family: 'Playfair Display', Georgia, serif; }
+.font-accent  { font-family: 'Cormorant Garamond', Georgia, serif; }
+.font-body    { font-family: 'Inter', system-ui, sans-serif; }
+
+/* === UTILITY === */
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 72px);
+}
+
+/* Section shared patterns */
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.section-label::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--dorado);
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+  color: var(--crema);
+  line-height: 1.1;
+  margin-bottom: 28px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--gris-light);
+  max-width: 560px;
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--dorado);
+  color: var(--negro);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 18px 40px;
+  transition: all 0.4s var(--ease);
+}
+.btn-primary:hover {
+  background: var(--dorado-light);
+  transform: translateY(-1px);
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--dorado);
+  border: 1px solid rgba(201, 169, 110, 0.35);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 17px 38px;
+  transition: all 0.4s var(--ease);
+}
+.btn-outline:hover {
+  border-color: var(--dorado);
+  background: var(--dorado-muted);
+}
+
+/* ================================================================
+   NAVIGATION
+   ================================================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  background: rgba(15, 15, 15, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.08);
+}
+.nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.nav-logo img {
+  height: 52px;
+  width: auto;
+}
+.nav-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--crema);
+  letter-spacing: 0.08em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.nav-links a {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gris-light);
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--crema); }
+.nav-cta {
+  background: var(--dorado) !important;
+  color: var(--negro) !important;
+  font-weight: 600 !important;
+  padding: 12px 28px !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.18em !important;
+}
+
+/* ================================================================
+   HERO SECTION
+   ================================================================ */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 800px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(15, 15, 15, 0.55) 0%,
+      rgba(15, 15, 15, 0.25) 35%,
+      rgba(15, 15, 15, 0.40) 65%,
+      rgba(15, 15, 15, 0.92) 100%
+    ),
+    linear-gradient(90deg,
+      rgba(15, 15, 15, 0.75) 0%,
+      rgba(15, 15, 15, 0.05) 55%
+    );
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  padding-top: 60px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(201, 169, 110, 0.10);
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  padding: 10px 20px;
+  margin-bottom: 36px;
+}
+.hero-badge span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dorado);
+}
+.hero-badge svg {
+  width: 16px;
+  height: 16px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-weight: 400;
+  color: var(--crema);
+  line-height: 1.06;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--dorado);
+}
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--gris-light);
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 44px;
+}
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.hero-stats {
+  position: absolute;
+  bottom: 60px;
+  right: clamp(24px, 4vw, 72px);
+  z-index: 2;
+  display: flex;
+  gap: 48px;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: var(--crema);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-top: 8px;
+}
+
+/* ================================================================
+   MARQUEE / AWARDS STRIP
+   ================================================================ */
+.awards-strip {
+  background: var(--negro-deep);
+  border-top: 1px solid rgba(201, 169, 110, 0.08);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.08);
+  padding: 22px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.awards-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: nowrap;
+}
+.award-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.award-item span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris-light);
+}
+.award-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--dorado);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ================================================================
+   FILOSOFIA SECTION
+   ================================================================ */
+.filosofia {
+  padding: var(--section-py) 0;
+  position: relative;
+}
+.filosofia-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.filosofia-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  aspect-ratio: 1;
+}
+.filosofia-images .fi-img {
+  overflow: hidden;
+  position: relative;
+}
+.filosofia-images .fi-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.filosofia-images .fi-img:nth-child(1) {
+  grid-column: 1 / 3;
+  aspect-ratio: 2 / 1.1;
+}
+.filosofia-images .fi-img:nth-child(2) {
+  aspect-ratio: 1 / 1.2;
+}
+.filosofia-images .fi-img:nth-child(3) {
+  aspect-ratio: 1 / 1.2;
+}
+.filosofia-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--dorado-light);
+  line-height: 1.6;
+  margin-top: 32px;
+  padding-left: 24px;
+  border-left: 2px solid rgba(201, 169, 110, 0.3);
+}
+.filosofia-text p {
+  font-size: 1.05rem;
+  color: var(--gris-light);
+  line-height: 1.9;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+/* ================================================================
+   MENU / CARTA SECTION
+   ================================================================ */
+.carta {
+  padding: var(--section-py) 0;
+  background: var(--negro-deep);
+  position: relative;
+}
+.carta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.15), transparent);
+}
+.carta-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 72px;
+}
+.carta-header .section-label {
+  justify-content: center;
+}
+.carta-header .section-label::before { display: none; }
+
+/* Degustaci&oacute;n highlight */
+.degustacion {
+  background: var(--negro-card);
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  padding: 56px 64px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 72px;
+}
+.degustacion-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--crema);
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+.degustacion-info p {
+  font-size: 0.95rem;
+  color: var(--gris-light);
+  line-height: 1.8;
+  font-weight: 300;
+}
+.degustacion-price {
+  text-align: center;
+  padding: 0 40px;
+  border-left: 1px solid rgba(201, 169, 110, 0.12);
+}
+.degustacion-price .price-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  color: var(--dorado);
+  line-height: 1;
+}
+.degustacion-price .price-detail {
+  font-size: 0.7rem;
+  color: var(--gris);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* Menu categories */
+.carta-categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 56px 72px;
+}
+.carta-cat h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  color: var(--crema);
+  font-weight: 400;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gris-subtle);
+}
+.carta-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.carta-item-name {
+  font-size: 0.92rem;
+  color: var(--crema-dark);
+  font-weight: 400;
+  max-width: 70%;
+  line-height: 1.5;
+}
+.carta-item-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--dorado);
+  white-space: nowrap;
+  margin-left: 16px;
+}
+.carta-item.highlight .carta-item-name {
+  color: var(--crema);
+  font-weight: 500;
+}
+
+/* Platos gallery row */
+.carta-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 72px;
+}
+.carta-gallery-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+}
+.carta-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+.carta-gallery-item:hover img {
+  transform: scale(1.04);
+}
+.carta-gallery-item .cg-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--crema);
+}
+
+/* ================================================================
+   CHEF SECTION
+   ================================================================ */
+.chef {
+  padding: var(--section-py) 0;
+  position: relative;
+  overflow: hidden;
+}
+.chef-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.chef-image {
+  position: relative;
+  overflow: hidden;
+}
+.chef-image img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+}
+.chef-image-accent {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(transparent, var(--negro));
+}
+.chef-content {}
+.chef-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--crema);
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.chef-role {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-bottom: 36px;
+}
+
+/* Timeline */
+.chef-timeline {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 40px;
+}
+.chef-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--dorado), rgba(201,169,110,0.15));
+}
+.timeline-item {
+  position: relative;
+  padding: 0 0 32px 0;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 8px;
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid var(--dorado);
+  background: var(--negro);
+  border-radius: 50%;
+}
+.timeline-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--dorado);
+  margin-bottom: 6px;
+}
+.timeline-desc {
+  font-size: 0.92rem;
+  color: var(--gris-light);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.chef-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--crema-dark);
+  line-height: 1.55;
+  padding: 32px;
+  background: var(--negro-card);
+  border-left: 3px solid var(--dorado);
+}
+
+/* ================================================================
+   REVIEWS SECTION
+   ================================================================ */
+.reviews {
+  padding: var(--section-py) 0;
+  background: var(--negro-deep);
+  position: relative;
+}
+.reviews::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.15), transparent);
+}
+.reviews-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.reviews-header .section-label {
+  justify-content: center;
+}
+.reviews-header .section-label::before { display: none; }
+.reviews-scores {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  margin-bottom: 72px;
+}
+.review-score {
+  text-align: center;
+}
+.review-score-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.8rem;
+  color: var(--crema);
+  line-height: 1;
+}
+.review-score-stars {
+  color: var(--dorado);
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  margin: 8px 0;
+}
+.review-score-platform {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+.review-score-count {
+  font-size: 0.78rem;
+  color: var(--gris-light);
+  margin-top: 4px;
+}
+
+/* Review cards */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review-card {
+  background: var(--negro-card);
+  border: 1px solid rgba(255,255,255,0.04);
+  padding: 40px;
+}
+.review-card-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--crema-dark);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.review-card-quote::before {
+  content: '\201C';
+  font-size: 2.5rem;
+  color: var(--dorado);
+  line-height: 0.5;
+  display: block;
+  margin-bottom: 12px;
+}
+.review-card-author {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+.review-card-source {
+  font-size: 0.68rem;
+  color: var(--dorado-dark);
+  margin-top: 4px;
+}
+
+/* ================================================================
+   EXPERIENCIA (GALLERY) SECTION
+   ================================================================ */
+.experiencia {
+  padding: var(--section-py) 0;
+}
+.experiencia-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 64px;
+}
+.experiencia-header .section-label {
+  justify-content: center;
+}
+.experiencia-header .section-label::before { display: none; }
+.experiencia-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 12px;
+}
+.experiencia-grid .eg-item {
+  overflow: hidden;
+  position: relative;
+}
+.experiencia-grid .eg-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.experiencia-grid .eg-item:nth-child(1) {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  aspect-ratio: auto;
+  min-height: 500px;
+}
+.experiencia-grid .eg-item:nth-child(2) {
+  aspect-ratio: 16/10;
+}
+.experiencia-grid .eg-item:nth-child(3) {
+  aspect-ratio: 16/10;
+}
+.experiencia-grid .eg-item:nth-child(4) {
+  aspect-ratio: 16/10;
+}
+.experiencia-grid .eg-item:nth-child(5) {
+  aspect-ratio: 16/10;
+}
+
+/* ================================================================
+   CTA SECTION
+   ================================================================ */
+.cta-section {
+  padding: var(--section-py) 0;
+  background: var(--negro-deep);
+  position: relative;
+  text-align: center;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.15), transparent);
+}
+.cta-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.cta-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--crema);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.cta-inner p {
+  font-size: 1.05rem;
+  color: var(--gris-light);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+.cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta-info {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--gris-subtle);
+}
+.cta-info-item {
+  text-align: center;
+}
+.cta-info-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gris);
+  margin-bottom: 8px;
+}
+.cta-info-value {
+  font-size: 0.92rem;
+  color: var(--crema-dark);
+  font-weight: 400;
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.footer {
+  padding: 48px 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.footer-left img {
+  height: 40px;
+  width: auto;
+}
+.footer-left span {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--crema);
+}
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gris);
+}
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.footer-link {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+.footer-social {
+  display: flex;
+  gap: 16px;
+}
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--gris-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gris);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ================================================================
+   WATERMARK KENAZ
+   ================================================================ */
+.kenaz-watermark {
+  position: fixed;
+  bottom: 24px;
+  right: 28px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.65;
+}
+.kenaz-watermark svg {
+  width: 22px;
+  height: 22px;
+}
+.kenaz-watermark span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--crema);
+}
+
+/* ================================================================
+   COCTELERIA SECTION
+   ================================================================ */
+.cocteleria {
+  padding: var(--section-py) 0;
+  position: relative;
+}
+.cocteleria-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+}
+.cocteleria-image {
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.cocteleria-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cocteleria-list {
+  margin-top: 32px;
+}
+.cocteleria-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.cocteleria-item-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--crema);
+}
+.cocteleria-item-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--dorado);
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+  .filosofia-grid,
+  .chef-grid,
+  .cocteleria-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .carta-categories {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .carta-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .reviews-scores {
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-stats {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: 48px;
+    justify-content: flex-start;
+  }
+  .degustacion {
+    grid-template-columns: 1fr;
+    padding: 40px;
+  }
+  .degustacion-price {
+    border-left: none;
+    border-top: 1px solid rgba(201,169,110,0.12);
+    padding: 24px 0 0;
+    text-align: left;
+  }
+  .experiencia-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .experiencia-grid .eg-item:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: auto;
+    min-height: 300px;
+    aspect-ratio: 16/9;
+  }
+  .cta-info {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero h1 { font-size: 2.4rem; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .hero-stats { flex-direction: column; gap: 24px; }
+  .awards-inner { gap: 24px; font-size: 0.6rem; }
+  .carta-gallery { grid-template-columns: 1fr; }
+  .experiencia-grid { grid-template-columns: 1fr; }
+  .experiencia-grid .eg-item:nth-child(1) {
+    grid-column: auto;
+  }
+  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+  .footer-right { flex-direction: column; gap: 16px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     NAVIGATION
+     ================================================================ -->
+<nav class="nav">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <img src="img/logo.png" alt="K'Plats">
+    </a>
+    <div class="nav-links">
+      <a href="#filosofia">Filosof&iacute;a</a>
+      <a href="#carta">Carta</a>
+      <a href="#chef">El Chef</a>
+      <a href="#cocteleria">Cocteler&iacute;a</a>
+      <a href="#reviews">Opiniones</a>
+      <a href="#reservar" class="nav-cta">Reservar</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <img src="img/hero-chef-plating.jpg"
+         alt="Chef terminando un plato de autor en K'Plats">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--dorado)">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+      <span>#1 TripAdvisor Calpe &middot; Travelers' Choice 2025</span>
+    </div>
+    <h1>Donde la <em>fusi&oacute;n</em><br>se hace arte</h1>
+    <p class="hero-sub">Cocina de autor con ra&iacute;ces en Mendoza y alma mediterr&aacute;nea.
+      Cada plato cuenta una historia de t&eacute;cnica, producto local y pasi&oacute;n sin filtros.</p>
+    <div class="hero-actions">
+      <a href="#reservar" class="btn-primary">Reservar Mesa</a>
+      <a href="#carta" class="btn-outline">Ver la Carta</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-number">4.9</div>
+      <div class="hero-stat-label">Google</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number">1,475+</div>
+      <div class="hero-stat-label">Reviews</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number">#1</div>
+      <div class="hero-stat-label">de 367</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     AWARDS STRIP
+     ================================================================ -->
+<div class="awards-strip">
+  <div class="awards-inner">
+    <div class="award-item">
+      <span>#1 TripAdvisor Calpe</span>
+    </div>
+    <div class="award-dot"></div>
+    <div class="award-item">
+      <span>Travelers' Choice 2025</span>
+    </div>
+    <div class="award-dot"></div>
+    <div class="award-item">
+      <span>4.9 &star; Google &middot; 1.475 opiniones</span>
+    </div>
+    <div class="award-dot"></div>
+    <div class="award-item">
+      <span>9.8/10 GastroRanking</span>
+    </div>
+    <div class="award-dot"></div>
+    <div class="award-item">
+      <span>+12 a&ntilde;os de experiencia</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     FILOSOFIA
+     ================================================================ -->
+<section class="filosofia" id="filosofia">
+  <div class="container">
+    <div class="filosofia-grid">
+      <div class="filosofia-images">
+        <div class="fi-img">
+          <img src="img/soplete-accion.jpg"
+               alt="Chef flameando un plato con soplete">
+        </div>
+        <div class="fi-img">
+          <img src="img/hoja-platano.jpg"
+               alt="Preparaci&oacute;n en hoja de pl&aacute;tano, fusi&oacute;n latinoamericana">
+        </div>
+        <div class="fi-img">
+          <img src="img/bimis-tempura.jpg"
+               alt="Bimis en tempura de ma&iacute;z morado, plato signature">
+        </div>
+      </div>
+      <div class="filosofia-text">
+        <div class="section-label">Filosof&iacute;a</div>
+        <h2 class="section-title">Producto local,<br>t&eacute;cnica sin fronteras</h2>
+        <p>K'Plats nace de una idea simple: que la mejor cocina ocurre cuando la tradici&oacute;n mediterr&aacute;nea se encuentra con la creatividad latinoamericana. Cada ingrediente es local, de la Costa Blanca. Cada t&eacute;cnica viaja desde Mendoza hasta Per&uacute;, desde Jap&oacute;n hasta el Mediterr&aacute;neo.</p>
+        <p>No seguimos tendencias. Creamos platos que cuentan historias &mdash; la del pescador de Calpe, la del productor de aceite de la Marina Alta, la del chef que cruz&oacute; un oc&eacute;ano con un cuchillo y una obsesi&oacute;n.</p>
+        <div class="filosofia-quote">
+          &laquo;Cocinar es traducir lo que sientes en algo que otros pueden probar.&raquo;
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CARTA / MENU
+     ================================================================ -->
+<section class="carta" id="carta">
+  <div class="container">
+    <div class="carta-header">
+      <div class="section-label">La Carta</div>
+      <h2 class="section-title">Cada plato, una historia</h2>
+      <p class="section-desc" style="margin: 0 auto;">Fusi&oacute;n mediterr&aacute;nea-latinoamericana con producto de temporada. Nuestra carta evoluciona, pero la obsesi&oacute;n por la calidad es constante.</p>
+    </div>
+
+    <!-- Degustaci&oacute;n -->
+    <div class="degustacion">
+      <div class="degustacion-info">
+        <h3>Men&uacute; Degustaci&oacute;n</h3>
+        <p>Seis tapas de autor y un postre. El recorrido completo por la cocina de K'Plats: desde el Cant&aacute;brico hasta los Andes, pasando por el Mediterr&aacute;neo. M&iacute;nimo 2 personas. Bebidas no incluidas. Versi&oacute;n vegana disponible con aviso previo.</p>
+      </div>
+      <div class="degustacion-price">
+        <div class="price-amount">40&euro;</div>
+        <div class="price-detail">por persona</div>
+      </div>
+    </div>
+
+    <!-- Categories grid -->
+    <div class="carta-categories">
+
+      <!-- Calle Picoteo -->
+      <div class="carta-cat">
+        <h3>Calle Picoteo</h3>
+        <div class="carta-item">
+          <span class="carta-item-name">Tabla Jam&oacute;n Ib&eacute;rico</span>
+          <span class="carta-item-price">22,00&euro;</span>
+        </div>
+        <div class="carta-item">
+          <span class="carta-item-name">Pan Cristal con Anchoas del Cant&aacute;brico y Tomate</span>
+          <span class="carta-item-price">10,00&euro;</span>
+        </div>
+        <div class="carta-item highlight">
+          <span class="carta-item-name">Croquetas de Boletus con Pasta de Trufa y Miel</span>
+          <span class="carta-item-price">6,00&euro;</span>
+        </div>
+        <div class="carta-item highlight">
+          <span class="carta-item-name">Sorrentino Frito de Rabo de Toro, Crema de Hierbas y Queso Gratinado</span>
+          <span class="carta-item-price">10,00&euro;</span>
+        </div>
+        <div class="carta-item highlight">
+          <span class="carta-item-name">Empanada K'Plats Estilo Argentino de Solomillo</span>
+          <span class="carta-item-price">5,50&euro;</span>
+        </div>
+        <div class="carta-item">
+          <span class="carta-item-name">Patatas Bravas Caseras K'Plats</span>
+          <span class="carta-item-price">9,90&euro;</span>
+        </div>
+      </div>
+
+      <!-- Calle Fria + Calle Verde -->
+      <div class="carta-cat">
+        <h3>Calle Fria &amp; Calle Verde</h3>
+        <div class="carta-item highlight">
+          <span class="carta-item-name">Tataki de Salm&oacute;n Marinado en Soja, Remolacha con Mayonesa de Wasabi</span>
+          <span class="carta-item-price">15,50&euro;</span>
+        </div>
+        <div class="carta-item">
+          <span class="carta-item-name">Ensalada de Berenjena al Rescoldo con Burrata, Albahaca, Miel y Salsa Zuke</span>
+          <span class="carta-item-price">12,50&euro;</span>
+        </div>
+        <div class="carta-item">
+          <span class="carta-item-name">Ensalada de Quinoa con Queso de Cabra, Pi&ntilde;a Fresca y Vinagreta de Fruta de la Pasi&oacute;n</span>
+          <span class="carta-item-price">12,50&euro;</span>
+        </div>
+        <div class="carta-item highlight">
+          <span class="carta-item-name">Bimis en Tempura de Ma&iacute;z Morado con Mayonesa de Curry Rojo</span>
+          <span class="carta-item-price">9,00&euro;</span>
+        </div>
+      </div>
+
+      <!-- Calle Caliente -->
+      <div class="carta-cat">
+        <h3>Calle Caliente</h3>
+        <div class="carta-item highlight">
+          <span class="carta-item-name">Carrillada Ib&eacute;rica en su Jugo con Trilog&iacute;a de Ma&iacute;z</span>
+          <span class="carta-item-price">15,50&euro;</span>
+        </div>
+        <div class="carta-item">
+          <span class="carta-item-name">Solomillo de Ternera con Pur&eacute; de Patata Violeta y Aceite de Trufa</span>
+          <span class="carta-item-price">15,90&euro;</span>
+        </div>
+        <div class="carta-item">
+          <span class="carta-item-name">Risotto de Quinoa con Crema de Boletus y Foie Caramelizado</span>
+          <span class="carta-item-price">15,50&euro;</span>
+        </div>
+        <div class="carta-item highlight">
+          <span class="carta-item-name">Pulpo Gallego con Marinado de Aj&iacute; Panca, Crema Verde de Patata</span>
+          <span class="carta-item-price">15,90&euro;</span>
+        </div>
+        <div class="carta-item">
+          <span class="carta-item-name">Pluma Ib&eacute;rica Marinada en Salsa Peruana con Pralin&eacute; de Anacardos</span>
+          <span class="carta-item-price">15,90&euro;</span>
+        </div>
+      </div>
+
+      <!-- Postres + Vinos -->
+      <div class="carta-cat">
+        <h3>Postres &amp; Vinos</h3>
+        <div class="carta-item">
+          <span class="carta-item-name">Postre del Dia</span>
+          <span class="carta-item-price">7,50&euro;</span>
+        </div>
+        <div class="carta-item" style="margin-top: 24px; border-top: 1px solid var(--gris-subtle); padding-top: 24px;">
+          <span class="carta-item-name" style="color: var(--gris-light); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;">Vinos destacados</span>
+          <span class="carta-item-price"></span>
+        </div>
+        <div class="carta-item">
+          <span class="carta-item-name">Zuccardi D.O. Mendoza, Argentina</span>
+          <span class="carta-item-price">32,00&euro;</span>
+        </div>
+        <div class="carta-item">
+          <span class="carta-item-name">Gramona Imperial (Cava)</span>
+          <span class="carta-item-price">40,00&euro;</span>
+        </div>
+        <div class="carta-item">
+          <span class="carta-item-name">Vermut Casero K'Plats (Amargo o Dulce)</span>
+          <span class="carta-item-price">6,00&euro;</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Platos gallery -->
+    <div class="carta-gallery">
+      <div class="carta-gallery-item">
+        <img src="img/tataki-salmon.webp" alt="Tataki de salmon marinado">
+        <div class="cg-label">Tataki de Salm&oacute;n</div>
+      </div>
+      <div class="carta-gallery-item">
+        <img src="img/sorrentinos-elegantes.webp" alt="Sorrentinos fritos de rabo de toro">
+        <div class="cg-label">Sorrentino de Rabo de Toro</div>
+      </div>
+      <div class="carta-gallery-item">
+        <img src="img/bimis-tempura.jpg" alt="Bimis en tempura de ma&iacute;z morado">
+        <div class="cg-label">Bimis en Tempura</div>
+      </div>
+      <div class="carta-gallery-item">
+        <img src="img/tapa-bowl.jpg" alt="Tapa individual en bowl">
+        <div class="cg-label">Tapa de Autor</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================
+     CHEF
+     ================================================================ -->
+<section class="chef" id="chef">
+  <div class="container">
+    <div class="chef-grid">
+      <div class="chef-image">
+        <img src="img/chef-cesar-plato.jpg"
+             alt="Chef Cesar Bejarano terminando un plato">
+        <div class="chef-image-accent"></div>
+      </div>
+      <div class="chef-content">
+        <div class="section-label">El Chef</div>
+        <h2 class="chef-name">C&eacute;sar Bejarano Mirabal</h2>
+        <div class="chef-role">Chef de Cocina &middot; Co-fundador</div>
+
+        <div class="chef-timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">Mendoza, Argentina</div>
+            <div class="timeline-desc">Formaci&oacute;n en la Escuela Internacional Islas Malvinas. T&eacute;cnico Superior en Gastronom&iacute;a. Ah&iacute; empieza todo: la obsesi&oacute;n por el producto, la t&eacute;cnica como lenguaje.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">+12 a&ntilde;os de recorrido</div>
+            <div class="timeline-desc">Per&uacute;, Jap&oacute;n, el Mediterr&aacute;neo. Cada cocina deja algo: el aj&iacute; panca, el wasabi, la pasta de trufa. C&eacute;sar no copia &mdash; traduce.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Julio 2021 &middot; Calpe</div>
+            <div class="timeline-desc">Abre K'Plats en plena pandemia, en un primer piso sin visibilidad desde la calle. Sin marketing, sin agencia. Solo cocina. En menos de cuatro a&ntilde;os, el #1 de Calpe.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2025 &middot; Hoy</div>
+            <div class="timeline-desc">Travelers' Choice de TripAdvisor. 4.9 en Google con 1.475 opiniones. Comparaciones frecuentes con restaurantes Michelin. Todo por boca en boca.</div>
+          </div>
+        </div>
+
+        <div class="chef-quote">
+          &laquo;Abrimos cuando nadie se atrev&iacute;a. No ten&iacute;amos visibilidad, ni marketing. Solo ten&iacute;amos la cocina. Y result&oacute; que con eso alcanzaba.&raquo;
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     COCTELERIA
+     ================================================================ -->
+<section class="cocteleria" id="cocteleria">
+  <div class="container">
+    <div class="cocteleria-grid">
+      <div class="cocteleria-content">
+        <div class="section-label">Cocteler&iacute;a</div>
+        <h2 class="section-title">Creaciones<br>que no encontrar&aacute;s<br>en otro lugar</h2>
+        <p class="section-desc">La barra de K'Plats no es un complemento &mdash; es parte integral de la experiencia. Cocteler&iacute;a de autor con la misma filosof&iacute;a que la cocina: producto real, t&eacute;cnica propia, cero atajos.</p>
+
+        <div class="cocteleria-list">
+          <div class="cocteleria-item">
+            <span class="cocteleria-item-name">K'Plats Signature</span>
+            <span class="cocteleria-item-price">10,00&euro;</span>
+          </div>
+          <div class="cocteleria-item">
+            <span class="cocteleria-item-name">Pisco de Maracuy&aacute;</span>
+            <span class="cocteleria-item-price">11,00&euro;</span>
+          </div>
+          <div class="cocteleria-item">
+            <span class="cocteleria-item-name">Pantera Rosa</span>
+            <span class="cocteleria-item-price">10,00&euro;</span>
+          </div>
+          <div class="cocteleria-item">
+            <span class="cocteleria-item-name">Vermut Casero K'Plats</span>
+            <span class="cocteleria-item-price">6,00&euro;</span>
+          </div>
+        </div>
+      </div>
+      <div class="cocteleria-image">
+        <img src="img/cocktail-barra.jpg"
+             alt="Cocktail signature de K'Plats en la barra">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     EXPERIENCIA (GALLERY)
+     ================================================================ -->
+<section class="experiencia">
+  <div class="container">
+    <div class="experiencia-header">
+      <div class="section-label">La Experiencia</div>
+      <h2 class="section-title">M&aacute;s que una cena</h2>
+      <p class="section-desc" style="margin: 0 auto;">Cada detalle est&aacute; pensado: la vajilla, la luz, el servicio, el ritmo. K'Plats no es solo comida &mdash; es un momento que se queda contigo.</p>
+    </div>
+    <div class="experiencia-grid">
+      <div class="eg-item">
+        <img src="img/chef-plato-cenital.jpg"
+             alt="Vista cenital de plato de autor">
+      </div>
+      <div class="eg-item">
+        <img src="img/mesa-vajilla.jpg"
+             alt="Mesa puesta con vajilla artistica">
+      </div>
+      <div class="eg-item">
+        <img src="img/botellas-vino.jpg"
+             alt="Botellas de vino en ambiente intimo">
+      </div>
+      <div class="eg-item">
+        <img src="img/hoja-platano.jpg"
+             alt="Preparaci&oacute;n artesanal en hoja de pl&aacute;tano">
+      </div>
+      <div class="eg-item">
+        <img src="img/postre-copa-real.jpg"
+             alt="Postre signature en copa coupe">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     REVIEWS
+     ================================================================ -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <div class="section-label">Lo que dicen</div>
+      <h2 class="section-title">1.475 opiniones.<br>4.9 de media.</h2>
+    </div>
+
+    <div class="reviews-scores">
+      <div class="review-score">
+        <div class="review-score-number">4.9</div>
+        <div class="review-score-stars">&starf;&starf;&starf;&starf;&starf;</div>
+        <div class="review-score-platform">Google</div>
+        <div class="review-score-count">1.475 opiniones</div>
+      </div>
+      <div class="review-score">
+        <div class="review-score-number">#1</div>
+        <div class="review-score-stars">&starf;&starf;&starf;&starf;&starf;</div>
+        <div class="review-score-platform">TripAdvisor</div>
+        <div class="review-score-count">de 367 restaurantes</div>
+      </div>
+      <div class="review-score">
+        <div class="review-score-number">9.8</div>
+        <div class="review-score-stars">&starf;&starf;&starf;&starf;&starf;</div>
+        <div class="review-score-platform">GastroRanking</div>
+        <div class="review-score-count">#1 de 445 en Calp</div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-card-quote">
+          Literally one of the best meals I've ever had! Dishes that are more than just food &mdash; each one tells a story.
+        </div>
+        <div class="review-card-author">TripAdvisor</div>
+        <div class="review-card-source">Travelers' Choice 2025</div>
+      </div>
+      <div class="review-card">
+        <div class="review-card-quote">
+          Superb meal, best in 34 years going to Calpe. The tasting menu is exceptional &mdash; every dish surprised us. Communicative passion.
+        </div>
+        <div class="review-card-author">TripAdvisor</div>
+        <div class="review-card-source">Review verificado</div>
+      </div>
+      <div class="review-card">
+        <div class="review-card-quote">
+          Such a nice experience that we will definitely come back. Best tapas ever! Comparable to Michelin restaurants we've been to.
+        </div>
+        <div class="review-card-author">Google</div>
+        <div class="review-card-source">5 estrellas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CTA / RESERVAR
+     ================================================================ -->
+<section class="cta-section" id="reservar">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="section-label" style="justify-content: center;"><span style="display: none;"></span>Reservar</div>
+      <h2>Tu mesa est&aacute; esperando<br>en el #1 de Calpe</h2>
+      <p>Reservas por WhatsApp o tel&eacute;fono. Men&uacute; degustaci&oacute;n disponible para grupos de 2 o m&aacute;s personas con reserva previa.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/34691507591" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="tel:+34691507591" class="btn-outline">
+          +34 691 507 591
+        </a>
+      </div>
+      <div class="cta-info">
+        <div class="cta-info-item">
+          <div class="cta-info-label">Direcci&oacute;n</div>
+          <div class="cta-info-value">Av. de Ifach, 20 &middot; 03710 Calpe</div>
+        </div>
+        <div class="cta-info-item">
+          <div class="cta-info-label">Horario</div>
+          <div class="cta-info-value">L-J 18:30&ndash;00:30 &middot; V-D desde 13:30 &middot; Martes cerrado</div>
+        </div>
+        <div class="cta-info-item">
+          <div class="cta-info-label">Email</div>
+          <div class="cta-info-value">Kplatcalpe@gmail.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="img/logo.png" alt="K'Plats">
+        <span>K'Plats</span>
+        <span class="footer-tagline">&mdash; Donde la Fusi&oacute;n se hace Arte</span>
+      </div>
+      <div class="footer-right">
+        <a href="https://www.instagram.com/kplatscalpe/" class="footer-link">Instagram</a>
+        <a href="https://www.facebook.com/Kplatscalpe/" class="footer-link">Facebook</a>
+        <a href="https://www.tripadvisor.com/Restaurant_Review-g187526-d23832196-Reviews-Kplats-Calpe_Costa_Blanca_Province_of_Alicante_Valencian_Community.html" class="footer-link">TripAdvisor</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================================================================
+     KENAZ WATERMARK
+     ================================================================ -->
+<div class="kenaz-watermark">
+  <svg viewBox="0 0 100 100" fill="none" stroke="#f2f2f2" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M 68 18 L 30 50 L 68 82"/>
+  </svg>
+  <span>Kenaz Studio</span>
+</div>
+
+</body>
+</html>

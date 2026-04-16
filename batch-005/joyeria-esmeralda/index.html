@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyer&iacute;a Esmeralda — Calpe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ═══════════════════════════════════════════
+     RESET & BASE
+     ═══════════════════════════════════════════ */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --negro: #1A1A1A;
+    --dorado: #C9A96E;
+    --dorado-hover: #B8944F;
+    --blanco: #FAFAFA;
+    --gris: #6B6B6B;
+    --crema: #F5F0E8;
+    --ff-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --ff-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+  body {
+    font-family: var(--ff-body);
+    color: var(--blanco);
+    background: var(--negro);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  img { display: block; max-width: 100%; height: auto; }
+  a { text-decoration: none; color: inherit; }
+
+  .container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 80px;
+  }
+
+  /* ═══════════════════════════════════════════
+     DECORATIVE ELEMENTS
+     ═══════════════════════════════════════════ */
+  .gold-line {
+    width: 60px;
+    height: 1px;
+    background: var(--dorado);
+    display: block;
+  }
+
+  .gold-line--center { margin: 0 auto; }
+
+  .section-label {
+    font-family: var(--ff-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dorado);
+  }
+
+  /* ═══════════════════════════════════════════
+     1. NAVIGATION
+     ═══════════════════════════════════════════ */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(26, 26, 26, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.12);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  .nav__logo {
+    font-family: var(--ff-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--dorado);
+  }
+
+  .nav__logo span {
+    display: block;
+    font-family: var(--ff-body);
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--gris);
+    margin-top: 2px;
+    font-weight: 400;
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav__links a {
+    font-family: var(--ff-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blanco);
+    opacity: 0.7;
+    transition: opacity 0.3s, color 0.3s;
+  }
+
+  .nav__links a:hover {
+    opacity: 1;
+    color: var(--dorado);
+  }
+
+  .nav__cta {
+    font-family: var(--ff-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--negro) !important;
+    background: var(--dorado);
+    padding: 12px 28px;
+    opacity: 1 !important;
+    transition: background 0.3s !important;
+  }
+
+  .nav__cta:hover {
+    background: var(--dorado-hover) !important;
+  }
+
+  .nav__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px;
+  }
+
+  .nav__hamburger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--dorado);
+    transition: 0.3s;
+  }
+
+  /* ═══════════════════════════════════════════
+     2. HERO
+     ═══════════════════════════════════════════ */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: brightness(0.35) contrast(1.1);
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(26, 26, 26, 0.85) 0%,
+      rgba(26, 26, 26, 0.4) 50%,
+      rgba(26, 26, 26, 0.7) 100%
+    );
+    z-index: 1;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+  }
+
+  .hero__est {
+    font-family: var(--ff-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero__est::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--dorado);
+  }
+
+  .hero__headline {
+    font-family: var(--ff-display);
+    font-size: 68px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--blanco);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero__headline em {
+    font-style: italic;
+    color: var(--dorado);
+  }
+
+  .hero__sub {
+    font-family: var(--ff-display);
+    font-size: 26px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--dorado);
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+
+  .hero__desc {
+    font-family: var(--ff-body);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(250, 250, 250, 0.7);
+    max-width: 520px;
+    margin-bottom: 48px;
+  }
+
+  .hero__actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--ff-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn--gold {
+    background: var(--dorado);
+    color: var(--negro);
+  }
+
+  .btn--gold:hover { background: var(--dorado-hover); }
+
+  .btn--ghost {
+    background: transparent;
+    color: var(--blanco);
+    border: 1px solid rgba(250, 250, 250, 0.25);
+    padding: 15px 39px;
+  }
+
+  .btn--ghost:hover {
+    border-color: var(--dorado);
+    color: var(--dorado);
+  }
+
+  .hero__scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero__scroll span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gris);
+    writing-mode: vertical-rl;
+  }
+
+  .hero__scroll::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--dorado), transparent);
+  }
+
+  /* ═══════════════════════════════════════════
+     3. MARCAS (Brands)
+     ═══════════════════════════════════════════ */
+  .brands {
+    padding: 120px 0;
+    background: var(--negro);
+    border-top: 1px solid rgba(201, 169, 110, 0.08);
+  }
+
+  .brands__header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .brands__header .section-label {
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .brands__title {
+    font-family: var(--ff-display);
+    font-size: 42px;
+    font-weight: 400;
+    color: var(--blanco);
+    margin-bottom: 16px;
+  }
+
+  .brands__subtitle {
+    font-family: var(--ff-body);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gris);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .brands__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .brand-card {
+    background: rgba(250, 250, 250, 0.03);
+    border: 1px solid rgba(201, 169, 110, 0.08);
+    padding: 48px 32px;
+    text-align: center;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--dorado);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+
+  .brand-card:hover {
+    background: rgba(201, 169, 110, 0.05);
+  }
+
+  .brand-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .brand-card__name {
+    font-family: var(--ff-display);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--blanco);
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+
+  .brand-card__type {
+    font-family: var(--ff-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 16px;
+  }
+
+  .brand-card__desc {
+    font-family: var(--ff-body);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--gris);
+    line-height: 1.6;
+  }
+
+  /* ═══════════════════════════════════════════
+     4. COLECCIONES (Collections Grid)
+     ═══════════════════════════════════════════ */
+  .collections {
+    padding: 120px 0;
+    background: var(--crema);
+  }
+
+  .collections__header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .collections__header .section-label {
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .collections__title {
+    font-family: var(--ff-display);
+    font-size: 42px;
+    font-weight: 400;
+    color: var(--negro);
+    margin-bottom: 16px;
+  }
+
+  .collections__subtitle {
+    font-family: var(--ff-body);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gris);
+  }
+
+  .collections__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .collection-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    cursor: pointer;
+    group: true;
+  }
+
+  .collection-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: brightness(0.85);
+  }
+
+  .collection-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.65);
+  }
+
+  .collection-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(26, 26, 26, 0.85) 0%,
+      rgba(26, 26, 26, 0) 60%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+  }
+
+  .collection-card__category {
+    font-family: var(--ff-body);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 8px;
+  }
+
+  .collection-card__name {
+    font-family: var(--ff-display);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--blanco);
+    margin-bottom: 4px;
+  }
+
+  .collection-card__price {
+    font-family: var(--ff-body);
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(250, 250, 250, 0.6);
+  }
+
+  .collection-card__action {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(250, 250, 250, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blanco);
+    font-size: 18px;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: all 0.3s;
+  }
+
+  .collection-card:hover .collection-card__action {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ═══════════════════════════════════════════
+     5. HISTORIA (Third Generation)
+     ═══════════════════════════════════════════ */
+  .historia {
+    padding: 140px 0;
+    background: var(--negro);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .historia__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .historia__image {
+    position: relative;
+  }
+
+  .historia__image img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    filter: brightness(0.8) contrast(1.05);
+  }
+
+  .historia__image-border {
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    right: 16px;
+    bottom: 16px;
+    border: 1px solid rgba(201, 169, 110, 0.25);
+    pointer-events: none;
+  }
+
+  .historia__content .section-label {
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .historia__title {
+    font-family: var(--ff-display);
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--blanco);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .historia__title em {
+    font-style: italic;
+    color: var(--dorado);
+  }
+
+  .historia__quote {
+    font-family: var(--ff-display);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--dorado);
+    margin-bottom: 32px;
+    padding-left: 20px;
+    border-left: 2px solid var(--dorado);
+    opacity: 0.85;
+  }
+
+  .historia__text {
+    font-family: var(--ff-body);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(250, 250, 250, 0.65);
+    margin-bottom: 24px;
+  }
+
+  .historia__stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(201, 169, 110, 0.12);
+  }
+
+  .stat__number {
+    font-family: var(--ff-display);
+    font-size: 42px;
+    font-weight: 400;
+    color: var(--dorado);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat__label {
+    font-family: var(--ff-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gris);
+  }
+
+  /* ═══════════════════════════════════════════
+     6. CTA
+     ═══════════════════════════════════════════ */
+  .cta-section {
+    padding: 120px 0;
+    background: var(--crema);
+    text-align: center;
+  }
+
+  .cta-section .gold-line {
+    margin: 0 auto 32px;
+  }
+
+  .cta-section .section-label {
+    display: block;
+    margin-bottom: 20px;
+    color: var(--dorado-hover);
+  }
+
+  .cta__title {
+    font-family: var(--ff-display);
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--negro);
+    margin-bottom: 16px;
+  }
+
+  .cta__title em {
+    font-style: italic;
+    color: var(--dorado);
+  }
+
+  .cta__text {
+    font-family: var(--ff-body);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--gris);
+    max-width: 520px;
+    margin: 0 auto 48px;
+    line-height: 1.8;
+  }
+
+  .cta__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  .cta__info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 64px;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+
+  .cta__info-item h4 {
+    font-family: var(--ff-display);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--negro);
+    margin-bottom: 8px;
+  }
+
+  .cta__info-item p {
+    font-family: var(--ff-body);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--gris);
+    line-height: 1.6;
+  }
+
+  .btn--dark {
+    background: var(--negro);
+    color: var(--blanco);
+  }
+
+  .btn--dark:hover {
+    background: #2a2a2a;
+  }
+
+  .btn--outline-dark {
+    background: transparent;
+    color: var(--negro);
+    border: 1px solid rgba(26, 26, 26, 0.25);
+    padding: 15px 39px;
+  }
+
+  .btn--outline-dark:hover {
+    border-color: var(--dorado);
+    color: var(--dorado);
+  }
+
+  /* ═══════════════════════════════════════════
+     7. FOOTER
+     ═══════════════════════════════════════════ */
+  .footer {
+    padding: 80px 0 40px;
+    background: var(--negro);
+    border-top: 1px solid rgba(201, 169, 110, 0.12);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .footer__brand .nav__logo {
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .footer__brand-desc {
+    font-family: var(--ff-body);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--gris);
+    line-height: 1.7;
+    max-width: 300px;
+  }
+
+  .footer__col h4 {
+    font-family: var(--ff-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 20px;
+  }
+
+  .footer__col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer__col ul li a,
+  .footer__col ul li {
+    font-family: var(--ff-body);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--gris);
+    transition: color 0.3s;
+  }
+
+  .footer__col ul li a:hover {
+    color: var(--blanco);
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(250, 250, 250, 0.06);
+  }
+
+  .footer__copy {
+    font-family: var(--ff-body);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--gris);
+    opacity: 0.6;
+  }
+
+  .footer__google {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer__google-stars {
+    color: var(--dorado);
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .footer__google-text {
+    font-family: var(--ff-body);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--gris);
+  }
+
+  /* ═══════════════════════════════════════════
+     RESPONSIVE: TABLET (768px)
+     ═══════════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .container { padding: 0 40px; }
+
+    /* Nav */
+    .nav__links { display: none; }
+    .nav__hamburger { display: flex; }
+    .nav__inner { height: 64px; }
+
+    /* Hero */
+    .hero { min-height: 600px; }
+    .hero__headline { font-size: 46px; }
+    .hero__sub { font-size: 20px; }
+    .hero__desc { font-size: 14px; }
+    .hero__actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .hero__scroll { display: none; }
+
+    /* Brands */
+    .brands { padding: 80px 0; }
+    .brands__title { font-size: 32px; }
+    .brands__grid { grid-template-columns: repeat(2, 1fr); }
+    .brands__header { margin-bottom: 48px; }
+
+    /* Collections */
+    .collections { padding: 80px 0; }
+    .collections__title { font-size: 32px; }
+    .collections__grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .collections__header { margin-bottom: 48px; }
+
+    /* Historia */
+    .historia { padding: 80px 0; }
+    .historia__inner { grid-template-columns: 1fr; gap: 48px; }
+    .historia__title { font-size: 36px; }
+    .historia__image { order: -1; }
+    .historia__image-border { top: -10px; left: -10px; right: 10px; bottom: 10px; }
+    .historia__stats { gap: 32px; }
+    .stat__number { font-size: 32px; }
+
+    /* CTA */
+    .cta-section { padding: 80px 0; }
+    .cta__title { font-size: 36px; }
+    .cta__info-grid { grid-template-columns: 1fr; gap: 32px; text-align: left; }
+    .cta__buttons { flex-direction: column; align-items: center; }
+
+    /* Footer */
+    .footer__inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .footer__bottom { flex-direction: column; gap: 16px; text-align: center; }
+  }
+
+  /* ═══════════════════════════════════════════
+     RESPONSIVE: MOBILE (480px)
+     ═══════════════════════════════════════════ */
+  @media (max-width: 480px) {
+    .container { padding: 0 24px; }
+
+    /* Hero */
+    .hero { min-height: 100svh; }
+    .hero__est { font-size: 10px; letter-spacing: 3px; margin-bottom: 24px; }
+    .hero__headline { font-size: 34px; }
+    .hero__sub { font-size: 17px; margin-bottom: 24px; }
+    .hero__desc { font-size: 13px; margin-bottom: 36px; }
+    .btn { padding: 14px 28px; font-size: 11px; width: 100%; justify-content: center; }
+
+    /* Brands */
+    .brands { padding: 64px 0; }
+    .brands__title { font-size: 26px; }
+    .brands__grid { grid-template-columns: 1fr; }
+    .brand-card { padding: 32px 24px; }
+
+    /* Collections */
+    .collections { padding: 64px 0; }
+    .collections__title { font-size: 26px; }
+    .collections__grid { grid-template-columns: 1fr; gap: 16px; }
+    .collection-card { aspect-ratio: 4/5; }
+
+    /* Historia */
+    .historia { padding: 64px 0; }
+    .historia__title { font-size: 28px; }
+    .historia__quote { font-size: 15px; }
+    .historia__text { font-size: 14px; }
+    .historia__stats { flex-direction: column; gap: 24px; }
+    .historia__image-border { display: none; }
+
+    /* CTA */
+    .cta-section { padding: 64px 0; }
+    .cta__title { font-size: 28px; }
+    .cta__text { font-size: 14px; }
+
+    /* Footer */
+    .footer__inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer__brand-desc { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ═══════════ 1. NAVIGATION ═══════════ -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo">
+        Esmeralda
+        <span>Joyer&iacute;a &middot; desde 1976</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#colecciones">Colecciones</a></li>
+        <li><a href="#marcas">Marcas</a></li>
+        <li><a href="#historia">Taller</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#contacto" class="nav__cta">Vis&iacute;tanos</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════ 2. HERO ═══════════ -->
+  <section class="hero">
+    <div class="hero__bg">
+      <img src="hero-watch.jpg" alt="Reloj de lujo en primer plano">
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <div class="hero__est">Desde 1976 en Calpe</div>
+      <h1 class="hero__headline">
+        50 a&ntilde;os. Tres<br>generaciones.<br>Una <em>tradici&oacute;n.</em>
+      </h1>
+      <p class="hero__sub">Donde cada pieza cuenta una historia</p>
+      <p class="hero__desc">
+        Distribuidor oficial TAG Heuer y Rado. Medio siglo seleccionando,
+        reparando y asesorando sobre las piezas que marcan los momentos
+        importantes de tu vida.
+      </p>
+      <div class="hero__actions">
+        <a href="#colecciones" class="btn btn--gold">Ver colecciones</a>
+        <a href="#contacto" class="btn btn--ghost">Reservar cita</a>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════ 3. MARCAS ═══════════ -->
+  <section class="brands" id="marcas">
+    <div class="container">
+      <div class="brands__header">
+        <span class="section-label">Distribuidor oficial</span>
+        <h2 class="brands__title">Las marcas que representamos</h2>
+        <p class="brands__subtitle">
+          Seleccionadas por calidad, historia y compromiso con la excelencia.
+          Cada marca que entra en nuestra vitrina pasa un filtro de medio siglo.
+        </p>
+      </div>
+      <div class="brands__grid">
+        <div class="brand-card">
+          <div class="brand-card__type">Relojer&iacute;a suiza</div>
+          <div class="brand-card__name">TAG Heuer</div>
+          <div class="brand-card__desc">Precisi&oacute;n y vanguardia desde 1860. Cron&oacute;grafos que definen el est&aacute;ndar.</div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-card__type">Relojer&iacute;a suiza</div>
+          <div class="brand-card__name">Rado</div>
+          <div class="brand-card__desc">Maestr&iacute;a en materiales innovadores. Cer&aacute;mica de alta tecnolog&iacute;a desde 1917.</div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-card__type">Alta joyer&iacute;a</div>
+          <div class="brand-card__name">Majorica</div>
+          <div class="brand-card__desc">Perlas de Mallorca con siglo y medio de tradici&oacute;n artesanal mediterr&aacute;nea.</div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-card__type">Joyer&iacute;a contempor&aacute;nea</div>
+          <div class="brand-card__name">UNOde50</div>
+          <div class="brand-card__desc">Dise&ntilde;o espa&ntilde;ol contempor&aacute;neo. Piezas que equilibran tradici&oacute;n e innovaci&oacute;n.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 4. COLECCIONES ═══════════ -->
+  <section class="collections" id="colecciones">
+    <div class="container">
+      <div class="collections__header">
+        <span class="section-label">Nuestras piezas</span>
+        <h2 class="collections__title">Colecciones seleccionadas</h2>
+        <p class="collections__subtitle">
+          Cada pieza en nuestra vitrina fue elegida con el mismo criterio
+          con el que la elegirias para alguien que amas.
+        </p>
+      </div>
+      <div class="collections__grid">
+        <div class="collection-card">
+          <img src="watch-detail.jpg" alt="Reloj automatico de lujo">
+          <div class="collection-card__overlay">
+            <span class="collection-card__category">Relojer&iacute;a</span>
+            <h3 class="collection-card__name">Cronografos</h3>
+            <span class="collection-card__price">Desde 1.200 EUR</span>
+          </div>
+          <div class="collection-card__action">&rarr;</div>
+        </div>
+        <div class="collection-card">
+          <img src="rings-velvet.jpg" alt="Anillos sobre terciopelo">
+          <div class="collection-card__overlay">
+            <span class="collection-card__category">Compromiso</span>
+            <h3 class="collection-card__name">Anillos</h3>
+            <span class="collection-card__price">Desde 890 EUR</span>
+          </div>
+          <div class="collection-card__action">&rarr;</div>
+        </div>
+        <div class="collection-card">
+          <img src="necklace-gold.jpg" alt="Collar de oro">
+          <div class="collection-card__overlay">
+            <span class="collection-card__category">Alta joyer&iacute;a</span>
+            <h3 class="collection-card__name">Collares</h3>
+            <span class="collection-card__price">Desde 650 EUR</span>
+          </div>
+          <div class="collection-card__action">&rarr;</div>
+        </div>
+        <div class="collection-card">
+          <img src="bracelet-gold.jpg" alt="Pulsera de oro">
+          <div class="collection-card__overlay">
+            <span class="collection-card__category">Accesorios</span>
+            <h3 class="collection-card__name">Pulseras</h3>
+            <span class="collection-card__price">Desde 420 EUR</span>
+          </div>
+          <div class="collection-card__action">&rarr;</div>
+        </div>
+        <div class="collection-card">
+          <img src="diamond-close.jpg" alt="Diamante en detalle">
+          <div class="collection-card__overlay">
+            <span class="collection-card__category">Piedras preciosas</span>
+            <h3 class="collection-card__name">Diamantes</h3>
+            <span class="collection-card__price">Consultar</span>
+          </div>
+          <div class="collection-card__action">&rarr;</div>
+        </div>
+        <div class="collection-card">
+          <img src="watch-collection.jpg" alt="Coleccion de relojes">
+          <div class="collection-card__overlay">
+            <span class="collection-card__category">Edici&oacute;n limitada</span>
+            <h3 class="collection-card__name">Exclusivos</h3>
+            <span class="collection-card__price">Bajo pedido</span>
+          </div>
+          <div class="collection-card__action">&rarr;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 5. HISTORIA ═══════════ -->
+  <section class="historia" id="historia">
+    <div class="container historia__inner">
+      <div class="historia__image">
+        <img src="jewelry-display.jpg" alt="Vitrina de joyeria clasica">
+        <div class="historia__image-border"></div>
+      </div>
+      <div class="historia__content">
+        <span class="section-label">Nuestra historia</span>
+        <h2 class="historia__title">
+          Tercera generaci&oacute;n.<br>
+          El mismo <em>compromiso.</em>
+        </h2>
+        <blockquote class="historia__quote">
+          "No vendemos joyas. Custodiamos los momentos
+          que las personas quieren recordar para siempre."
+        </blockquote>
+        <p class="historia__text">
+          En 1976, en una calle tranquila de Calpe, abri&oacute; sus puertas una
+          joyer&iacute;a con una promesa simple: tratar cada pieza como si fuera
+          para nuestra propia familia. Tres generaciones despu&eacute;s, esa
+          promesa sigue intacta.
+        </p>
+        <p class="historia__text">
+          Hoy combinamos el conocimiento artesanal heredado con las mejores
+          marcas de relojer&iacute;a y joyer&iacute;a del mundo. Nuestro taller de reparaci&oacute;n
+          mantiene viva la tradici&oacute;n de cuidar lo que importa.
+        </p>
+        <div class="historia__stats">
+          <div class="stat">
+            <div class="stat__number">50</div>
+            <div class="stat__label">A&ntilde;os de historia</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number">3</div>
+            <div class="stat__label">Generaciones</div>
+          </div>
+          <div class="stat">
+            <div class="stat__number">4.8</div>
+            <div class="stat__label">Google Reviews</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 6. CTA ═══════════ -->
+  <section class="cta-section" id="contacto">
+    <div class="container">
+      <span class="gold-line gold-line--center"></span>
+      <span class="section-label">Te esperamos</span>
+      <h2 class="cta__title">Visita nuestro <em>sal&oacute;n</em></h2>
+      <p class="cta__text">
+        Algunas piezas hay que verlas en persona. Reserva una cita privada
+        y dejanos mostrarte nuestra selecci&oacute;n con la atenci&oacute;n que mereces.
+      </p>
+      <div class="cta__buttons">
+        <a href="#" class="btn btn--dark">Reservar cita privada</a>
+        <a href="#" class="btn btn--outline-dark">Llamar ahora</a>
+      </div>
+      <div class="cta__info-grid">
+        <div class="cta__info-item">
+          <h4>Direcci&oacute;n</h4>
+          <p>Av. Gabriel Mir&oacute;, 12<br>03710 Calpe, Alicante</p>
+        </div>
+        <div class="cta__info-item">
+          <h4>Horarios</h4>
+          <p>Lun - Vie: 10:00 - 14:00 / 17:00 - 20:00<br>S&aacute;bado: 10:00 - 14:00</p>
+        </div>
+        <div class="cta__info-item">
+          <h4>Contacto</h4>
+          <p>+34 965 83 XX XX<br>info@joyeriaesmeralda.es</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 7. FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <span class="nav__logo">
+            Esmeralda
+            <span>Joyer&iacute;a &middot; desde 1976</span>
+          </span>
+          <p class="footer__brand-desc">
+            Tres generaciones dedicadas a seleccionar, reparar y asesorar
+            sobre las piezas que marcan los momentos m&aacute;s importantes de tu vida.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>Colecciones</h4>
+          <ul>
+            <li><a href="#">Relojer&iacute;a</a></li>
+            <li><a href="#">Anillos</a></li>
+            <li><a href="#">Collares</a></li>
+            <li><a href="#">Pulseras</a></li>
+            <li><a href="#">Diamantes</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Marcas</h4>
+          <ul>
+            <li><a href="#">TAG Heuer</a></li>
+            <li><a href="#">Rado</a></li>
+            <li><a href="#">Majorica</a></li>
+            <li><a href="#">UNOde50</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="#">Taller de reparaci&oacute;n</a></li>
+            <li><a href="#">Grabado personalizado</a></li>
+            <li><a href="#">Tasaci&oacute;n</a></li>
+            <li><a href="#">Lista de bodas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copy">&copy; 2026 Joyer&iacute;a Esmeralda. Todos los derechos reservados.</span>
+        <div class="footer__google">
+          <span class="footer__google-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="footer__google-text">4.8 en Google &middot; Calpe</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- KENAZ WATERMARK -->
+  <div style="position:fixed;bottom:20px;right:24px;z-index:9999;display:flex;align-items:center;gap:10px;background:rgba(26,26,26,0.85);backdrop-filter:blur(8px);padding:10px 18px;border:1px solid rgba(201,169,110,0.3);">
+    <svg viewBox="0 0 100 100" style="width:18px;height:18px;stroke:#C9A96E;fill:none;stroke-width:7;" stroke-linecap="square" stroke-linejoin="miter"><path d="M 68 18 L 30 50 L 68 82"/></svg>
+    <span style="font-family:'Inter',sans-serif;font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,250,250,0.6);">Designed by Kenaz Studio</span>
+  </div>
+
+</body>
+</html>

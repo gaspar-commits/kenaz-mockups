@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pasteleria Flandes &mdash; Desde 1982 en Calpe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --chocolate: #5C3D2E;
+    --chocolate-deep: #3E2518;
+    --chocolate-mid: #4A2F20;
+    --gold: #D4A843;
+    --gold-light: #E2C06A;
+    --gold-muted: #C49A3A;
+    --cream: #F5F0E6;
+    --cream-dark: #EDE5D5;
+    --rose: #E8C4C4;
+    --rose-light: #F0D8D8;
+    --white: #FAFAF7;
+    --text-dark: #2C1810;
+    --text-body: #4A3728;
+    --text-light: #8A7568;
+
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'Lato', 'Helvetica Neue', sans-serif;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text-body);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  img { display: block; max-width: 100%; height: auto; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ===== TYPOGRAPHY ===== */
+  .heading-xl {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.1;
+    color: var(--text-dark);
+    letter-spacing: -0.01em;
+  }
+
+  .heading-lg {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.18;
+    color: var(--text-dark);
+  }
+
+  .heading-md {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+    line-height: 1.25;
+    color: var(--text-dark);
+  }
+
+  .heading-sm {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    line-height: 1.3;
+    color: var(--text-dark);
+  }
+
+  .body-text {
+    font-family: var(--font-body);
+    font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+    line-height: 1.72;
+    color: var(--text-body);
+  }
+
+  .label-text {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ===== LAYOUT ===== */
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 4vw, 3rem);
+  }
+
+  .container--wide { max-width: 1440px; }
+
+  .section-pad {
+    padding-top: clamp(4rem, 8vw, 7rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem 2.2rem;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn--primary { background: var(--chocolate); color: var(--cream); }
+  .btn--primary:hover { background: var(--chocolate-deep); }
+
+  .btn--outline { background: transparent; color: var(--chocolate); border: 2px solid var(--chocolate); }
+  .btn--outline:hover { background: var(--chocolate); color: var(--cream); }
+
+  .btn--gold { background: var(--gold); color: var(--chocolate-deep); }
+  .btn--gold:hover { background: var(--gold-light); }
+
+  .btn--cream { background: var(--cream); color: var(--chocolate); }
+  .btn--cream:hover { background: var(--white); }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 250, 247, 0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(92, 61, 46, 0.08);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .nav__brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+
+  .nav__logo {
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    color: var(--chocolate);
+    letter-spacing: 0.06em;
+  }
+
+  .nav__logo span { color: var(--gold); }
+
+  .nav__since {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+    list-style: none;
+  }
+
+  .nav__links a {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-body);
+    transition: color 0.2s;
+  }
+
+  .nav__links a:hover { color: var(--gold); }
+
+  .nav__contact {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .nav__phone {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--chocolate);
+    letter-spacing: 0.02em;
+  }
+
+  .nav__cta { padding: 0.65rem 1.5rem; font-size: 0.75rem; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--cream);
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+      135deg,
+      rgba(245, 240, 230, 0.94) 0%,
+      rgba(245, 240, 230, 0.78) 35%,
+      rgba(245, 240, 230, 0.4) 65%,
+      rgba(245, 240, 230, 0.12) 100%
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 3;
+    max-width: 650px;
+    padding-top: 72px;
+  }
+
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.8rem;
+    padding: 0.5rem 1.2rem;
+    background: rgba(92, 61, 46, 0.07);
+    border-left: 3px solid var(--gold);
+  }
+
+  .hero__badge span {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--chocolate);
+  }
+
+  .hero__title { margin-bottom: 1.2rem; }
+  .hero__title em { font-style: italic; color: var(--gold); }
+
+  .hero__subtitle {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    color: var(--text-light);
+    margin-bottom: 0.8rem;
+  }
+
+  .hero__desc {
+    margin-bottom: 2.4rem;
+    max-width: 500px;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero__flour {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 100px;
+    z-index: 2;
+    background: linear-gradient(to top, var(--white), transparent);
+  }
+
+  /* ===== STATS STRIP ===== */
+  .stats-strip {
+    background: var(--chocolate);
+    padding: 0;
+  }
+
+  .stats-strip__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stats-strip__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .stats-strip__item + .stats-strip__item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(212, 168, 67, 0.15);
+  }
+
+  .stats-strip__number {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stats-strip__label {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 230, 0.6);
+  }
+
+  .stats-strip__sub {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    color: rgba(245, 240, 230, 0.35);
+    margin-top: 0.15rem;
+  }
+
+  /* ===== PRODUCTS ===== */
+  .products {
+    background: var(--white);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .section-header .label-text {
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .section-header .heading-lg { margin-bottom: 1rem; }
+
+  .section-header .body-text {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .products__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .product-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--cream);
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover { transform: translateY(-4px); }
+
+  .product-card__img {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .product-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .product-card:hover .product-card__img img { transform: scale(1.05); }
+
+  .product-card__body { padding: 1.3rem 1.2rem; }
+
+  .product-card__title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    margin-bottom: 0.35rem;
+  }
+
+  .product-card__desc {
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: var(--text-light);
+  }
+
+  .product-card__tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gold);
+    color: var(--chocolate-deep);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+  }
+
+  /* ===== STORY ===== */
+  .story { background: var(--cream); }
+
+  .story__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  .story__image { position: relative; }
+
+  .story__image img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .story__image-frame {
+    position: absolute;
+    top: -12px; left: -12px; right: 12px; bottom: 12px;
+    border: 2px solid var(--gold);
+    pointer-events: none;
+  }
+
+  .story__year-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 110px;
+    height: 110px;
+    background: var(--chocolate);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .story__year-badge .year {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .story__year-badge .since {
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-top: 0.2rem;
+  }
+
+  .story__content .label-text { margin-bottom: 1rem; display: block; }
+  .story__content .heading-lg { margin-bottom: 1.5rem; }
+  .story__content .body-text { margin-bottom: 1.2rem; }
+
+  .story__timeline {
+    margin: 2rem 0;
+    padding: 0;
+    list-style: none;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem;
+  }
+
+  .story__timeline li {
+    position: relative;
+    margin-bottom: 1.2rem;
+    padding-left: 0.5rem;
+  }
+
+  .story__timeline li::before {
+    content: '';
+    position: absolute;
+    left: -1.85rem;
+    top: 0.5rem;
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .story__timeline-year {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--chocolate);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .story__timeline-text {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* ===== SPECIALTIES ===== */
+  .specialties { background: var(--white); }
+
+  .specialties__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 2rem);
+  }
+
+  .specialty-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+  }
+
+  .specialty-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .specialty-card:hover img { transform: scale(1.06); }
+
+  .specialty-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(62, 37, 24, 0.88) 0%,
+      rgba(62, 37, 24, 0.2) 50%,
+      transparent 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(1.2rem, 2vw, 2rem);
+  }
+
+  .specialty-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+
+  .specialty-card__sub {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: rgba(245, 240, 230, 0.65);
+    font-style: italic;
+  }
+
+  .specialty-card__avail {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.4rem;
+  }
+
+  /* ===== REVIEWS ===== */
+  .reviews { background: var(--cream); position: relative; overflow: hidden; }
+
+  .reviews__header { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+
+  .reviews__ratings {
+    display: flex;
+    justify-content: center;
+    gap: clamp(2rem, 4vw, 4rem);
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .reviews__platform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .reviews__platform-name {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  .reviews__platform-score {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    color: var(--chocolate);
+    line-height: 1;
+  }
+
+  .reviews__platform-stars {
+    display: flex;
+    gap: 3px;
+  }
+
+  .reviews__platform-stars svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--gold);
+  }
+
+  .reviews__platform-count {
+    font-size: 0.78rem;
+    color: var(--text-light);
+  }
+
+  .reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.8rem);
+  }
+
+  .review-card {
+    background: var(--white);
+    padding: clamp(1.5rem, 2.5vw, 2.2rem);
+    position: relative;
+  }
+
+  .review-card::before {
+    content: '\201C';
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: 0.2;
+    position: absolute;
+    top: 0.5rem;
+    left: 1.2rem;
+    line-height: 1;
+  }
+
+  .review-card__text {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--text-body);
+    font-style: italic;
+    margin-bottom: 1.2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .review-card__author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .review-card__avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--chocolate);
+  }
+
+  .review-card__name {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .review-card__source {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    color: var(--text-light);
+  }
+
+  /* ===== BILINGUAL BANNER ===== */
+  .bilingual {
+    background: var(--chocolate);
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bilingual::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: -40px;
+    width: 200px; height: 200px;
+    border: 2px solid rgba(212, 168, 67, 0.1);
+    border-radius: 50%;
+  }
+
+  .bilingual::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border: 2px solid rgba(212, 168, 67, 0.08);
+    border-radius: 50%;
+  }
+
+  .bilingual__content { position: relative; z-index: 2; }
+
+  .bilingual__langs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .bilingual__lang {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    color: var(--cream);
+    opacity: 0.45;
+  }
+
+  .bilingual__lang--active {
+    opacity: 1;
+    color: var(--gold);
+  }
+
+  .bilingual__divider {
+    width: 2px;
+    height: 36px;
+    background: rgba(212, 168, 67, 0.25);
+  }
+
+  .bilingual .body-text {
+    color: rgba(245, 240, 230, 0.65);
+    max-width: 540px;
+    margin: 0 auto 2rem;
+  }
+
+  .bilingual .label-text {
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* ===== CTA ===== */
+  .cta {
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .cta .label-text { margin-bottom: 1rem; display: block; }
+  .cta .heading-lg { margin-bottom: 1rem; }
+  .cta .body-text { max-width: 500px; margin: 0 auto 2.4rem; }
+
+  .cta__details {
+    display: flex;
+    justify-content: center;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cta__detail { text-align: center; }
+
+  .cta__detail-label {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.3rem;
+  }
+
+  .cta__detail-value {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--chocolate);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--chocolate-deep);
+    padding: clamp(3rem, 5vw, 4rem) 0 1.5rem;
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(212, 168, 67, 0.1);
+  }
+
+  .footer__brand { max-width: 300px; }
+
+  .footer__logo {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--cream);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  .footer__logo span { color: var(--gold); }
+
+  .footer__brand p {
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: rgba(245, 240, 230, 0.45);
+  }
+
+  .footer__col-title {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer__col ul { list-style: none; }
+
+  .footer__col ul li { margin-bottom: 0.55rem; }
+
+  .footer__col ul a,
+  .footer__col ul span {
+    font-size: 0.86rem;
+    color: rgba(245, 240, 230, 0.55);
+    transition: color 0.2s;
+  }
+
+  .footer__col ul a:hover { color: var(--cream); }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer__copy {
+    font-size: 0.76rem;
+    color: rgba(245, 240, 230, 0.3);
+  }
+
+  .footer__credit {
+    font-size: 0.7rem;
+    color: rgba(245, 240, 230, 0.2);
+  }
+
+  .footer__credit a {
+    color: var(--gold);
+    opacity: 0.55;
+    transition: opacity 0.2s;
+  }
+
+  .footer__credit a:hover { opacity: 1; }
+
+  /* ===== KENAZ WATERMARK ===== */
+  .kenaz-watermark {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    opacity: 0.5;
+    background: rgba(250, 250, 247, 0.85);
+    padding: 6px;
+    border-radius: 4px;
+  }
+
+  .kenaz-watermark svg { width: 28px; height: 28px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .products__grid { grid-template-columns: repeat(2, 1fr); }
+
+    .story__grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .story__image { max-width: 500px; }
+
+    .reviews__grid { grid-template-columns: 1fr 1fr; }
+    .reviews__grid .review-card:last-child {
+      grid-column: 1 / -1;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .footer__top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+
+  @media (max-width: 768px) {
+    .nav__links { display: none; }
+    .nav__phone { display: none; }
+
+    .hero__overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(245, 240, 230, 0.95) 0%,
+        rgba(245, 240, 230, 0.88) 50%,
+        rgba(245, 240, 230, 0.55) 100%
+      );
+    }
+
+    .hero__content {
+      padding-top: 100px;
+      padding-bottom: 3rem;
+    }
+
+    .stats-strip__inner { grid-template-columns: repeat(2, 1fr); }
+
+    .stats-strip__item + .stats-strip__item::before {
+      display: none;
+    }
+
+    .stats-strip__item {
+      padding: 1.5rem 1rem;
+      border-bottom: 1px solid rgba(212, 168, 67, 0.08);
+    }
+
+    .products__grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .specialties__grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .reviews__grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .reviews__grid .review-card:last-child {
+      grid-column: auto;
+      max-width: none;
+    }
+
+    .bilingual__langs {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .bilingual__divider { width: 40px; height: 2px; }
+
+    .footer__top { grid-template-columns: 1fr; }
+
+    .footer__bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-strip__inner { grid-template-columns: 1fr; }
+
+    .hero__actions {
+      flex-direction: column;
+    }
+
+    .hero__actions .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .cta__details {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .reviews__ratings {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="container nav__inner">
+    <div class="nav__brand">
+      <a href="#" class="nav__logo">FLANDES<span>.</span></a>
+      <span class="nav__since">Desde 1982</span>
+    </div>
+    <ul class="nav__links">
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#especialidades">Especialidades</a></li>
+      <li><a href="#opiniones">Opiniones</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav__contact">
+      <a href="tel:+34670215111" class="nav__phone">670 215 111</a>
+      <a href="#contacto" class="btn btn--primary nav__cta">Vis&iacute;tanos</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero__bg">
+    <img
+      src="img/batidos.jpg"
+      alt="Caf&eacute; Flandes &mdash; batidos y especialidades"
+      loading="eager"
+    >
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="container hero__content">
+    <div class="hero__badge">
+      <span>Pasteler&iacute;a, cafeter&iacute;a y sal&oacute;n de t&eacute; belga &middot; Calpe</span>
+    </div>
+    <h1 class="heading-xl hero__title">
+      43 a&ntilde;os horneando<br>en Calpe.<br><em>Desde B&eacute;lgica, con amor.</em>
+    </h1>
+    <p class="hero__subtitle">Boulangerie &amp; P&acirc;tisserie artisanale belge</p>
+    <p class="body-text hero__desc">
+      Lo que Gerard y Jacqueline trajeron de Flandes en 1982 no fueron solo
+      recetas. Fue una forma de entender el oficio: sin prisas, sin atajos,
+      con las manos en la masa cada ma&ntilde;ana antes del amanecer. Hoy Carline,
+      segunda generaci&oacute;n, mantiene viva esa misma promesa.
+    </p>
+    <div class="hero__actions">
+      <a href="#productos" class="btn btn--primary">Ver productos</a>
+      <a href="#historia" class="btn btn--outline">Nuestra historia</a>
+    </div>
+  </div>
+  <div class="hero__flour"></div>
+</section>
+
+<!-- ===== STATS STRIP ===== -->
+<div class="stats-strip">
+  <div class="container container--wide stats-strip__inner">
+    <div class="stats-strip__item">
+      <span class="stats-strip__number">43</span>
+      <span class="stats-strip__label">A&ntilde;os</span>
+      <span class="stats-strip__sub">Desde el 15 de diciembre de 1982</span>
+    </div>
+    <div class="stats-strip__item">
+      <span class="stats-strip__number">1.300+</span>
+      <span class="stats-strip__label">Opiniones Google</span>
+      <span class="stats-strip__sub">4,4 de media</span>
+    </div>
+    <div class="stats-strip__item">
+      <span class="stats-strip__number">2&ordf;</span>
+      <span class="stats-strip__label">Generaci&oacute;n</span>
+      <span class="stats-strip__sub">Carline Loyson, desde 1997</span>
+    </div>
+    <div class="stats-strip__item">
+      <span class="stats-strip__number">5h</span>
+      <span class="stats-strip__label">Cada ma&ntilde;ana</span>
+      <span class="stats-strip__sub">Horneamos antes del amanecer</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PRODUCTS ===== -->
+<section class="products section-pad" id="productos">
+  <div class="container">
+    <div class="section-header">
+      <span class="label-text">Nuestros productos</span>
+      <h2 class="heading-lg">Lo que sale del horno cada d&iacute;a</h2>
+      <p class="body-text">
+        Cada pieza se elabora con harinas seleccionadas, mantequilla belga y
+        el tiempo que la masa necesita. Sin acelerantes, sin excepciones.
+      </p>
+    </div>
+    <div class="products__grid">
+      <!-- Card 1: Chocolates belgas -->
+      <div class="product-card">
+        <div class="product-card__img">
+          <img
+            src="img/rg-cake.jpg"
+            alt="Tartas y pasteler&iacute;a artesanal de Flandes Calpe"
+            loading="lazy"
+          >
+        </div>
+        <div class="product-card__body">
+          <h3 class="product-card__title">Chocolates belgas</h3>
+          <p class="product-card__desc">Bombones artesanales de maracuy&aacute;, pistacho y sabores estacionales. Figuras de San Nicol&aacute;s y huevos de Pascua.</p>
+        </div>
+        <span class="product-card__tag">Estrella</span>
+      </div>
+
+      <!-- Card 2: Pan de obrador -->
+      <div class="product-card">
+        <div class="product-card__img">
+          <img
+            src="img/rg-meals.jpg"
+            alt="Comida casera y especialidades de Pasteler&iacute;a Flandes"
+            loading="lazy"
+          >
+        </div>
+        <div class="product-card__body">
+          <h3 class="product-card__title">Pan de obrador</h3>
+          <p class="product-card__desc">Pan de Selva Negra, masa madre, centeno. Corteza crujiente, miga suave. Mejor reservar el d&iacute;a anterior.</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Bolleria -->
+      <div class="product-card">
+        <div class="product-card__img">
+          <img
+            src="img/rg-dishes.jpg"
+            alt="Platos y especialidades de Flandes Calpe"
+            loading="lazy"
+          >
+        </div>
+        <div class="product-card__body">
+          <h3 class="product-card__title">Boller&iacute;a belga</h3>
+          <p class="product-card__desc">Croissants que se agotan cada ma&ntilde;ana, pain au chocolat, couques. Mantequilla real, laminado a mano.</p>
+        </div>
+        <span class="product-card__tag">Se agota</span>
+      </div>
+
+      <!-- Card 4: Tartas por encargo -->
+      <div class="product-card">
+        <div class="product-card__img">
+          <img
+            src="img/rg-food.jpg"
+            alt="Pasteler&iacute;a artesanal belga &mdash; Flandes Calpe"
+            loading="lazy"
+          >
+        </div>
+        <div class="product-card__body">
+          <h3 class="product-card__title">Tartas por encargo</h3>
+          <p class="product-card__desc">Bodas, comuniones, cumplea&ntilde;os. Dise&ntilde;o personalizado con chocolate belga y frutas de temporada.</p>
+        </div>
+        <span class="product-card__tag">Encargo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STORY ===== -->
+<section class="story section-pad" id="historia">
+  <div class="container">
+    <div class="story__grid">
+      <div class="story__image">
+        <img
+          src="img/producto2.jpg"
+          alt="Interior de Caf&eacute; Flandes &mdash; el rincón belga de Calpe desde 1982"
+          loading="lazy"
+        >
+        <div class="story__image-frame"></div>
+        <div class="story__year-badge">
+          <span class="year">1982</span>
+          <span class="since">Desde</span>
+        </div>
+      </div>
+      <div class="story__content">
+        <span class="label-text">Nuestra historia</span>
+        <h2 class="heading-lg">De Koolskamp a Calpe. Dos generaciones, una misma masa.</h2>
+        <p class="body-text">
+          Gerard Loyson y Jacqueline Bogaert dejaron la regi&oacute;n de Flandes
+          con un cuaderno de recetas familiares y la certeza de que el buen pan
+          no entiende de fronteras. El 15 de diciembre de 1982 abrieron un
+          obrador peque&ntilde;o en la Calle La Pinta de Calpe.
+        </p>
+        <p class="body-text">
+          En 1990, el obrador creci&oacute; hasta convertirse en cafeter&iacute;a,
+          brasserie y sal&oacute;n de t&eacute;. En 1997, su hija menor Carline
+          tom&oacute; las riendas. Hoy, casi tres d&eacute;cadas despu&eacute;s, ella mantiene
+          viva la misma filosof&iacute;a: ingredientes de verdad, recetas flamencas,
+          el ritmo que marca la fermentaci&oacute;n y no el reloj.
+        </p>
+        <ul class="story__timeline">
+          <li>
+            <span class="story__timeline-year">1982</span>
+            <span class="story__timeline-text">Gerard y Jacqueline abren la panader&iacute;a flamenca en Calpe</span>
+          </li>
+          <li>
+            <span class="story__timeline-year">1990</span>
+            <span class="story__timeline-text">Expansi&oacute;n a cafeter&iacute;a, brasserie y sal&oacute;n de t&eacute;</span>
+          </li>
+          <li>
+            <span class="story__timeline-year">1997</span>
+            <span class="story__timeline-text">Carline Loyson toma las riendas. Segunda generaci&oacute;n.</span>
+          </li>
+          <li>
+            <span class="story__timeline-year">Hoy</span>
+            <span class="story__timeline-text">Referencia local. 1.300+ opiniones. 43 a&ntilde;os y contando.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SPECIALTIES ===== -->
+<section class="specialties section-pad" id="especialidades">
+  <div class="container">
+    <div class="section-header">
+      <span class="label-text">Especialidades de la casa</span>
+      <h2 class="heading-lg">Lo que nos hace diferentes</h2>
+      <p class="body-text">
+        Recetas que viajaron desde Flandes y siguen haci&eacute;ndose exactamente
+        igual. Algunas solo est&aacute;n disponibles ciertos d&iacute;as &mdash; porque
+        lo bueno tiene su ritmo.
+      </p>
+    </div>
+    <div class="specialties__grid">
+      <div class="specialty-card">
+        <img
+          src="img/producto3.jpg"
+          alt="Especialidades de Pasteler&iacute;a Flandes Calpe"
+          loading="lazy"
+        >
+        <div class="specialty-card__overlay">
+          <h3 class="specialty-card__title">Gofres de Bruselas</h3>
+          <span class="specialty-card__sub">Brusselse wafels</span>
+          <span class="specialty-card__avail">Mi&eacute;rcoles, s&aacute;bado y domingo</span>
+        </div>
+      </div>
+      <div class="specialty-card">
+        <img
+          src="img/producto1.jpg"
+          alt="Nocilla y pl&aacute;tano &mdash; una de las especialidades estrella de Flandes"
+          loading="lazy"
+        >
+        <div class="specialty-card__overlay">
+          <h3 class="specialty-card__title">Crepes de chocolate</h3>
+          <span class="specialty-card__sub">Producto estrella de la cafeter&iacute;a</span>
+        </div>
+      </div>
+      <div class="specialty-card">
+        <img
+          src="img/cocina.jpg"
+          alt="Cocina de Pasteler&iacute;a Flandes &mdash; donde nacen los merengues y flanes"
+          loading="lazy"
+        >
+        <div class="specialty-card__overlay">
+          <h3 class="specialty-card__title">Merengues y flanes</h3>
+          <span class="specialty-card__sub">Famosos localmente desde los 80</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="reviews section-pad" id="opiniones">
+  <div class="container">
+    <div class="reviews__header">
+      <span class="label-text">Lo que dicen de nosotros</span>
+      <h2 class="heading-lg">1.300+ opiniones no mienten</h2>
+    </div>
+
+    <div class="reviews__ratings">
+      <div class="reviews__platform">
+        <span class="reviews__platform-name">Google</span>
+        <span class="reviews__platform-score">4,4</span>
+        <div class="reviews__platform-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20" style="opacity:0.35"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+        </div>
+        <span class="reviews__platform-count">1.300+ rese&ntilde;as</span>
+      </div>
+      <div class="reviews__platform">
+        <span class="reviews__platform-name">Facebook</span>
+        <span class="reviews__platform-score">5,0</span>
+        <div class="reviews__platform-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+        </div>
+        <span class="reviews__platform-count">1.606 likes</span>
+      </div>
+      <div class="reviews__platform">
+        <span class="reviews__platform-name">TripAdvisor</span>
+        <span class="reviews__platform-score">4,5</span>
+        <div class="reviews__platform-stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+          <svg viewBox="0 0 20 20" style="opacity:0.5"><path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.39l-4.94 2.72.94-5.5-4-3.9 5.61-.87z"/></svg>
+        </div>
+        <span class="reviews__platform-count">180+ rese&ntilde;as</span>
+      </div>
+    </div>
+
+    <div class="reviews__grid">
+      <div class="review-card">
+        <p class="review-card__text">
+          The real Belgian buns and cakes! Breads, chocolates, always freshly made.
+        </p>
+        <div class="review-card__author">
+          <div class="review-card__avatar">V</div>
+          <div>
+            <p class="review-card__name">Veerle S.</p>
+            <p class="review-card__source">Google &middot; dic. 2024</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <p class="review-card__text">
+          Coffee, cakes as we are used to them at home in Belgium. Friendly service. Made with heart and soul.
+        </p>
+        <div class="review-card__author">
+          <div class="review-card__avatar">E</div>
+          <div>
+            <p class="review-card__name">Excursion03</p>
+            <p class="review-card__source">TripAdvisor &middot; jul. 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <p class="review-card__text">
+          Pan de Selva Negra is hard to beat. Best to order day before. Crunchy crust and soft middle, full of flavour.
+        </p>
+        <div class="review-card__author">
+          <div class="review-card__avatar">T</div>
+          <div>
+            <p class="review-card__name">281tony</p>
+            <p class="review-card__source">TripAdvisor &middot; may. 2016</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <p class="review-card__text">
+          Fantastic food &amp; like-Belgian-home breakfast. Friendly staff, you can even order options from the bakery.
+        </p>
+        <div class="review-card__author">
+          <div class="review-card__avatar">T</div>
+          <div>
+            <p class="review-card__name">Tim V.</p>
+            <p class="review-card__source">Google &middot; ene. 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <p class="review-card__text">
+          Something for everyone and price quality: SUPER!!!
+        </p>
+        <div class="review-card__author">
+          <div class="review-card__avatar">C</div>
+          <div>
+            <p class="review-card__name">Chris L.</p>
+            <p class="review-card__source">TripAdvisor &middot; nov. 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <p class="review-card__text">
+          Posiblemente la mejor pasteler&iacute;a de Calp. Recomendable al 100%.
+        </p>
+        <div class="review-card__author">
+          <div class="review-card__avatar">V</div>
+          <div>
+            <p class="review-card__name">Visitante</p>
+            <p class="review-card__source">Google &middot; mar. 2025</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BILINGUAL BANNER ===== -->
+<section class="bilingual">
+  <div class="container bilingual__content">
+    <span class="label-text">Tres idiomas, una pasi&oacute;n</span>
+    <div class="bilingual__langs">
+      <span class="bilingual__lang bilingual__lang--active">Espa&ntilde;ol</span>
+      <div class="bilingual__divider"></div>
+      <span class="bilingual__lang">Fran&ccedil;ais</span>
+      <div class="bilingual__divider"></div>
+      <span class="bilingual__lang">Nederlands</span>
+    </div>
+    <p class="body-text">
+      Nos sentimos como en casa hablando en espa&ntilde;ol, franc&eacute;s o neerland&eacute;s.
+      Porque Flandes siempre fue eso: un lugar donde las culturas se encuentran
+      alrededor de una buena mesa. Residentes belgas, espa&ntilde;oles, ingleses
+      y turistas &mdash; todos son bienvenidos.
+    </p>
+    <a href="#contacto" class="btn btn--gold">Ven a visitarnos</a>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta section-pad" id="contacto">
+  <div class="container">
+    <span class="label-text">Vis&iacute;tanos</span>
+    <h2 class="heading-lg">El aroma no viaja por internet.<br>Ac&eacute;rcate al obrador.</h2>
+    <p class="body-text">
+      Estamos en la Calle La Pinta, como cada ma&ntilde;ana desde 1982. Abrimos
+      temprano porque el buen pan no espera.
+    </p>
+    <a href="https://maps.google.com/?q=Cafeteria+Flandes+Calpe" class="btn btn--primary" target="_blank" rel="noopener">C&oacute;mo llegar</a>
+    <div class="cta__details">
+      <div class="cta__detail">
+        <p class="cta__detail-label">Direcci&oacute;n</p>
+        <p class="cta__detail-value">C/ La Pinta 10-12, 03710 Calpe</p>
+      </div>
+      <div class="cta__detail">
+        <p class="cta__detail-label">Horario</p>
+        <p class="cta__detail-value">Mar&ndash;Dom: 7:00 &mdash; 20:00/21:00</p>
+      </div>
+      <div class="cta__detail">
+        <p class="cta__detail-label">Tel&eacute;fono</p>
+        <p class="cta__detail-value">670 215 111</p>
+      </div>
+      <div class="cta__detail">
+        <p class="cta__detail-label">Descanso</p>
+        <p class="cta__detail-value">Lunes (temporada baja)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__logo">FLANDES<span>.</span></p>
+        <p>
+          Panader&iacute;a y pasteler&iacute;a artesanal belga en Calpe desde 1982.
+          Fundada por Gerard Loyson y Jacqueline Bogaert. Segunda
+          generaci&oacute;n: Carline Loyson.
+        </p>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__col-title">Productos</h4>
+        <ul>
+          <li><a href="#">Chocolates belgas</a></li>
+          <li><a href="#">Pan de obrador</a></li>
+          <li><a href="#">Boller&iacute;a belga</a></li>
+          <li><a href="#">Tartas por encargo</a></li>
+          <li><a href="#">Gofres y crepes</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__col-title">Cafeter&iacute;a</h4>
+        <ul>
+          <li><a href="#">Desayunos</a></li>
+          <li><a href="#">Bocadillos</a></li>
+          <li><a href="#">Cervezas belgas</a></li>
+          <li><a href="#">Batidos y smoothies</a></li>
+          <li><a href="#">Helados</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__col-title">Contacto</h4>
+        <ul>
+          <li><span>C/ La Pinta 10-12, Calpe</span></li>
+          <li><a href="tel:+34965832815">965 832 815</a></li>
+          <li><a href="tel:+34670215111">670 215 111</a></li>
+          <li><a href="https://www.facebook.com/Pasteleriaflandes/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/pasteleriaflandes/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2026 Pasteles Flandes S.L. &middot; CIF B03494853 &middot; Calpe, Alicante</p>
+      <p class="footer__credit">
+        Dise&ntilde;ado por
+        <a href="https://kenaz.studio" target="_blank" rel="noopener">Kenaz Studio</a>
+        <svg width="12" height="12" viewBox="0 0 100 100" style="vertical-align: middle; margin-left: 4px;">
+          <path d="M 68 18 L 30 50 L 68 82" fill="none" stroke="#f2f2f2" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter"/>
+        </svg>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Kenaz Watermark -->
+<div class="kenaz-watermark">
+  <svg viewBox="0 0 100 100">
+    <path d="M 68 18 L 30 50 L 68 82" fill="none" stroke="#050505" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter"/>
+  </svg>
+</div>
+
+</body>
+</html>

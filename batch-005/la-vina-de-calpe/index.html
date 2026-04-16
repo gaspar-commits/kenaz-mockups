@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Vi&ntilde;a de Calpe &mdash; Restaurante y Vinoteca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --vino:#722F37;
+  --dorado:#C9A96E;
+  --crema:#F5F0E8;
+  --negro:#1A1A1A;
+  --madera:#5A4A3A;
+  --vino-dark:#5A242B;
+  --dorado-light:#D4B87E;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Raleway',sans-serif;color:var(--negro);background:var(--crema);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Libre Baskerville',serif}
+img{max-width:100%;display:block}
+
+/* ============ NAV ============ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(26,26,26,0.95);
+  backdrop-filter:blur(12px);
+  padding:0 60px;
+  height:72px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.15rem;font-weight:700;
+  color:var(--dorado);letter-spacing:0.12em;
+  text-decoration:none;
+}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{
+  font-family:'Raleway',sans-serif;font-size:0.8rem;font-weight:500;
+  color:var(--crema);text-decoration:none;letter-spacing:0.1em;
+  text-transform:uppercase;transition:color 0.3s;
+}
+.nav-links a:hover{color:var(--dorado)}
+.nav-cta{
+  background:var(--vino);color:var(--crema)!important;
+  padding:10px 28px;border-radius:0;font-weight:600!important;
+  letter-spacing:0.08em;transition:background 0.3s;
+}
+.nav-cta:hover{background:var(--vino-dark)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.nav-hamburger span{width:24px;height:2px;background:var(--crema);transition:all 0.3s}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  width:100%;height:100vh;min-height:700px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('img/hero-wine.jpg') center/cover no-repeat;
+  filter:brightness(0.3);
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(26,26,26,0.6) 0%,rgba(26,26,26,0.3) 40%,rgba(26,26,26,0.7) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  text-align:center;max-width:900px;padding:0 40px;
+}
+.hero-tagline{
+  font-family:'Raleway',sans-serif;
+  font-size:0.85rem;font-weight:600;
+  color:var(--dorado);letter-spacing:0.3em;
+  text-transform:uppercase;margin-bottom:28px;
+}
+.hero h1{
+  font-size:3.8rem;font-weight:700;
+  color:var(--crema);line-height:1.15;
+  margin-bottom:24px;
+}
+.hero h1 em{
+  font-style:italic;color:var(--dorado);
+}
+.hero-sub{
+  font-family:'Raleway',sans-serif;
+  font-size:1.15rem;font-weight:300;
+  color:rgba(245,240,232,0.8);
+  max-width:600px;margin:0 auto 40px;
+  line-height:1.7;letter-spacing:0.02em;
+}
+.hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+  display:inline-block;
+  padding:16px 44px;
+  background:var(--vino);color:var(--crema);
+  font-family:'Raleway',sans-serif;font-size:0.85rem;font-weight:600;
+  letter-spacing:0.15em;text-transform:uppercase;
+  text-decoration:none;transition:all 0.3s;border:2px solid var(--vino);
+}
+.btn-primary:hover{background:var(--vino-dark);border-color:var(--vino-dark)}
+.btn-secondary{
+  display:inline-block;
+  padding:16px 44px;
+  background:transparent;color:var(--crema);
+  font-family:'Raleway',sans-serif;font-size:0.85rem;font-weight:600;
+  letter-spacing:0.15em;text-transform:uppercase;
+  text-decoration:none;transition:all 0.3s;border:2px solid rgba(245,240,232,0.4);
+}
+.btn-secondary:hover{border-color:var(--dorado);color:var(--dorado)}
+.hero-scroll{
+  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.hero-scroll span{font-size:0.7rem;color:rgba(245,240,232,0.5);letter-spacing:0.2em;text-transform:uppercase}
+.hero-scroll-line{width:1px;height:40px;background:var(--dorado);opacity:0.5}
+
+/* ============ INTRO STRIP ============ */
+.intro-strip{
+  background:var(--negro);
+  padding:60px;
+  display:flex;align-items:center;justify-content:center;gap:80px;
+  flex-wrap:wrap;
+}
+.intro-stat{text-align:center}
+.intro-stat .num{
+  font-family:'Libre Baskerville',serif;font-size:3rem;font-weight:700;color:var(--dorado);
+  display:block;line-height:1;
+}
+.intro-stat .label{
+  font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:500;
+  color:rgba(245,240,232,0.6);letter-spacing:0.15em;text-transform:uppercase;
+  margin-top:8px;
+}
+.intro-divider{width:1px;height:60px;background:var(--madera);opacity:0.4}
+
+/* ============ CARTA ============ */
+.carta{padding:120px 60px;max-width:1400px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:80px}
+.section-header .eyebrow{
+  font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:600;
+  color:var(--vino);letter-spacing:0.3em;text-transform:uppercase;margin-bottom:16px;
+}
+.section-header h2{
+  font-size:2.8rem;font-weight:700;color:var(--negro);line-height:1.2;margin-bottom:20px;
+}
+.section-header p{
+  font-size:1rem;font-weight:300;color:var(--madera);max-width:600px;margin:0 auto;line-height:1.7;
+}
+.section-header .divider-line{
+  width:60px;height:2px;background:var(--dorado);margin:24px auto 0;
+}
+
+/* Carta photo grid */
+.carta-photos{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  margin-bottom:80px;
+}
+.carta-photo-card{
+  position:relative;overflow:hidden;aspect-ratio:3/4;
+  cursor:pointer;
+}
+.carta-photo-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.6s ease;
+}
+.carta-photo-card:hover img{transform:scale(1.05)}
+.carta-photo-card .photo-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(26,26,26,0.85) 100%);
+}
+.carta-photo-card .photo-label{
+  position:absolute;bottom:0;left:0;right:0;padding:24px;z-index:2;
+}
+.carta-photo-card .photo-label h3{
+  font-size:1.1rem;font-weight:700;color:var(--crema);margin-bottom:4px;
+}
+.carta-photo-card .photo-label span{
+  font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:400;
+  color:var(--dorado);letter-spacing:0.05em;
+}
+
+/* Carta menu grid */
+.carta-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.carta-image{
+  width:100%;height:100%;min-height:500px;
+  background:url('img/mesa-mediterranea.jpg') center/cover no-repeat;
+}
+.carta-menu{
+  background:var(--negro);
+  padding:80px 60px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.carta-category{margin-bottom:48px}
+.carta-category:last-child{margin-bottom:0}
+.carta-category h3{
+  font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;
+  color:var(--dorado);margin-bottom:24px;
+  padding-bottom:12px;border-bottom:1px solid rgba(201,169,110,0.2);
+}
+.carta-item{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:16px;padding-bottom:16px;
+  border-bottom:1px solid rgba(245,240,232,0.06);
+}
+.carta-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.carta-item-info{flex:1;padding-right:20px}
+.carta-item-name{
+  font-family:'Libre Baskerville',serif;font-size:0.95rem;font-weight:400;
+  color:var(--crema);margin-bottom:4px;
+}
+.carta-item-desc{
+  font-size:0.78rem;font-weight:300;color:rgba(245,240,232,0.45);line-height:1.5;
+}
+.carta-item-price{
+  font-family:'Libre Baskerville',serif;font-size:1rem;font-weight:700;
+  color:var(--dorado);white-space:nowrap;
+}
+
+/* ============ VINOTECA ============ */
+.vinoteca{
+  position:relative;padding:120px 60px;overflow:hidden;
+}
+.vinoteca-bg{
+  position:absolute;inset:0;
+  background:url('img/vinoteca.jpg') center/cover no-repeat;
+  filter:brightness(0.2);
+}
+.vinoteca-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(26,26,26,0.85) 0%,rgba(90,36,43,0.6) 100%);
+}
+.vinoteca-content{position:relative;z-index:2;max-width:1200px;margin:0 auto}
+.vinoteca .section-header h2{color:var(--crema)}
+.vinoteca .section-header p{color:rgba(245,240,232,0.6)}
+.vinos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.vino-card{
+  background:rgba(26,26,26,0.6);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(201,169,110,0.15);
+  padding:40px 32px;
+  transition:border-color 0.3s;
+}
+.vino-card:hover{border-color:var(--dorado)}
+.vino-region{
+  font-family:'Raleway',sans-serif;font-size:0.7rem;font-weight:600;
+  color:var(--vino);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px;
+  display:inline-block;background:rgba(114,47,55,0.2);padding:4px 12px;
+}
+.vino-name{
+  font-family:'Libre Baskerville',serif;font-size:1.2rem;font-weight:700;
+  color:var(--crema);margin-bottom:8px;
+}
+.vino-grape{
+  font-size:0.82rem;font-weight:300;color:var(--dorado);margin-bottom:12px;
+  font-style:italic;
+}
+.vino-desc{
+  font-size:0.82rem;font-weight:300;color:rgba(245,240,232,0.5);line-height:1.6;
+  margin-bottom:16px;
+}
+.vino-price{
+  font-family:'Libre Baskerville',serif;font-size:1.1rem;font-weight:700;color:var(--dorado);
+}
+.vino-price small{font-size:0.7rem;font-weight:300;color:rgba(245,240,232,0.4);margin-left:4px}
+
+/* ============ GALLERY STRIP ============ */
+.gallery-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+}
+.gallery-strip-item{
+  position:relative;overflow:hidden;aspect-ratio:16/9;
+}
+.gallery-strip-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.6s ease;
+}
+.gallery-strip-item:hover img{transform:scale(1.05)}
+
+/* ============ REVIEWS ============ */
+.reviews{
+  padding:120px 60px;
+  background:var(--negro);
+}
+.reviews-content{max-width:1200px;margin:0 auto}
+.reviews .section-header h2{color:var(--crema)}
+.reviews .section-header p{color:rgba(245,240,232,0.5)}
+.reviews-hero-stat{
+  text-align:center;margin-bottom:60px;
+}
+.reviews-big-number{
+  font-family:'Libre Baskerville',serif;font-size:6rem;font-weight:700;
+  color:var(--dorado);line-height:1;
+}
+.reviews-label{
+  font-family:'Raleway',sans-serif;font-size:1rem;font-weight:300;
+  color:rgba(245,240,232,0.5);margin-top:8px;letter-spacing:0.05em;
+}
+.reviews-stars{font-size:2rem;color:var(--dorado);margin:12px 0;letter-spacing:4px}
+.reviews-source{
+  font-size:0.8rem;font-weight:500;color:rgba(245,240,232,0.4);
+  letter-spacing:0.15em;text-transform:uppercase;
+}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.review-card{
+  background:rgba(245,240,232,0.04);
+  border:1px solid rgba(245,240,232,0.08);
+  padding:36px 28px;
+  transition:border-color 0.3s;
+}
+.review-card:hover{border-color:rgba(201,169,110,0.3)}
+.review-stars{color:var(--dorado);font-size:0.9rem;margin-bottom:16px;letter-spacing:2px}
+.review-text{
+  font-family:'Libre Baskerville',serif;font-size:0.9rem;font-weight:400;
+  color:rgba(245,240,232,0.75);line-height:1.7;font-style:italic;
+  margin-bottom:20px;
+}
+.review-author{
+  font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:600;
+  color:var(--dorado);letter-spacing:0.1em;
+}
+.review-date{
+  font-size:0.7rem;font-weight:300;color:rgba(245,240,232,0.3);margin-top:4px;
+}
+
+/* ============ CTA ============ */
+.cta-section{
+  position:relative;padding:140px 60px;overflow:hidden;text-align:center;
+}
+.cta-bg{
+  position:absolute;inset:0;
+  background:url('img/vinoteca-interior.jpg') center/cover no-repeat;
+  filter:brightness(0.25);
+}
+.cta-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(114,47,55,0.6) 0%,rgba(26,26,26,0.9) 100%);
+}
+.cta-content{position:relative;z-index:2;max-width:700px;margin:0 auto}
+.cta-content .eyebrow{
+  font-family:'Raleway',sans-serif;font-size:0.75rem;font-weight:600;
+  color:var(--dorado);letter-spacing:0.3em;text-transform:uppercase;margin-bottom:20px;
+}
+.cta-content h2{
+  font-family:'Libre Baskerville',serif;font-size:2.8rem;font-weight:700;
+  color:var(--crema);line-height:1.2;margin-bottom:20px;
+}
+.cta-content p{
+  font-size:1rem;font-weight:300;color:rgba(245,240,232,0.7);
+  max-width:500px;margin:0 auto 40px;line-height:1.7;
+}
+.cta-phone{
+  display:block;
+  font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:700;
+  color:var(--dorado);text-decoration:none;margin-bottom:32px;
+  transition:color 0.3s;letter-spacing:0.04em;
+}
+.cta-phone:hover{color:var(--dorado-light)}
+.cta-info{
+  display:flex;justify-content:center;gap:48px;margin-top:48px;flex-wrap:wrap;
+}
+.cta-info-item{text-align:center}
+.cta-info-item .icon{font-size:1.4rem;color:var(--dorado);margin-bottom:8px}
+.cta-info-item span{
+  display:block;font-size:0.78rem;font-weight:400;color:rgba(245,240,232,0.5);line-height:1.5;
+}
+
+/* ============ FOOTER ============ */
+footer{
+  background:var(--negro);
+  border-top:1px solid rgba(245,240,232,0.06);
+  padding:60px;
+}
+.footer-content{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;
+}
+.footer-brand .footer-logo{
+  font-family:'Libre Baskerville',serif;font-size:1.1rem;font-weight:700;
+  color:var(--dorado);letter-spacing:0.1em;display:block;margin-bottom:16px;
+}
+.footer-brand p{
+  font-size:0.8rem;font-weight:300;color:rgba(245,240,232,0.4);line-height:1.7;max-width:300px;
+}
+.footer-col h4{
+  font-family:'Raleway',sans-serif;font-size:0.72rem;font-weight:600;
+  color:var(--dorado);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px;
+}
+.footer-col a{
+  display:block;font-size:0.82rem;font-weight:300;
+  color:rgba(245,240,232,0.5);text-decoration:none;margin-bottom:10px;
+  transition:color 0.3s;
+}
+.footer-col a:hover{color:var(--dorado)}
+.footer-bottom{
+  max-width:1200px;margin:40px auto 0;
+  padding-top:24px;border-top:1px solid rgba(245,240,232,0.06);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom p{font-size:0.72rem;font-weight:300;color:rgba(245,240,232,0.25)}
+.footer-kenaz{
+  font-family:'Raleway',sans-serif;font-size:0.68rem;font-weight:400;
+  color:rgba(245,240,232,0.2);letter-spacing:0.1em;
+  display:flex;align-items:center;gap:6px;
+}
+.footer-kenaz svg{vertical-align:middle}
+
+/* ============ WATERMARK ============ */
+.kenaz-watermark{
+  position:fixed;bottom:24px;right:24px;z-index:9999;
+  opacity:0.30;pointer-events:none;
+}
+
+/* ============ RESPONSIVE 768px ============ */
+@media(max-width:768px){
+  nav{padding:0 24px;height:64px}
+  .nav-links{
+    display:none;position:fixed;top:64px;left:0;right:0;
+    background:rgba(26,26,26,0.98);flex-direction:column;
+    padding:32px 24px;gap:24px;
+  }
+  .nav-links.open{display:flex}
+  .nav-hamburger{display:flex}
+  .hero h1{font-size:2.6rem}
+  .hero-sub{font-size:1rem}
+  .hero-content{padding:0 24px}
+  .intro-strip{padding:40px 24px;gap:40px}
+  .intro-stat .num{font-size:2.2rem}
+  .intro-divider{display:none}
+  .carta{padding:80px 24px}
+  .section-header h2{font-size:2.2rem}
+  .carta-photos{grid-template-columns:1fr 1fr;gap:16px}
+  .carta-grid{grid-template-columns:1fr}
+  .carta-image{min-height:300px}
+  .carta-menu{padding:48px 32px}
+  .vinoteca{padding:80px 24px}
+  .vinos-grid{grid-template-columns:1fr 1fr;gap:20px}
+  .gallery-strip{grid-template-columns:1fr}
+  .reviews{padding:80px 24px}
+  .reviews-big-number{font-size:4rem}
+  .reviews-grid{grid-template-columns:1fr 1fr;gap:20px}
+  .cta-section{padding:80px 24px}
+  .cta-content h2{font-size:2.2rem}
+  .cta-phone{font-size:1.4rem}
+  .footer-content{grid-template-columns:1fr 1fr;gap:32px}
+}
+
+/* ============ RESPONSIVE 480px ============ */
+@media(max-width:480px){
+  .hero{min-height:600px}
+  .hero h1{font-size:1.9rem}
+  .hero-tagline{font-size:0.72rem;letter-spacing:0.2em}
+  .hero-sub{font-size:0.9rem}
+  .hero-buttons{flex-direction:column;align-items:center}
+  .btn-primary,.btn-secondary{width:100%;text-align:center;padding:14px 20px}
+  .intro-strip{flex-direction:column;gap:28px}
+  .intro-stat .num{font-size:1.8rem}
+  .section-header h2{font-size:1.8rem}
+  .carta-photos{grid-template-columns:1fr}
+  .carta-menu{padding:36px 24px}
+  .carta-category h3{font-size:1.1rem}
+  .vinos-grid{grid-template-columns:1fr}
+  .reviews-big-number{font-size:3.2rem}
+  .reviews-grid{grid-template-columns:1fr}
+  .cta-content h2{font-size:1.8rem}
+  .cta-phone{font-size:1.2rem}
+  .cta-info{flex-direction:column;gap:24px}
+  .footer-content{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- KENAZ WATERMARK -->
+<div class="kenaz-watermark">
+  <svg width="48" height="48" viewBox="0 0 100 100" fill="none" stroke="rgba(201,169,110,0.6)" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M68 18 L30 50 L68 82"/>
+  </svg>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">LA VI&Ntilde;A DE CALPE</a>
+  <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="#carta">Carta</a>
+    <a href="#vinoteca">Vinoteca</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#reservar" class="nav-cta">Reservar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-tagline">Calpe &mdash; Desde 2003</p>
+    <h1>M&aacute;s de mil opiniones.<br><em>Una sola direcci&oacute;n.</em></h1>
+    <p class="hero-sub">Cocina mediterr&aacute;nea, vinos de autor y una vinoteca que cuenta su propia historia. Veinte a&ntilde;os despu&eacute;s, la mesa sigue puesta.</p>
+    <div class="hero-buttons">
+      <a href="#reservar" class="btn-primary">Reservar mesa</a>
+      <a href="#carta" class="btn-secondary">Ver la carta</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Descubrir</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<section class="intro-strip">
+  <div class="intro-stat">
+    <span class="num">1.000+</span>
+    <span class="label">Opiniones en Google</span>
+  </div>
+  <div class="intro-divider"></div>
+  <div class="intro-stat">
+    <span class="num">4.6</span>
+    <span class="label">Valoraci&oacute;n media</span>
+  </div>
+  <div class="intro-divider"></div>
+  <div class="intro-stat">
+    <span class="num">300+</span>
+    <span class="label">Etiquetas en bodega</span>
+  </div>
+  <div class="intro-divider"></div>
+  <div class="intro-stat">
+    <span class="num">20</span>
+    <span class="label">A&ntilde;os en Calpe</span>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section class="carta" id="carta">
+  <div class="section-header">
+    <p class="eyebrow">Nuestra carta</p>
+    <h2>Cocina que respeta<br>el producto</h2>
+    <p>Cada plato nace de ingredientes locales tratados con la t&eacute;cnica justa. Sin artificios, sin excesos. El Mediterr&aacute;neo en su expresi&oacute;n m&aacute;s honesta.</p>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- Photo grid -->
+  <div class="carta-photos">
+    <div class="carta-photo-card">
+      <img src="img/tapas.jpg" alt="Tapas gourmet" loading="lazy">
+      <div class="photo-overlay"></div>
+      <div class="photo-label">
+        <h3>Tapas de autor</h3>
+        <span>Tradici&oacute;n con mirada contempor&aacute;nea</span>
+      </div>
+    </div>
+    <div class="carta-photo-card">
+      <img src="img/charcuteria.jpg" alt="Jam&oacute;n ib&eacute;rico y embutidos" loading="lazy">
+      <div class="photo-overlay"></div>
+      <div class="photo-label">
+        <h3>Jam&oacute;n ib&eacute;rico</h3>
+        <span>Bellota 36 meses, cortado a cuchillo</span>
+      </div>
+    </div>
+    <div class="carta-photo-card">
+      <img src="img/quesos.jpg" alt="Quesos artesanales" loading="lazy">
+      <div class="photo-overlay"></div>
+      <div class="photo-label">
+        <h3>Quesos de pastor</h3>
+        <span>Selecci&oacute;n de peque&ntilde;os productores</span>
+      </div>
+    </div>
+    <div class="carta-photo-card">
+      <img src="img/tapas-gourmet.jpg" alt="Plato del d&iacute;a" loading="lazy">
+      <div class="photo-overlay"></div>
+      <div class="photo-label">
+        <h3>Plato del d&iacute;a</h3>
+        <span>Mercado y temporada, siempre</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu list -->
+  <div class="carta-grid">
+    <div class="carta-image"></div>
+    <div class="carta-menu">
+      <div class="carta-category">
+        <h3>Para empezar</h3>
+        <div class="carta-item">
+          <div class="carta-item-info">
+            <div class="carta-item-name">Jam&oacute;n ib&eacute;rico de bellota 36 meses</div>
+            <div class="carta-item-desc">Cortado a cuchillo. Guijuelo.</div>
+          </div>
+          <div class="carta-item-price">24 &euro;</div>
+        </div>
+        <div class="carta-item">
+          <div class="carta-item-info">
+            <div class="carta-item-name">Burrata con tomate raf y reducci&oacute;n de PX</div>
+            <div class="carta-item-desc">Burrata fresca, tomate de temporada, Pedro Xim&eacute;nez.</div>
+          </div>
+          <div class="carta-item-price">16 &euro;</div>
+        </div>
+        <div class="carta-item">
+          <div class="carta-item-info">
+            <div class="carta-item-name">Pulpo a la brasa con patata violeta</div>
+            <div class="carta-item-desc">Pulpo gallego, paprika ahumada, aceite de ajo negro.</div>
+          </div>
+          <div class="carta-item-price">19 &euro;</div>
+        </div>
+        <div class="carta-item">
+          <div class="carta-item-info">
+            <div class="carta-item-name">Croquetas de jam&oacute;n ib&eacute;rico</div>
+            <div class="carta-item-desc">Receta de la casa. Bechamel artesanal.</div>
+          </div>
+          <div class="carta-item-price">14 &euro;</div>
+        </div>
+      </div>
+      <div class="carta-category">
+        <h3>Platos principales</h3>
+        <div class="carta-item">
+          <div class="carta-item-info">
+            <div class="carta-item-name">Arroz meloso de bogavante</div>
+            <div class="carta-item-desc">Bogavante del Mediterr&aacute;neo, fumet de roca, azafr&aacute;n de La Mancha.</div>
+          </div>
+          <div class="carta-item-price">28 &euro;</div>
+        </div>
+        <div class="carta-item">
+          <div class="carta-item-info">
+            <div class="carta-item-name">Solomillo de ternera con foie y trufa</div>
+            <div class="carta-item-desc">Ternera madurada 45 d&iacute;as. Foie mi-cuit. Trufa negra de Teruel.</div>
+          </div>
+          <div class="carta-item-price">32 &euro;</div>
+        </div>
+        <div class="carta-item">
+          <div class="carta-item-info">
+            <div class="carta-item-name">Lubina salvaje a la sal</div>
+            <div class="carta-item-desc">Pescado del d&iacute;a. Sal de Torrevieja. Verduras de huerta.</div>
+          </div>
+          <div class="carta-item-price">26 &euro;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VINOTECA -->
+<section class="vinoteca" id="vinoteca">
+  <div class="vinoteca-bg"></div>
+  <div class="vinoteca-overlay"></div>
+  <div class="vinoteca-content">
+    <div class="section-header">
+      <p class="eyebrow">La vinoteca</p>
+      <h2>Trescientas razones<br>para brindar</h2>
+      <p>Una selecci&oacute;n curada que recorre Espa&ntilde;a, Francia e Italia. Desde referencias cl&aacute;sicas hasta descubrimientos de peque&ntilde;os productores.</p>
+      <div class="divider-line"></div>
+    </div>
+    <div class="vinos-grid">
+      <div class="vino-card">
+        <span class="vino-region">Ribera del Duero</span>
+        <h3 class="vino-name">Vega Sicilia &Uacute;nico 2012</h3>
+        <p class="vino-grape">Tempranillo, Cabernet Sauvignon</p>
+        <p class="vino-desc">Complejidad en estado puro. Notas de cuero, especias orientales y fruta negra madura. Final interminable.</p>
+        <p class="vino-price">320 &euro; <small>botella</small></p>
+      </div>
+      <div class="vino-card">
+        <span class="vino-region">Priorat</span>
+        <h3 class="vino-name">Clos Mogador 2019</h3>
+        <p class="vino-grape">Garnacha, Cari&ntilde;ena, Syrah</p>
+        <p class="vino-desc">Mineral, profundo, con la pizarra del Priorat grabada en cada sorbo. Estructura imponente, elegancia inesperada.</p>
+        <p class="vino-price">85 &euro; <small>botella</small></p>
+      </div>
+      <div class="vino-card">
+        <span class="vino-region">Rioja</span>
+        <h3 class="vino-name">L&oacute;pez de Heredia Tondonia Gran Reserva 2001</h3>
+        <p class="vino-grape">Tempranillo, Garnacha, Mazuelo</p>
+        <p class="vino-desc">Clasicismo riojanista. Oxidativo, complejo, con una frescura que desaf&iacute;a sus dos d&eacute;cadas. Un vino que exige tiempo.</p>
+        <p class="vino-price">120 &euro; <small>botella</small></p>
+      </div>
+      <div class="vino-card">
+        <span class="vino-region">Borgo&ntilde;a</span>
+        <h3 class="vino-name">Domaine Leflaive Puligny-Montrachet 2020</h3>
+        <p class="vino-grape">Chardonnay</p>
+        <p class="vino-desc">Precisi&oacute;n borgo&ntilde;ona en estado puro. C&iacute;tricos, pedernal, mantequilla sutil. Para entender por qu&eacute; Borgo&ntilde;a es Borgo&ntilde;a.</p>
+        <p class="vino-price">145 &euro; <small>botella</small></p>
+      </div>
+      <div class="vino-card">
+        <span class="vino-region">Jerez</span>
+        <h3 class="vino-name">Gonz&aacute;lez Byass T&iacute;o Pepe En Rama 2024</h3>
+        <p class="vino-grape">Palomino Fino</p>
+        <p class="vino-desc">La versi&oacute;n sin filtrar del fino m&aacute;s famoso del mundo. Levaduras, almendra amarga, brisa atl&aacute;ntica. Ef&iacute;mero y esencial.</p>
+        <p class="vino-price">18 &euro; <small>copa</small></p>
+      </div>
+      <div class="vino-card">
+        <span class="vino-region">Piamonte</span>
+        <h3 class="vino-name">Giacomo Conterno Barolo Monfortino 2015</h3>
+        <p class="vino-grape">Nebbiolo</p>
+        <p class="vino-desc">Una catedral en copa. Rosas marchitas, alquitr&aacute;n, cerezas secas. El Barolo que define la categor&iacute;a.</p>
+        <p class="vino-price">480 &euro; <small>botella</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<section class="gallery-strip">
+  <div class="gallery-strip-item">
+    <img src="img/interior.jpg" alt="Interior de La Vi&ntilde;a de Calpe" loading="lazy">
+  </div>
+  <div class="gallery-strip-item">
+    <img src="img/barrica.jpg" alt="Barricas de vino" loading="lazy">
+  </div>
+  <div class="gallery-strip-item">
+    <img src="img/vino-copas.jpg" alt="Copa de vino y uvas" loading="lazy">
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="opiniones">
+  <div class="reviews-content">
+    <div class="reviews-hero-stat">
+      <div class="reviews-big-number">1.000+</div>
+      <div class="reviews-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="reviews-source">Opiniones verificadas en Google</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;La selecci&oacute;n de vinos es extraordinaria. Nos recomendaron un Priorat que no conoc&iacute;a y fue una revelaci&oacute;n. La comida, a la altura.&rdquo;</p>
+        <p class="review-author">Mar&iacute;a L.</p>
+        <p class="review-date">Hace 2 semanas</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Llevamos viniendo 10 a&ntilde;os y nunca decepciona. El arroz de bogavante es probablemente el mejor de la Costa Blanca. Reservad con tiempo.&rdquo;</p>
+        <p class="review-author">Thomas W.</p>
+        <p class="review-date">Hace 1 mes</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Un restaurante que entiende que el vino no es un complemento, es parte central de la experiencia. La vinoteca es impresionante.&rdquo;</p>
+        <p class="review-author">Jean-Pierre D.</p>
+        <p class="review-date">Hace 3 semanas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="reservar">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <p class="eyebrow">Tu mesa espera</p>
+    <h2>Reserva tu<br>experiencia</h2>
+    <p>La mejor manera de descubrir La Vi&ntilde;a es sentarse a la mesa. Reserva y deja que el Mediterr&aacute;neo haga el resto.</p>
+    <a href="tel:+34965838100" class="cta-phone">+34 965 838 100</a>
+    <a href="tel:+34965838100" class="btn-primary">Llamar para reservar</a>
+    <div class="cta-info">
+      <div class="cta-info-item">
+        <div class="icon">&#9719;</div>
+        <span>Mar - Dom<br>13:00 - 16:00 / 19:30 - 23:00</span>
+      </div>
+      <div class="cta-info-item">
+        <div class="icon">&#9906;</div>
+        <span>C/ Pescadores, 6<br>03710 Calpe, Alicante</span>
+      </div>
+      <div class="cta-info-item">
+        <div class="icon">&#9743;</div>
+        <span>+34 965 838 100<br>info@lavinacalpe.es</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <span class="footer-logo">LA VI&Ntilde;A DE CALPE</span>
+      <p>Cocina mediterr&aacute;nea, vinos de autor y la hospitalidad que solo veinte a&ntilde;os de historia pueden ofrecer. En el coraz&oacute;n de Calpe.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegar</h4>
+      <a href="#carta">La carta</a>
+      <a href="#vinoteca">Vinoteca</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#reservar">Reservar</a>
+    </div>
+    <div class="footer-col">
+      <h4>Horario</h4>
+      <a href="#">Martes a Domingo</a>
+      <a href="#">13:00 - 16:00</a>
+      <a href="#">19:30 - 23:00</a>
+      <a href="#">Lunes cerrado</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <a href="tel:+34965838100">+34 965 838 100</a>
+      <a href="mailto:info@lavinacalpe.es">info@lavinacalpe.es</a>
+      <a href="#">C/ Pescadores, 6</a>
+      <a href="#">03710 Calpe, Alicante</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 La Vi&ntilde;a de Calpe. Todos los derechos reservados.</p>
+    <span class="footer-kenaz">
+      <svg width="16" height="16" viewBox="0 0 100 100" fill="none" stroke="rgba(245,240,232,0.2)" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter"><path d="M68 18 L30 50 L68 82"/></svg>
+      Dise&ntilde;ado por Kenaz Studio
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
